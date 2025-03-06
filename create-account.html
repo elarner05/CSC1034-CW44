@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create account - Murder Mystery</title>
+  <link rel="stylesheet" href="general-styles.css">
+  <link rel="stylesheet" href="create-account.css">
+</head>
+<body>
+  <div class="create-account-container">
+    <h1>Create Account</h1>
+    <form id="createAccountForm">
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username" required>
+
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required>
+
+      <button type="submit">Create Account</button>
+      <button id="titleButton">Back to title</button>
+    </form>
+    <p id="errorMessage" class="error hidden">Invalid credentials. Please try again.</p>
+  </div>
+
+
+  <script src="create-account.js"></script>
+  <script src="check-dyslexic-script.js"></script>
+</body>
+</html>

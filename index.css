@@ -1,0 +1,120 @@
+
+.center-menu {
+    background: #555;
+    padding: 20px;
+    border-radius: 10px;
+    display: inline-block;
+}
+
+.profile-menu {
+    position: absolute;
+    bottom: auto;
+    left: 10px;
+    bottom: 10px;
+    text-align: center;
+}
+
+
+
+.profile-menu span {
+    padding: 5px;
+    background: #555;
+}
+
+.options-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.options-box {
+    min-width: 400px;
+    background: #444;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.options-box input {
+    display: block;
+    margin: 10px auto;
+    padding: 10px;
+    width: 80%;
+}
+
+.options-box button {
+    display: block;
+    width: 200px;
+    margin: 10px auto;
+    padding: 10px;
+    background: #777;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+.options-box button:hover {
+    background: #999;
+}
+
+
+.options-box .button-on {
+    background: green;
+}
+
+.options-box .button-off {
+    background: red;
+}
+
+.options-box .button-on:hover {
+    background:#7FFF7F ;
+}
+
+.options-box .button-off:hover {
+    background: #FF7F7F;
+}
+
+button:disabled {
+    pointer-events: none; /* Prevents hover and clicks */
+    opacity: 0.5; /* Optional: Makes it look visually disabled */
+}
+
+button:disabled:hover {
+    background-color: initial; /* Resets the hover effect */
+    cursor: default;
+}
+
+.button-wrapper {
+    position: relative;
+}
+
+.tooltip {
+    visibility: hidden;
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding: 5px;
+    border-radius: 5px;
+    
+    position: absolute;
+    bottom: 125%; /* Position above the button/group of buttons */
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+.button-wrapper:hover .tooltip {
+    visibility: visible;
+    opacity: 1;
+}
+
+

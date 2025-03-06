@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+
+<!--
+
+    Conventions:
+        Kebab case for css classes      (e.g. one-two-three)
+        Kebab case for file names
+        Camel case for javascript ids   (e.g. oneTwoThree)
+        Camel case in all javascript names etc
+
+-->
+
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Murder Mystery</title>
+    <link rel="stylesheet" href="general-styles.css">
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+    <div class="main-container">
+        <h1 class="title">Murder Mystery</h1>
+        <div class="center-menu">
+            <div class="button-wrapper">
+                <button id="continueButton" disabled>Continue</button>
+                <button id="newGameButton" disabled>New Game</button>
+                <button id="statsButton" disabled>Stats</button>
+                <!--<button id="leaderboardButton">Leaderboard</button>-->  
+                <span class="tooltip">You must sign in first!</span>
+            </div>
+
+            <button id="optionsButton">Options</button>
+            
+        </div>
+    </div>
+
+    <div class="profile-menu" id="profileMenu">
+        <!-- Sign-In Button (shown only if not signed in) -->
+        <button id="signInButton">Sign In</button>
+        
+        <!-- User Info (shown only if signed in) -->
+        <div id="userInfo" class="hidden">
+            <span id="userName"></span>
+            <button id="logoutButton">Logout</button>
+        </div>
+    </div>
+
+    <div class="options-menu hidden">
+        <div class="options-box">
+            <h2>Options</h2>
+
+            <div class="slide-container">
+                <h3>Sound</h3>
+                <input type="range" min="0" max="100" value="50" class="slider" id="soundRange">
+            </div>
+
+            <button class="button-off" id="dyslexicFontButton">Dyslexic Font: Off</button>
+            <div class="button-wrapper">
+                <button id="manageButton" disabled>Edit Profile</button>
+                <span class="tooltip">You must sign in first!</span>
+            </div>
+            <button id="closeOptionsButton">Close</button>
+        </div>
+    </div>
+
+    <span class="tooltip">You need to sign in first!</span>
+
+
+    <script src="index.js"></script>
+    <script src="check-dyslexic-script.js"></script>
+</body>
+</html>
