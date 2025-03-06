@@ -10,7 +10,6 @@
 
 -->
 
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -21,6 +20,7 @@
 </head>
 <body>
 
+    <!-- Main menu section -->
     <div class="main-container">
         <h1 class="title">Murder Mystery</h1>
         <div class="center-menu">
@@ -28,15 +28,16 @@
                 <button id="continueButton" disabled>Continue</button>
                 <button id="newGameButton" disabled>New Game</button>
                 <button id="statsButton" disabled>Stats</button>
-                <!--<button id="leaderboardButton">Leaderboard</button>-->  
+                
                 <span class="tooltip">You must sign in first!</span>
             </div>
-
+            <button id="leaderboardButton">Leaderboard</button>  
             <button id="optionsButton">Options</button>
             
         </div>
     </div>
 
+    <!-- Profile menu section -->
     <div class="profile-menu" id="profileMenu">
         <!-- Sign-In Button (shown only if not signed in) -->
         <button id="signInButton">Sign In</button>
@@ -48,6 +49,7 @@
         </div>
     </div>
 
+    <!-- Options Menu section-->
     <div class="options-menu hidden">
         <div class="options-box">
             <h2>Options</h2>
@@ -57,19 +59,21 @@
                 <input type="range" min="0" max="100" value="50" class="slider" id="soundRange">
             </div>
 
+            <div class="slide-container">
+                <h3>Font Size</h3>
+                <input type="range" min="0" max="4" value="2" class="slider" id="fontSizeRange">
+            </div>
+
             <button class="button-off" id="dyslexicFontButton">Dyslexic Font: Off</button>
             <div class="button-wrapper">
-                <button id="manageButton" disabled>Edit Profile</button>
+                <button id="editProfileButton" disabled>Edit Profile</button>
                 <span class="tooltip">You must sign in first!</span>
             </div>
             <button id="closeOptionsButton">Close</button>
         </div>
     </div>
 
-    <span class="tooltip">You need to sign in first!</span>
-
-
     <script src="index.js"></script>
-    <script src="check-dyslexic-script.js"></script>
+    <script src="check-accessibility.js"></script>
 </body>
 </html>

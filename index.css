@@ -82,7 +82,7 @@
 
 button:disabled {
     pointer-events: none; /* Prevents hover and clicks */
-    opacity: 0.5; /* Optional: Makes it look visually disabled */
+    opacity: 0.5; /* Makes it look visually disabled */
 }
 
 button:disabled:hover {
@@ -116,5 +116,3 @@ button:disabled:hover {
     visibility: visible;
     opacity: 1;
 }
-
-
