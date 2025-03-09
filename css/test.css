@@ -1,0 +1,68 @@
+body {
+    background-image: url("../assets/western-desert-night.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    color: #f5e3c3; /* Old paper color */
+    background-color: #0B0C2A;
+    font-family: "serif";
+    text-align: center;
+}
+
+.text-box {
+    position: fixed;
+    left: 20px;
+    bottom: 20px;
+    width: 60%;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    border-radius: 10px;
+    font-size: 1rem;
+    text-align: left
+
+}
+
+
+button {
+    margin-top: 10px;
+    padding: 20px 20px;
+    font-size: 1rem;
+    flex-basis: 45%;
+    cursor: pointer;
+    border: none;
+    background: rgba(0, 0, 0, 0.7);
+    color: #f5e3c3; /* Old paper color */
+    border-radius: 8px;
+    text-align: left;
+}
+
+#choicesContainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    /*grid-template-columns: auto auto;*/
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    width: 50%;
+    height: 50%;
+
+    border-radius: 8px;
+
+    background: rgba(0, 0, 0, 0);
+}
+
+#nextButton {
+    position: absolute;
+    right: 1px;
+    bottom: 1px;
+
+    margin-top: 20px;
+    padding: 5px 5px;
+    font-size: 0.875rem;
+    cursor: pointer;
+    border: none;
+    border: rgba(0, 0, 0, 0.1);;
+    background: rgba(0, 0, 0, 0);
+    color: #f5e3c3; /* Old paper color */
+}
