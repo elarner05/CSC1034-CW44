@@ -1,0 +1,34 @@
+body {
+    background-image: url("../assets/western-town-day.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    color: #f5e3c3; /* Old paper color */
+    background-color: #0B0C2A;
+    font-family: "serif";
+    text-align: center;
+}
+
+.buttons-container {
+    
+    display: flex;
+    flex-direction: row;
+    
+    width: 80vh;
+    height: 25vh;
+    position: relative;
+    bottom: 20vh;
+    background: rgba(0, 0, 0, 0.5); /* Dark overlay */
+
+}
+
+
+button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    border: none;
+    background: #7b3f00;
+    color: white;
+}
