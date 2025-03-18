@@ -19,7 +19,7 @@ body {
 }
 
 
-button {
+.menu button {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
@@ -34,8 +34,8 @@ button {
     cursor: pointer;
 }
 
-button:hover {
-    background: #999;
+.menu button:hover {
+    background-color: #999;
 }
 
 
