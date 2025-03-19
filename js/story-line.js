@@ -198,13 +198,13 @@ class ChoiceHandler {
  */
 
 class ConversationHandler {
-    constructor(dialogues, textElement, nextButton, containerElement, defaultTypingSpeed = 40) {
+    constructor(dialogues, textElement, nextButton, containerElement, typingSpeed = defaultTypingSpeed) {
         this.dialogues = dialogues;
         this.textElement = textElement;
         this.nextButton = nextButton;
         this.containerElement = containerElement;
         this.currentDialogueId = 1; // Start at the first dialogue
-        this.defaultTypingSpeed = defaultTypingSpeed;
+        this.typingSpeed = typingSpeed;
 
         this.dialogueUpdater = null; // To hold the instance of DialogueUpdater
         this.choiceHandler = null; // To hold the instance of ChoiceHandler
@@ -225,7 +225,7 @@ class ConversationHandler {
         
         if (dialogue) {
             // If dialogue exists, start the typing animation for the dialogue text
-            this.dialogueUpdater = new DialogueUpdater(dialogue.text, this.textElement, this.nextButton, this.defaultTypingSpeed);
+            this.dialogueUpdater = new DialogueUpdater(dialogue.text, this.textElement, this.nextButton, this.typingSpeed);
             this.dialogueUpdater.start();
 
             // Wait for the promise to resolve and show choices once the dialogue finishes
