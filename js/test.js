@@ -246,6 +246,8 @@ const dialogue = [
     }
   ]
 
+import ConversationHandler from "./story-line.js"; 
+
 const textElement = document.getElementById("storyText");
 const nextButton = document.getElementById("nextButton");
 const containerElement = document.getElementById("choicesContainer");

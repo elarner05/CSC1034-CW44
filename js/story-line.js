@@ -64,7 +64,7 @@ const preacherDialogue = [
  *  ~Get the promise and setup the javascript functionality for when the Dialogue finishes
  *      dialogue.getPromise().then(() => {// run some code in here for when the dialogue is complete })
  */
-class DialogueUpdater {
+export class DialogueUpdater {
     nextDelay = 250;
     constructor(text, textElement, nextButton, speed = defaultTypingSpeed) {
         this.speed = speed;
@@ -143,7 +143,7 @@ class DialogueUpdater {
  *      choice.getPromise().then(nextId => {// Insert your code which uses the button id})
  *  
  */
-class ChoiceHandler {
+export class ChoiceHandler {
     constructor(choices, containerElement) {
         this.choices = choices; // Array of choices
         this.containerElement = containerElement;
@@ -197,7 +197,7 @@ class ChoiceHandler {
  *      const conversation = new ConversationHandler(dialogue, textElement, nextButton, containerElement);
  */
 
-class ConversationHandler {
+export default class ConversationHandler {
     constructor(dialogues, textElement, nextButton, containerElement, typingSpeed = defaultTypingSpeed) {
         this.dialogues = dialogues;
         this.textElement = textElement;
