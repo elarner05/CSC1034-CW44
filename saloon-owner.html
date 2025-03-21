@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Murder Mystery - Test Conversation</title>
+    <link rel="stylesheet" href="css/general-styles.css">
+    <link rel="stylesheet" href="css/side-bar.css">
+    <link rel="stylesheet" href="css/saloon-owner.css">
+</head>
+<body>
+    
+    <div class="text-box" id="textBox">
+        <p id="storyText"></p>
+        <button id="nextButton" class="hidden">Next</button>
+    </div>
+    
+    <button id="nextButton" class="hidden">Next</button>
+        
+    
+    <div id="choicesContainer"></div>
+    <div id="sideBar">
+        <button class="side-bar" id="inventory"></button>
+        <button class="side-bar" id="notes"></button>
+    </div>
+
+
+    <div class="inventory-container hidden" id="inventoryContainer">
+        <div class="inventory-box">
+            <h2>Inventory</h2>
+            
+            <div id="inventorySpace">
+
+            </div>
+
+            <button id="closeInventoryButton">Close</button>
+        </div>
+        <div class="inventory-item-description hidden" id="itemDescriptionContainer">
+            <h3>Item Description</h3>
+            <div class="inventory-item-data-container">
+                <img id="descriptionImage" src="assets/blank-image.png">
+                <div id="descriptionText">
+                    <h2 id="descriptionItemName"></h2>
+                    <p id="descriptionItemDescription"></p>
+                </div>
+            </div>
+
+            <button id="closeDescriptionButton">Close Description</button>
+        </div>
+    </div>
+
+
+    <div class="notes-container hidden" id="notesContainer">
+        <div class="notes-box">
+            <h2>Investigation Notes</h2>
+            <div class="notes-tabs" id="notesTabs">
+                <button class="notes-tab active-tab" data-suspect="suspect1">Rancher suspect</button>
+                <button class="notes-tab" data-suspect="suspect2">Suspect 2</button>
+                <button class="notes-tab" data-suspect="suspect3">Suspect 3</button>
+                <!-- Add more tabs as needed -->
+            </div>
+            <textarea id="notesArea" placeholder="Write your clues, suspicions, and theories here..."></textarea>
+
+            <button id="closeNotesButton">Save & Close</button>
+        </div>
+    </div>
+    
+    <script src="js/story-line.js"></script>
+    <script src="js/side-bar.js"></script>
+    <script src="js/saloon-owner.js"></script>
+</body>
+</html>
