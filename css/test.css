@@ -37,9 +37,9 @@ body.drifter{
 .text-box {
     position: fixed;
     left: 50%;
-    bottom: 30%;
+    bottom: 31%;
     transform: translateX(-50%);
-    width: 50%;
+    width: 52.5%;
     background: rgba(0, 0, 0, 0.7);
     padding: 20px;
     border-radius: 10px;
