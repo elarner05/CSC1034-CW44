@@ -6,6 +6,9 @@ ConnectionToken => "", some kind of link to the server token # probably needs re
 SignedIn => true, false
 dyslexicFont => true, false
 fontSizeSetting => 0,1,2,3,4
+
+
+Moved to session storage
 notes_name => "" for each suspect name
 inventoryData => JSON string
 

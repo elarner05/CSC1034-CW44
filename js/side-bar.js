@@ -34,14 +34,14 @@ let currentNotesSuspect = 'suspect1';
 
 
 closeNotesButton.addEventListener('click', () => {
-    localStorage.setItem(`notes_${currentNotesSuspect}`, notesArea.value); // Save notes
+    sessionStorage.setItem(`notes_${currentNotesSuspect}`, notesArea.value); // Save notes
     notesContainer.classList.add('hidden');
 });
 
 notesTabs.forEach(tab => {
     tab.addEventListener('click', () => {
         // Save current notes before switching
-        localStorage.setItem(`notes_${currentNotesSuspect}`, notesArea.value);
+        sessionStorage.setItem(`notes_${currentNotesSuspect}`, notesArea.value);
 
         // Switch active tab
         notesTabs.forEach(t => t.classList.remove('active-tab'));
@@ -54,7 +54,7 @@ notesTabs.forEach(tab => {
 });
 
 function loadNotes(suspectKey) {
-    const saved = localStorage.getItem(`notes_${suspectKey}`);
+    const saved = sessionStorage.getItem(`notes_${suspectKey}`);
     notesArea.value = saved || '';
 }
 
@@ -125,7 +125,7 @@ let inventoryData = [
   ];
 
 // Overwrite the test data
-const savedInventory = localStorage.getItem("inventoryData");
+const savedInventory = sessionStorage.getItem("inventoryData");
 if (savedInventory) {
     inventoryData = JSON.parse(savedInventory);
 }
@@ -252,7 +252,7 @@ function loadInventory() {
 
 // Saves inventory json array
 function saveInventory(inventoryArray) {
-    localStorage.setItem("inventoryData", JSON.stringify(inventoryArray));
+    sessionStorage.setItem("inventoryData", JSON.stringify(inventoryArray));
 }
 
 function updateItemSlot(itemId, newSlotId) {
@@ -265,7 +265,7 @@ function updateItemSlot(itemId, newSlotId) {
 
 // removes the inventory from the 
 function resetInventory() {
-    localStorage.removeItem("inventoryData");
+    sessionStorage.removeItem("inventoryData");
     location.reload();
 }
 
