@@ -11,7 +11,7 @@ body {
 
 .text-box {
     position: fixed;
-    left: 20px;
+    background-position: center;
     bottom: 20px;
     width: 60%;
     background: rgba(0, 0, 0, 0.7);
