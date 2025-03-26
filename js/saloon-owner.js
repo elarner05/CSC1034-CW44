@@ -19,10 +19,7 @@ const dialogue = [
     {
         "id" : 2,
         "text" : [
-            "The saloon owner notices your presence and shifts her attention towards u. She nods her head at you as if finally acknowledging who u are.",
-            "She speaks up", 
-            "You must be the new detective in town. Heard they sent you to investigate the reason behind first sigh of relief this town has had in years.",
-            "She finishes with a dry chuckle.",
+            "The saloon owner notices your presence and shifts her attention towards u. She nods her head at you as if finally acknowledging who u are.She speaks up.You must be the new detective in town. Heard they sent you to investigate the reason behind first sigh of relief this town has had in years.She finishes with a dry chuckle.",
         ], 
         "choices" : [
             {
@@ -48,8 +45,7 @@ const dialogue = [
     {
         "id" : 3,
         "text" : [
-            "You approach an old man sat at a table in the corner all alone.",
-            "You take a seat next to him and greet him. He buys you a drink.",
+            "You approach an old man sat at a table in the corner all alone.You take a seat next to him and greet him. He buys you a drink.",
         ],
         "choices" : [
             {
@@ -151,5 +147,6 @@ conversation.getPromise().then(() => {
   nextButton.classList.remove("hidden");
   nextButton.addEventListener("click", () => {
     document.getElementById("textBox").classList.add("hidden");
+    document.body.classList.add("drifter");
   })
 })
