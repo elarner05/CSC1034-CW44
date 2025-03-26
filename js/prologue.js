@@ -1,3 +1,6 @@
+import * as Timer from "./timer.js";
+
+
 const testText = [
     "As the sun rises, you arrive at **INSERT TOWN NAME HERE**.",
     "You can hear the quite whistle of the wind echo through the desolate town.",
@@ -12,7 +15,8 @@ const testText = [
 const textElement = document.getElementById("storyText");
 const nextButton = document.getElementById("nextButton");
 
-import { DialogueUpdater } from "./story-line.js"; 
+import { DialogueUpdater } from "./story-line.js";
+
 
 const dialogue = new DialogueUpdater(testText, textElement, nextButton);
 
@@ -23,6 +27,7 @@ dialogue.getPromise().then(() => {
     nextButton.classList.remove("hidden");
     nextButton.addEventListener("click", () => {
         if (nextButton.innerHTML === "Continue") {    // Move to the next page when clicking "Continue"
+            Timer.setStartTime();
             window.location.href = "main-town.html"; // Change to your next game page
         }
     });
