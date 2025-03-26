@@ -1,5 +1,5 @@
 body {
-    background-image: url("../assets/western-desert-night.png");
+    background-image: url("../assets/rancher.png");
     background-repeat: no-repeat;
     background-size: contain;   
     background-position: center;
@@ -11,7 +11,7 @@ body {
 
 .text-box {
     position: fixed;
-    left: 20px;
+    background-position: center;
     bottom: 20px;
     width: 60%;
     background: rgba(0, 0, 0, 0.7);
