@@ -2,7 +2,7 @@ const dialogue = [
     {
       "id": 1,
       "text": [
-        "The drifter stands in front of you, tending to his horse."
+        "The drifter stands in front of you, tending to his horse. He has a gun holstered on either side of his belt. His hands and clothes are stained with gunpowder. A bag lays next to where his horse is stationed, left slightly open."
       ],
       "choices": [
         {
@@ -10,16 +10,8 @@ const dialogue = [
           "nextID": 2
         },
         {
-          "text": "Got a name?",
+          "text": "Look for clues",
           "nextID": 3
-        },
-        {
-          "text": "What's your business here?",
-          "nextID": 4
-        },
-        {
-          "text": "You seem like you have something on your mind.",
-          "nextID": 5
         }
       ]
     },
@@ -52,7 +44,7 @@ const dialogue = [
       "id": 3,
       "text": [
         "He takes out a cigar.",
-        "I'm a drifter. No need for names."
+        "'I'm a drifter. No need for names.'"
       ],
       "choices": [
         {
