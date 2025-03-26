@@ -163,7 +163,14 @@ export class ChoiceHandler {
             button.id = "choiceButton"
             button.textContent = choice.text;
             button.classList.add("choice-button");
-            button.addEventListener("click", () => this.selectChoice(choice.nextID));
+            button.addEventListener("click", () => {
+                if (choice.itemID && choice.itemID !== "") {
+                    if (addItemToInventory) {
+                        addItemToInventory(choice.itemID, "nextAvailable");
+                    }
+                }
+                this.selectChoice(choice.nextID);
+        });
             this.containerElement.appendChild(button);
             this.buttons.push(button);
         });
@@ -209,6 +216,15 @@ export default class ConversationHandler {
         this.dialogueUpdater = null; // To hold the instance of DialogueUpdater
         this.choiceHandler = null; // To hold the instance of ChoiceHandler
 
+        this.nextButtonHandler = () => {
+            
+            this.nextButton.classList.add("hidden");
+            this.nextButton.removeEventListener("click", this.nextButtonHandler);
+            this.textElement.innerHTML = "";
+            setTimeout(() => {this.showDialogue(this.currentDialogueId)}, 1);
+            
+        };
+
         this.resolve = null;
         this.conversationPromise = new Promise((resolve) => {
             this.resolve = resolve;
@@ -230,7 +246,12 @@ export default class ConversationHandler {
 
             // Wait for the promise to resolve and show choices once the dialogue finishes
             this.dialogueUpdater.getPromise().then(() => {
-                if (dialogue.choices && dialogue.choices.length > 0) {
+                if (dialogue.choices.length === 1 && dialogue.choices[0].text == "") {
+                    this.nextButton.classList.remove("hidden");
+                    this.currentDialogueId = dialogue.choices[0].nextID;
+                    this.nextButton.addEventListener("click", this.nextButtonHandler);
+
+                } else if (dialogue.choices && dialogue.choices.length > 0) {
                     // If there are choices, show them
                     this.choiceHandler = new ChoiceHandler(dialogue.choices, this.containerElement);
                     this.choiceHandler.displayChoices();
