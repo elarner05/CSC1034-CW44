@@ -1,13 +1,21 @@
+import * as Timer from "./timer.js";
+
+
 const testText = [
-    "The wind howls through the empty streets of Deadwood...",
-    "A single oil lamp flickers outside the saloon, casting long shadows.",
-    "Somewhere in the darkness, a gunshot rings out...",
-    "The sheriff is dead.",
-    "And you're the only one left to find the killer."
+    "As the sun rises, you arrive at **INSERT TOWN NAME HERE**.",
+    "You can hear the quite whistle of the wind echo through the desolate town.",
+    "As you look to the town board, you see a sign.",
+    "‘New sheriff wanted’",
+    "The old sheriff has died.",
+    "You are a detective, and you have been tasked with solving the murder of the sheriff.",
+    "Your superiors have given you a logbook and a bag to keep track of evidence or clues you may find.",
+    "And now you must solve the case."
 ];
 
 const textElement = document.getElementById("storyText");
 const nextButton = document.getElementById("nextButton");
+
+import { DialogueUpdater } from "./story-line.js";
 
 
 const dialogue = new DialogueUpdater(testText, textElement, nextButton);
@@ -19,7 +27,8 @@ dialogue.getPromise().then(() => {
     nextButton.classList.remove("hidden");
     nextButton.addEventListener("click", () => {
         if (nextButton.innerHTML === "Continue") {    // Move to the next page when clicking "Continue"
-            window.location.href = "test.html"; // Change to your next game page
+            Timer.setStartTime();
+            window.location.href = "main-town.html"; // Change to your next game page
         }
     });
 });
