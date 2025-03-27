@@ -652,7 +652,9 @@ const preacherDialogue = [
 }
 ];
 
-
+document.getElementById("backButton").addEventListener("click", () => {
+    window.location.href = "main-town.html";
+})
 
 
 const textElement = document.getElementById("storyText");
