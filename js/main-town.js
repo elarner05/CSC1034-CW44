@@ -24,10 +24,10 @@ document.addEventListener("DOMContentLoaded", function () {
     const suspects = [
         { name: "Deputy Cain Chambers", img: "deputy.png" },
         { name: "Arms Dealer", img: "arms-dealer.png" },
-        { name: "Rev. Willie McCrea", img: "preacher.png" },
-        { name: "The Drifter", img: "drifter.png" },
-        { name: "Bernice Becker", img: "ranch-owner.png" },
-        { name: "Denice Doherty", img: "saloon-owner.png" }
+        { name: "Rev. Willie McCrea", img: "assets/preacher-portrait.png" },
+        { name: "The Drifter", img: "assets/drifter-portrait.png" },
+        { name: "Bernice Becker", img: "assets/rancher-portrait.png" },
+        { name: "Denice Doherty", img: "assets/saloon-owner-portrait.png" }
     ];
 
     // Populate suspects in modal
