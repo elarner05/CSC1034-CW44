@@ -135,18 +135,34 @@ const dialogue = [
 
 
 ]
+
+document.getElementById("backButton").addEventListener("click", () => {
+    window.location.href = "main-town.html";
+})
+
+
+import ConversationHandler from "./story-line.js";
+import * as Timer from "./timer.js";
+
+Timer.injectClock();
+
+// Start the interval to update the clock
+setInterval(Timer.updateClockDisplay, 1000);
+
+// On page load, set the clock immediately
+document.addEventListener("DOMContentLoaded", Timer.updateClockDisplay);
+
 const textElement = document.getElementById("storyText");
 const nextButton = document.getElementById("nextButton");
 const containerElement = document.getElementById("choicesContainer");
 
-const conversation = new ConversationHandler(dialogue, textElement, nextButton, containerElement, 20);
+const conversation = new ConversationHandler(dialogue, textElement, nextButton, containerElement, 1);
 conversation.start();
 
 conversation.getPromise().then(() => {
-  nextButton.innerHTML = "Close";
-  nextButton.classList.remove("hidden");
-  nextButton.addEventListener("click", () => {
-    document.getElementById("textBox").classList.add("hidden");
-    document.body.classList.add("drifter");
+    nextButton.innerHTML = "Close";
+    nextButton.classList.remove("hidden");
+    nextButton.addEventListener("click", () => {
+      document.getElementById("textBox").classList.add("hidden");
+    })
   })
-})
