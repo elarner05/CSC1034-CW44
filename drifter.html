@@ -6,9 +6,9 @@
     <title>Murder Mystery - Test Conversation</title>
     <link rel="stylesheet" href="css/general-styles.css">
     <link rel="stylesheet" href="css/side-bar.css">
-    <link rel="stylesheet" href="css/test.css">
+    <link rel="stylesheet" href="css/drifter.css">
 </head>
-<body class="test">
+<body>
     <div class="background-container"></div>
 
     <div class="text-box" id="textBox">
@@ -18,11 +18,12 @@
     
     <button id="nextButton" class="hidden">Next</button>
         
-    
-    <div id="choicesContainer"></div>
-    <div id="sideBar">
+    <div class = "flex-container">
+        <div id="choicesContainer"></div>
+        <div id="sideBar">
         <button class="side-bar" id="inventory"></button>
         <button class="side-bar" id="notes"></button>
+        </div>
     </div>
 
 
@@ -65,10 +66,8 @@
             <button id="closeNotesButton">Save & Close</button>
         </div>
     </div>
-
-    <button id="backButton">Back to main town</button>    
     
     <script src="js/side-bar.js"></script>
-    <script type="module" src="js/test.js"></script>
+    <script type="module" src="js/drifter-dialogue.js"></script>
 </body>
 </html>
