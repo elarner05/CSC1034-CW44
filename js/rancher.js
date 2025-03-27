@@ -255,6 +255,10 @@ const dialogue = [
     },
   ]
 
+document.getElementById("backButton").addEventListener("click", () => {
+  window.location.href = "main-town.html";
+})
+
 import ConversationHandler from "./story-line.js";
 import * as Timer from "./timer.js";
 
