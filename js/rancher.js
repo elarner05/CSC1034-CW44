@@ -185,7 +185,8 @@ const dialogue = [
       "id": 14,
       "text": [
         "He's a shifty one he is...",
-        "Awfully proud of his guns and his shooting skills that he claims he has."
+        "Awfully proud of his guns and his shooting skills that he claims he has.",
+        "He's always been dealing with shady people."
       ],
       "choices": []
     },
@@ -222,13 +223,22 @@ const dialogue = [
         "The ranch woman notices you staring at her clothes...",
         "She asks you to stop looking at her old clothes."
       ],
-      "choices": []
+      "choices": [
+        {
+            "text": "Further inspect the clothes?",
+            "nextID": 20,
+            "itemID": 3
+        },
+        {
+            "text": "Stop examining the clothes?",
+            "nextID": 21
+        }
+      ]
     },
     {
       "id": 17,
       "text": [
-        "You notice that there is a gun resting on one of the fence posts.",
-        "You take a closer look, at the **INSERT GUN NAME HERE**.",
+        "You notice that she has a gun holstered to her hip.",
         "As you examine it, you notice that the revolver has one less round in its cylinder.",
         "There also appears to be gun powder marks on the barrel of the gun."
       ],
@@ -248,11 +258,27 @@ const dialogue = [
       "id": 19,
       "text": [
         "You inspect the rancher known as 'Bernice Becker'.",
-        "She is wearing a prairie skirt with a striking red gingham dress.",
+        "She is wearing the usual attire of a ranch woman.",
         "She does not appreciate you staring at her."
       ],
       "choices": []
     },
+    {
+      "id": 20,
+      "text": [
+        "You further inspect the clothes and see a muddy piece of cloth.",
+        "You pick up the piece of cloth and put it in your bag."
+      ],
+      "choices": [],
+     
+    },
+    {
+      "id": 21,
+      "text": [
+        "You decide to stop looking at her old clothes because it is wierd"
+      ],
+      "choices": []
+    }
   ]
 
 import ConversationHandler from "./story-line.js";

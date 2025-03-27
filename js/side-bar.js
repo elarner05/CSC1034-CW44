@@ -108,6 +108,12 @@ const itemData =[
         name: "Bloody Knife",
         description: "A knife with blood on it.",
         image: "assets/bloodied-knife.png",
+    },
+    {
+        id: 3,
+        name: "Muddy Cloth",
+        description: "A muddy cloth found at the ranch. It has marks on it",
+        image: "assets/muddy-rag.png",
     }
     ]
 
