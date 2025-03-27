@@ -9,6 +9,18 @@
     <link rel="stylesheet" href="css/main-town.css">
 </head>
 <body>
+    <button id="accuseButton">Accuse Someone</button>
+    <div id="accuseContainer" class="hidden">
+        <div id="accuseModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Who do you accuse?</h2>
+                <div id="suspectList"></div>
+                
+            </div>
+            <button id="confirmAccuse" disabled>Confirm Accusation</button>
+        </div>
+    </div>
     <div id="mapContainer">
         <img src="assets/map.png" usemap="#image-map">
 
@@ -22,7 +34,6 @@
         </map>
     </div>
 
-    <div id="choicesContainer"></div>
     <div id="sideBar">
         <button class="side-bar" id="inventory"></button>
         <button class="side-bar" id="notes"></button>
