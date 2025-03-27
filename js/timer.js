@@ -11,7 +11,7 @@ export function setStartTime( ) {
 // Inject the clock into the html
 export function injectClock() {
     const gameUI = document.createElement("div");
-    gameUI.innerHTML = `<div id="gameClock"></div>`
+    gameUI.innerHTML = `<div id="gameClock" style="background-color: rgba(0, 0, 0, 0.3);padding: 10px;"></div>`
     document.body.appendChild(gameUI);
 }
 

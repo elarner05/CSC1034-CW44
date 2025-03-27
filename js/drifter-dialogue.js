@@ -99,6 +99,7 @@ const dialogue = [
       ],
       "choices": [
         {
+            "text": "",
             "nextID": 2
         }
       ]
