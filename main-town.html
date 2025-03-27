@@ -9,6 +9,18 @@
     <link rel="stylesheet" href="css/main-town.css">
 </head>
 <body>
+    <div id="completedRooms">
+
+    </div>
+    <div id="informationContainer">
+        <div id="information">
+            <h1><b>MAIN TOWN</b></h1>
+            <p>To navigate to part of the town, use the map to the right.</p>
+            <p>Accuse someone of the crime using the button to the left. Make sure to accuse before 10 PM!</p>
+            <p>Use the side bar to access the inventory and notes.</p>
+        </div>
+    </div>
+
     <button id="accuseButton">Accuse Someone</button>
     <div id="accuseContainer" class="hidden">
         <div id="accuseModal" class="modal">
@@ -21,17 +33,19 @@
             <button id="confirmAccuse" disabled>Confirm Accusation</button>
         </div>
     </div>
+
     <div id="mapContainer">
+        <h4>Map</h4>
         <img src="assets/map.png" usemap="#image-map">
 
         <map name="image-map">
-            <area target="_self" alt="JAIL" title="JAIL" href="" coords="37,114,3,49" shape="rect">
+            <area target="_self" alt="JAIL" title="JAIL" href="jail.html" coords="37,114,3,49" shape="rect">
             <area target="_self" alt="PARISH" title="PARISH" href="parish.html" coords="76,51,127,98" shape="rect">
             <area target="_self" alt="SALOON" title="SALOON" href="saloon-owner.html
             " coords="143,51,197,96" shape="rect">
             <area target="_self" alt="ARMS-SUPPLY" title="ARMS-SUPPLY" href="" coords="78,139,118,193" shape="rect">
             <area target="_self" alt="RANCH" title="RANCH" href="rancher.html" coords="140,141,196,196" shape="rect">
-            <area target="_self" alt="CROSSROAD" title="CROSSROAD" href="" coords="12,20,103,44" shape="rect">
+            <area target="_self" alt="CROSSROAD" title="CROSSROAD" href="drifter.html" coords="12,20,103,44" shape="rect">
         </map>
     </div>
 
