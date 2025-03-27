@@ -18,8 +18,7 @@ const dialogue = [
     {
       "id": 2,
       "text": [
-        "The man looks towards you.",
-        "He nods his head slightly. He stares towards you, the shadow from his hat obscuring his face."
+        "The man looks towards you. He nods his head slightly. He stares towards you, the shadow from his hat obscuring his face."
       ],
       "choices": [
         {
@@ -43,7 +42,7 @@ const dialogue = [
     {
       "id": 3,
       "text": [
-        "He takes out a cigar.",
+        "He takes out a cigar and grips it between his teeth. He procures a box of matches from his pocket, and switfly brings it to the end of his cigar. He draws a long smoke, exhaling a cloud of grey before finally bringing his eyes to yours.",
         "'I'm a drifter. No need for names.'"
       ],
       "choices": [
