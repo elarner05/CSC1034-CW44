@@ -1,5 +1,58 @@
 
 
+
+function injectSidebar() {
+    document.body.innerHTML+= `
+    <div id="sideBar">
+        <button class="side-bar" id="inventory"></button>
+        <button class="side-bar" id="notes"></button>
+    </div>
+
+
+    <div class="inventory-container hidden" id="inventoryContainer">
+        <div class="inventory-box">
+            <h2>Inventory</h2>
+            
+            <div id="inventorySpace">
+
+            </div>
+
+            <button id="closeInventoryButton">Close</button>
+        </div>
+        <div class="inventory-item-description hidden" id="itemDescriptionContainer">
+            <h3>Item Description</h3>
+            <div class="inventory-item-data-container">
+                <img id="descriptionImage" src="assets/blank-image.png">
+                <div id="descriptionText">
+                    <h2 id="descriptionItemName"></h2>
+                    <p id="descriptionItemDescription"></p>
+                </div>
+            </div>
+
+            <button id="closeDescriptionButton">Close Description</button>
+        </div>
+    </div>
+
+
+    <div class="notes-container hidden" id="notesContainer">
+        <div class="notes-box">
+            <h2>Investigation Notes</h2>
+            <div class="notes-tabs" id="notesTabs">
+                <button class="notes-tab active-tab" data-suspect="suspect1">Deputy</button>
+                <button class="notes-tab" data-suspect="suspect2">Arms Dealer</button>
+                <button class="notes-tab" data-suspect="suspect3">Preacher</button>
+                <button class="notes-tab" data-suspect="suspect4">Drifter</button>
+                <button class="notes-tab" data-suspect="suspect5">Rancher</button>
+                <button class="notes-tab" data-suspect="suspect6">Saloon Owner</button>
+            </div>
+            <textarea id="notesArea" placeholder="Write your clues, suspicions, and theories here..."></textarea>
+
+            <button id="closeNotesButton">Save & Close</button>
+        </div>
+    </div>`;
+}
+injectSidebar();
+
 // Notes elements
 const notesContainer = document.getElementById('notesContainer');
 const notesArea = document.getElementById('notesArea');
@@ -22,8 +75,6 @@ document.getElementById("notes").addEventListener('click', () => {
     notesContainer.classList.remove('hidden');
     loadNotes(currentNotesSuspect);
 });
-
-
 
 
 // Notes script
