@@ -45,14 +45,14 @@ export function getPercentageLeft() {
     return (GAME_DURATION_MINUTES-elapsedRealMinutes)/GAME_DURATION_MINUTES; // Return the percentage of time left (1 minute left of total 20 minutes = 1/20)
 }
 
-// Game ends when player runs out of time
+// Fucntion to end game when player runs out of time
 export function gameTimeOut() {
     // Creates a text box to let the user know what happened
     const dialogueBox = document.createElement("div");
     dialogueBox.textContent = "The sun has set...";
 
     dialogueBox.style.position = "fixed";
-    dialogueBox.style.background = "rgba(0, 0, 0, 0.8)";
+    dialogueBox.style.background = "rgba(0, 0, 0)";
     dialogueBox.style.color = "white";
     dialogueBox.style.padding = "20px";
     dialogueBox.style.borderRadius = "10px";

@@ -62,10 +62,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Confirm accusation
     confirmButton.addEventListener("click", () => {
-        if (selectedSuspect) {
+        if (selectedSuspect == "Bernice Becker") {
             alert(`You accused ${selectedSuspect}!`);
             accuseModal.style.display = "none";
             // Here, send the accusation to your PHP/SQL backend for processing
+        } else {
+            window.location.href = "wrong-choice.html";
         }
     });
 });
