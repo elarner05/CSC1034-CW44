@@ -11,7 +11,7 @@ export function setStartTime( ) {
 // Inject the clock into the html
 export function injectClock() {
     const gameUI = document.createElement("div");
-    gameUI.innerHTML = `<div id="gameClock"></div>`
+    gameUI.innerHTML = `<div id="gameClock" style="background-color: rgba(0, 0, 0, 0.3);padding: 10px;"></div>`
     document.body.appendChild(gameUI);
 }
 
@@ -37,9 +37,26 @@ export function getGameTime() {
     return `${displayHour}:${displayMinute} ${period}`;
 }
 
+// Function to calculate the time left as a percentage (from the real world time)
+export function getPercentageLeft() {
+    const startTime = parseInt(localStorage.getItem("gameStartTime")); 
+    const elapsedRealMillis = Date.now() - startTime;
+    const elapsedRealMinutes = elapsedRealMillis / (1000 * 60); // Convert ms to minutes
+    return (GAME_DURATION_MINUTES-elapsedRealMinutes)/GAME_DURATION_MINUTES; // Return the percentage of time left (1 minute left of total 20 minutes = 1/20)
+}
+
 // Update the clock display every second
 export function updateClockDisplay() {
-    document.getElementById("gameClock").textContent = getGameTime();
+    try {
+        const clock = document.getElementById("gameClock");
+        const time = getGameTime()
+        clock.textContent = getGameTime();
+        if (getPercentageLeft() < (1/GAME_DURATION_MINUTES)) { // If one minute remaining
+            clock.style.color = "#f00000";
+        } else {
+            clock.style.color = "#f5e3c3";
+        }
+    } catch {}
 }
 
 

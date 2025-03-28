@@ -12,11 +12,16 @@ const testText = [
     "And now you must solve the case."
 ];
 
-const textElement = document.getElementById("storyText");
-const nextButton = document.getElementById("nextButton");
+
+
+import * as SaveData from "./saveData.js";
+
+SaveData.clearSaveData();
 
 import { DialogueUpdater } from "./story-line.js";
 
+const textElement = document.getElementById("storyText");
+const nextButton = document.getElementById("nextButton");
 
 const dialogue = new DialogueUpdater(testText, textElement, nextButton);
 

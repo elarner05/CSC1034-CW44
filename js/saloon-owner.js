@@ -141,7 +141,7 @@ document.getElementById("backButton").addEventListener("click", () => {
 })
 
 
-import ConversationHandler from "./story-line.js";
+
 import * as Timer from "./timer.js";
 
 Timer.injectClock();
@@ -151,6 +151,12 @@ setInterval(Timer.updateClockDisplay, 1000);
 
 // On page load, set the clock immediately
 document.addEventListener("DOMContentLoaded", Timer.updateClockDisplay);
+
+import * as SaveData from "./saveData.js";
+
+SaveData.visitRoom("Saloon");
+
+import ConversationHandler from "./story-line.js";
 
 const textElement = document.getElementById("storyText");
 const nextButton = document.getElementById("nextButton");

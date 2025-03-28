@@ -24,10 +24,10 @@ document.addEventListener("DOMContentLoaded", function () {
     const suspects = [
         { name: "Deputy Cain Chambers", img: "deputy.png" },
         { name: "Arms Dealer", img: "arms-dealer.png" },
-        { name: "Rev. Willie McCrea", img: "preacher.png" },
-        { name: "The Drifter", img: "drifter.png" },
-        { name: "Bernice Becker", img: "ranch-owner.png" },
-        { name: "Denice Doherty", img: "saloon-owner.png" }
+        { name: "Rev. Willie McCrea", img: "assets/preacher-portrait.png" },
+        { name: "The Drifter", img: "assets/drifter-portrait.png" },
+        { name: "Bernice Becker", img: "assets/rancher-portrait.png" },
+        { name: "Denice Doherty", img: "assets/saloon-owner-portrait.png" }
     ];
 
     // Populate suspects in modal
@@ -69,3 +69,24 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 });
+
+
+const roomsDiv = document.getElementById("roomInformation");
+
+
+import * as SaveData from "./saveData.js";
+
+let savedRoomData = SaveData.getRoomData();
+
+savedRoomData.forEach(room => {
+    const newDiv = document.createElement("div");
+    newDiv.innerHTML = room.name;
+    if (room.visited) {
+        newDiv.style = "color: rgba(245, 227, 195, 1);"
+        newDiv.innerHTML += "✅";
+    } else {
+        newDiv.style = "color: rgba(245, 227, 195, 0.2);"
+        newDiv.innerHTML += "❌";
+    }
+    roomsDiv.appendChild(newDiv);
+})

@@ -1,4 +1,4 @@
-
+import * as SaveData from "./saveData.js";
 
 
 function injectSidebar() {
@@ -166,26 +166,10 @@ const itemData =[
         description: "A muddy cloth found at the ranch. It has marks on it",
         image: "assets/muddy-rag.png",
     }
-    ]
+]
 
-let inventoryData = [
-    {
-      id: "item1",
-      itemID: 1,
-      slot: "slot-2"
-    },
-    {
-      id: "item2",
-      itemID: 2,
-      slot: "slot-4"
-    }
-  ];
 
-// Overwrite the test data
-const savedInventory = sessionStorage.getItem("inventoryData");
-if (savedInventory) {
-    inventoryData = JSON.parse(savedInventory);
-}
+let inventoryData = SaveData.getInventory();
 
 
 
@@ -239,36 +223,14 @@ inventorySlots.forEach(slot => {
         }
 
         updateItemSlot(itemId, slot.id);
-        saveInventory(inventoryData);
+        SavaData.saveInventory(inventoryData);
+        loadInventory();
     });
 });
 
 
 // adds a new item to the inventory and saves it to be persistant
-function addItemToInventory(itemID, targetSlotID) {
-    let newItemId = "item" + (inventoryData.length + 1);
 
-
-    if (targetSlotID === "nextAvailable") {
-        targetSlotID = inventorySlots.length+1;
-        for (const slot of inventorySlots) {
-            if (document.getElementById(slot.id).children.length === 0) {
-                targetSlotID = slot.id;
-                break;
-            } 
-        }
-        
-    }
-
-    inventoryData.push({
-        id: newItemId,
-        itemID: itemID,
-        slot: targetSlotID
-    });
-
-    saveInventory(inventoryData);
-    loadInventory(); // You could optimize to only render that one item
-}
 
 
 // removes an item; for testing purposes only
@@ -276,7 +238,7 @@ function _removeItemFromInventory(inventoryItemID) {
     inventoryData = inventoryData.filter(inventoryItem => {return inventoryItem.id !== inventoryItemID});
     let counter = 1;
     inventoryData.forEach(inventoryItem => {inventoryItem.id = "item" + counter;counter++;});
-    saveInventory(inventoryData);
+    SaveData.saveInventory(inventoryData);
     loadInventory();
 }
 
@@ -307,16 +269,14 @@ function loadInventory() {
     });
 }
 
-// Saves inventory json array
-function saveInventory(inventoryArray) {
-    sessionStorage.setItem("inventoryData", JSON.stringify(inventoryArray));
-}
+
 
 function updateItemSlot(itemId, newSlotId) {
     const item = inventoryData.find(i => i.id === itemId);
     if (item) {
         item.slot = newSlotId;
-        saveInventory(); // Save updated state
+        SaveData.saveInventory(); // Save updated state
+        loadInventory();
     }
 }
 
