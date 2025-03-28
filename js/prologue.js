@@ -1,4 +1,7 @@
 import * as Timer from "./timer.js";
+import * as SaveData from "./saveData.js";
+import { DialogueUpdater } from "./story-line.js";
+
 
 
 const testText = [
@@ -14,11 +17,8 @@ const testText = [
 
 
 
-import * as SaveData from "./saveData.js";
-
 SaveData.clearSaveData();
 
-import { DialogueUpdater } from "./story-line.js";
 
 const textElement = document.getElementById("storyText");
 const nextButton = document.getElementById("nextButton");

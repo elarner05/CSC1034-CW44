@@ -1,3 +1,6 @@
+import * as SideBar from "./side-bar.js";
+import * as SaveData from "./saveData.js"
+
 const defaultTypingSpeed = 40;
   
 
@@ -115,8 +118,14 @@ export class ChoiceHandler {
             button.classList.add("choice-button");
             button.addEventListener("click", () => {
                 if (choice.itemID && choice.itemID !== "") {
-                    if (addItemToInventory) {
-                        addItemToInventory(choice.itemID, "nextAvailable");
+                    if (SaveData.addItemToInventory) {
+                        if (choice.oneTime === true && SaveData.itemInInventory(choice.itemID)) {
+                            console.log("No add item");
+                        } else {
+                            SaveData.addItemToInventory(choice.itemID, "nextAvailable");
+                            SideBar.loadInventory();
+                        }
+                        
                     }
                 }
                 this.selectChoice(choice.nextID);

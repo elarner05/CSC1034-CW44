@@ -1,3 +1,12 @@
+
+
+import * as Timer from "./timer.js";
+import * as SideBar from "./side-bar.js";
+import * as SaveData from "./saveData.js";
+import ConversationHandler from "./story-line.js";
+
+
+
 const dialogue = [
     {
         "id" : 1,
@@ -136,27 +145,13 @@ const dialogue = [
 
 ]
 
-document.getElementById("backButton").addEventListener("click", () => {
-    window.location.href = "main-town.html";
-})
 
+Timer.setupTimer();
 
-
-import * as Timer from "./timer.js";
-
-Timer.injectClock();
-
-// Start the interval to update the clock
-setInterval(Timer.updateClockDisplay, 1000);
-
-// On page load, set the clock immediately
-document.addEventListener("DOMContentLoaded", Timer.updateClockDisplay);
-
-import * as SaveData from "./saveData.js";
+SideBar.setupSideBar();
 
 SaveData.visitRoom("Saloon");
 
-import ConversationHandler from "./story-line.js";
 
 const textElement = document.getElementById("storyText");
 const nextButton = document.getElementById("nextButton");
@@ -172,3 +167,8 @@ conversation.getPromise().then(() => {
       document.getElementById("textBox").classList.add("hidden");
     })
   })
+
+document.getElementById("backButton").addEventListener("click", () => {
+    window.location.href = "main-town.html";
+})
+  

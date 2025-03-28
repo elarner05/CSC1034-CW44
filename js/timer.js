@@ -15,6 +15,17 @@ export function injectClock() {
     document.body.appendChild(gameUI);
 }
 
+export function setupTimer() {
+    injectClock();
+    
+    // Start the interval to update the clock
+    setInterval(updateClockDisplay, 900);
+    
+    // On page load, set the clock immediately
+    document.addEventListener("DOMContentLoaded", updateClockDisplay);
+    
+}
+
 // Function to calculate in-game time
 export function getGameTime() {
     const startTime = parseInt(localStorage.getItem("gameStartTime")); 

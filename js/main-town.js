@@ -8,6 +8,9 @@ setInterval(Timer.updateClockDisplay, 1000);
 // On page load, set the clock immediately
 document.addEventListener("DOMContentLoaded", Timer.updateClockDisplay);
 
+import * as SideBar from "./side-bar.js";
+
+SideBar.setupSideBar();
 
 
 document.addEventListener("DOMContentLoaded", function () {
