@@ -1,13 +1,5 @@
-import ConversationHandler from "./story-line.js";
-import * as Timer from "./timer.js";
 
-Timer.injectClock();
 
-// Start the interval to update the clock
-setInterval(Timer.updateClockDisplay, 1000);
-
-// On page load, set the clock immediately
-document.addEventListener("DOMContentLoaded", Timer.updateClockDisplay);
 
 
 const preacherDialogue = [
@@ -656,6 +648,21 @@ document.getElementById("backButton").addEventListener("click", () => {
     window.location.href = "main-town.html";
 })
 
+import * as Timer from "./timer.js";
+
+Timer.injectClock();
+
+// Start the interval to update the clock
+setInterval(Timer.updateClockDisplay, 1000);
+
+// On page load, set the clock immediately
+document.addEventListener("DOMContentLoaded", Timer.updateClockDisplay);
+
+import * as SaveData from "./saveData.js";
+
+SaveData.visitRoom("Parish");
+
+import ConversationHandler from "./story-line.js";
 
 const textElement = document.getElementById("storyText");
 const nextButton = document.getElementById("nextButton");

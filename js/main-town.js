@@ -69,3 +69,24 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 });
+
+
+const roomsDiv = document.getElementById("roomInformation");
+
+
+import * as SaveData from "./saveData.js";
+
+let savedRoomData = SaveData.getRoomData();
+
+savedRoomData.forEach(room => {
+    const newDiv = document.createElement("div");
+    newDiv.innerHTML = room.name;
+    if (room.visited) {
+        newDiv.style = "color: rgba(245, 227, 195, 1);"
+        newDiv.innerHTML += "✅";
+    } else {
+        newDiv.style = "color: rgba(245, 227, 195, 0.2);"
+        newDiv.innerHTML += "❌";
+    }
+    roomsDiv.appendChild(newDiv);
+})

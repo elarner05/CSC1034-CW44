@@ -9,11 +9,16 @@
     <link rel="stylesheet" href="css/main-town.css">
 </head>
 <body>
-    <div id="completedRooms">
-
-    </div>
+    
     <div id="informationContainer">
-        <div id="information">
+        <div id="sideInformation">
+            <div style="border: 1px solid #999;border-radius: 1px;margin: 5px;">
+                <h4><u>Room Areas</u></h4>
+                <div id="roomInformation" style="text-align: left;margin: 10px;padding-bottom: 10px;padding-left: 90px;"></div>
+            </div>
+
+        </div>
+        <div id="mainInformation">
             <h1><b>MAIN TOWN</b></h1>
             <p>To navigate to part of the town, use the map to the right.</p>
             <p>Accuse someone of the crime using the button to the left. Make sure to accuse before 10 PM!</p>
@@ -21,7 +26,7 @@
         </div>
     </div>
 
-    <button id="accuseButton">Accuse Someone</button>
+    <button id="accuseButton">Accuse Someone!</button>
     <div id="accuseContainer" class="hidden">
         <div id="accuseModal" class="modal">
             <div class="modal-content">
