@@ -1,14 +1,7 @@
 import * as Timer from "./timer.js";
-
-Timer.injectClock();
-
-// Start the interval to update the clock
-setInterval(Timer.updateClockDisplay, 1000);
-
-// On page load, set the clock immediately
-document.addEventListener("DOMContentLoaded", Timer.updateClockDisplay);
-
 import * as SideBar from "./side-bar.js";
+
+Timer.setupTimer();
 
 SideBar.setupSideBar();
 
@@ -65,7 +58,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Confirm accusation
     confirmButton.addEventListener("click", () => {
-        if (selectedSuspect) {
+        if (selectedSuspect === "Rory Keogh") {
+            window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
+
+        }
+        else if (selectedSuspect) {
             alert(`You accused ${selectedSuspect}!`);
             accuseModal.style.display = "none";
             // Here, send the accusation to your PHP/SQL backend for processing
@@ -93,3 +90,10 @@ savedRoomData.forEach(room => {
     }
     roomsDiv.appendChild(newDiv);
 })
+setInterval(() => {
+    if (Timer.getPercentageLeft()<(4/16) || Timer.getPercentageLeft()>(12/16)) {
+        document.getElementById("backgroundImage").src = "assets/main-town-dawn.png";
+    } else {
+        document.getElementById("backgroundImage").src = "assets/main-town.png";
+    }
+}, 1000)
