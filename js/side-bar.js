@@ -45,7 +45,7 @@ export function injectSidebar() {
                 <button class="notes-tab" data-suspect="suspect5">Rancher</button>
                 <button class="notes-tab" data-suspect="suspect6">Saloon Owner</button>
             </div>
-            <textarea id="notesArea" placeholder="Write your clues, suspicions, and theories here..."></textarea>
+            <textarea id="notesArea" maxlength="10000" placeholder="Write your clues, suspicions, and theories here..."></textarea>
 
             <button id="closeNotesButton">Save & Close</button>
         </div>
@@ -130,14 +130,14 @@ export function setupSideBar() {
 
 
     closeNotesButton.addEventListener('click', () => {
-        sessionStorage.setItem(`notes_${currentNotesSuspect}`, notesArea.value); // Save notes
+        saveNotes(currentNotesSuspect, notesArea.value); // Save notes
         notesContainer.classList.add('hidden');
     });
 
     notesTabs.forEach(tab => {
         tab.addEventListener('click', () => {
             // Save current notes before switching
-            sessionStorage.setItem(`notes_${currentNotesSuspect}`, notesArea.value);
+            saveNotes(currentNotesSuspect, notesArea.value);
 
             // Switch active tab
             notesTabs.forEach(t => t.classList.remove('active-tab'));
@@ -243,6 +243,11 @@ export function loadNotes(suspectKey) {
         const saved = sessionStorage.getItem(`notes_${suspectKey}`);
         notesArea.value = saved || '';
     }
+}
+
+export function saveNotes(currentNotesSuspect, notes) {
+    sessionStorage.setItem(`notes_${currentNotesSuspect}`, notes);
+
 }
 
 
