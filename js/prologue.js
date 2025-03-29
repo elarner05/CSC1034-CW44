@@ -3,10 +3,9 @@ import * as SaveData from "./saveData.js";
 import { DialogueUpdater } from "./story-line.js";
 
 
-
-const testText = [
-    "As the sun rises, you arrive at **INSERT TOWN NAME HERE**.",
-    "You can hear the quite whistle of the wind echo through the desolate town.",
+const prologueText = [
+    "As the sun rises, you arrive at Obsidian Springs.",
+    "You can hear the quiet whistle of the wind echo through the desolate town.",
     "As you look to the town board, you see a sign.",
     "‘New sheriff wanted’",
     "The old sheriff has died.",
@@ -15,15 +14,13 @@ const testText = [
     "And now you must solve the case."
 ];
 
-
-
 SaveData.clearSaveData();
 
 
 const textElement = document.getElementById("storyText");
 const nextButton = document.getElementById("nextButton");
 
-const dialogue = new DialogueUpdater(testText, textElement, nextButton);
+const dialogue = new DialogueUpdater(prologueText, textElement, nextButton);
 
 dialogue.start();
 
