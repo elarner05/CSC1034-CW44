@@ -1,5 +1,5 @@
 
-const testText = [
+const dialogueText = [
     "Darkness falls over the town.",
     "You feel a sense of dread wash over you.",
     "The killer remains free.",
@@ -13,7 +13,7 @@ import { DialogueUpdater } from "../js/story-line.js";
 const textElement = document.getElementById("storyText");
 const nextButton = document.getElementById("nextButton");
 
-const dialogue = new DialogueUpdater(testText, textElement, nextButton);
+const dialogue = new DialogueUpdater(dialogueText, textElement, nextButton);
 
 dialogue.start();
 
