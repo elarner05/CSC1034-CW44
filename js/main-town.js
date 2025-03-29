@@ -19,8 +19,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Sample suspects (Replace with actual ones)
     const suspects = [
-        { name: "Deputy Cain Chambers", img: "deputy.png", loc: "ending-screens/deputy-ending.html" },
-        { name: "Arms Dealer", img: "arms-dealer.png", loc: "ending-screens/gun-store-ending.html" },
+        { name: "Deputy Cain Chambers", img: "assets/deputy-portrait.png", loc: "ending-screens/deputy-ending.html" },
+        { name: "Arms Dealer", img: "assets/arms-dealer-portrait.png", loc: "ending-screens/gun-store-ending.html" },
         { name: "Rev. Willie McCrea", img: "assets/preacher-portrait.png", loc: "ending-screens/reverend-ending.html" },
         { name: "The Drifter", img: "assets/drifter-portrait.png", loc: "ending-screens/drifter-ending.html" },
         { name: "Bernice Becker", img: "assets/rancher-portrait.png", loc: "ending-screens/rancher-ending.html" },
