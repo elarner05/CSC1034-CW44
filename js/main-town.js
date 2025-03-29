@@ -60,6 +60,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Confirm accusation
     confirmButton.addEventListener("click", () => {
+
         if (selectedSuspect === "Rory Keogh") {
             window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
 

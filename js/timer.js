@@ -56,12 +56,40 @@ export function getPercentageLeft() {
     return (GAME_DURATION_MINUTES-elapsedRealMinutes)/GAME_DURATION_MINUTES; // Return the percentage of time left (1 minute left of total 20 minutes = 1/20)
 }
 
+// Fucntion to end game when player runs out of time
+export function gameTimeOut() {
+    // Creates a text box to let the user know what happened
+    const dialogueBox = document.createElement("div");
+    dialogueBox.textContent = "The sun has set...";
+
+    dialogueBox.style.position = "fixed";
+    dialogueBox.style.background = "rgba(0, 0, 0)";
+    dialogueBox.style.color = "white";
+    dialogueBox.style.padding = "20px";
+    dialogueBox.style.borderRadius = "10px";
+    dialogueBox.style.fontSize = "64px";
+    dialogueBox.style.textAlign = "center";
+    document.body.appendChild(dialogueBox);
+
+    // Fades out after 3 seconds and sends player to game over screen
+    setTimeout(() => {
+        document.body.style.transition = "opacity 2s";
+        document.body.style.opacity = "0";
+        setTimeout(() => {
+            window.location.href = "time-out.html";
+        }, 2000); // Wait to fade
+    }, 3000); // Wait 3 seconds then fade
+}
+
 // Update the clock display every second
 export function updateClockDisplay() {
     try {
         const clock = document.getElementById("gameClock");
         const time = getGameTime()
         clock.textContent = getGameTime();
+        if(getPercentageLeft() <=0) {
+            gameTimeOut();
+        }
         if (getPercentageLeft() < (1/GAME_DURATION_MINUTES)) { // If one minute remaining
             clock.style.color = "#f00000";
         } else {

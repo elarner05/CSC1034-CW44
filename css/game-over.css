@@ -1,0 +1,54 @@
+body {
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    color: #f5e3c3; /* Old paper color */
+    background-color: #0B0C2A;
+    font-family: "serif";
+    text-align: center;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.6); /* Dark overlay */
+}
+
+.image {
+    width: 50%;
+    height: 50%;
+    background-image: url("../assets/innocent-jailed.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: top center;
+    position: fixed;
+    top: 5%;
+}
+
+.text {
+    transform: translateY(150%);
+    width: 80%;
+    padding: 20px;
+    border-radius: 10px;
+    font-size: 1.5rem;
+}
+
+.buttons {
+    position: fixed;
+    bottom: 25%;
+}
+
+button {
+    transform: translateY(200%);
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    border: none;
+    background: #7b3f00;
+    color: white;
+}
