@@ -3,42 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Murder Mystery - Prologue</title>
+    <title>Murder Mystery - The Ranch</title>
     <link rel="stylesheet" href="css/general-styles.css">
     <link rel="stylesheet" href="css/side-bar.css">
-    <link rel="stylesheet" href="css/main-town.css">
+    <link rel="stylesheet" href="css/rancher.css">
 </head>
 <body>
-    <button id="accuseButton">Accuse Someone</button>
-    <div id="accuseContainer" class="hidden">
-        <div id="accuseModal" class="modal">
-            <div class="modal-content">
-                <span class="close">&times;</span>
-                <h2>Who do you accuse?</h2>
-                <div id="suspectList"></div>
-                
-            </div>
-            <button id="confirmAccuse" disabled>Confirm Accusation</button>
-        </div>
+    <div class="background-container"></div>
+    
+    <div class="text-box" id="textBox">
+        <p id="storyText"></p>
+        <button id="nextButton" class="hidden">Next</button>
     </div>
-    <div id="mapContainer">
-        <img src="assets/map.png" usemap="#image-map">
-
-        <map name="image-map">
-            <area target="_self" alt="JAIL" title="JAIL" href="" coords="37,114,3,49" shape="rect">
-            <area target="_self" alt="PARISH" title="PARISH" href="parish.html" coords="76,51,127,98" shape="rect">
-            <area target="_self" alt="SALOON" title="SALOON" href="saloon-owner.html
-            " coords="143,51,197,96" shape="rect">
-            <area target="_self" alt="ARMS-SUPPLY" title="ARMS-SUPPLY" href="" coords="78,139,118,193" shape="rect">
-            <area target="_self" alt="RANCH" title="RANCH" href="rancher.html" coords="140,141,196,196" shape="rect">
-            <area target="_self" alt="CROSSROAD" title="CROSSROAD" href="" coords="12,20,103,44" shape="rect">
-        </map>
-    </div>
-
+    
+    <button id="nextButton" class="hidden">Next</button>
+        
+    
+    <div id="choicesContainer"></div>
     <div id="sideBar">
         <button class="side-bar" id="inventory"></button>
         <button class="side-bar" id="notes"></button>
     </div>
+
 
     <div class="inventory-container hidden" id="inventoryContainer">
         <div class="inventory-box">
@@ -69,7 +55,7 @@
         <div class="notes-box">
             <h2>Investigation Notes</h2>
             <div class="notes-tabs" id="notesTabs">
-                <button class="notes-tab active-tab" data-suspect="suspect1">Rancher suspect</button>
+                <button class="notes-tab active-tab" data-suspect="suspect1">Suspect 1</button>
                 <button class="notes-tab" data-suspect="suspect2">Suspect 2</button>
                 <button class="notes-tab" data-suspect="suspect3">Suspect 3</button>
                 <!-- Add more tabs as needed -->
@@ -80,7 +66,9 @@
         </div>
     </div>
 
+    <button id="backButton">Back to main town</button>  
+    
     <script src="js/side-bar.js"></script>
-    <script type="module" src="js/main-town.js"></script>
+    <script type="module" src="js/rancher.js"></script>
 </body>
 </html>

@@ -90,7 +90,7 @@ document.getElementById("continueButton").addEventListener("click", function() {
 });
 
 document.getElementById("newGameButton").addEventListener("click", function() {
-    window.location.href = "test.html";
+    window.location.href = "prologue.html";
 });
 
 document.getElementById("statsButton").addEventListener("click", function() {

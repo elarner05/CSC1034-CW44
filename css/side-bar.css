@@ -297,3 +297,23 @@
     
 }
 
+#gameClock {
+    position: absolute;
+    top: 2px;
+    right: 10px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+#backButton {
+    position: absolute;
+    bottom: 2px;
+    right: 10px;
+    font-size: 10px;
+    margin: 10px 5px;
+    padding: 10px 20px;
+    background: #777;
+    border: none;
+    color: white;
+    cursor: pointer;
+}

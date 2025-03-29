@@ -1,5 +1,5 @@
 body {
-    background-image: url("../assets/western-town-day.png");
+    /* background-image: url("../assets/western-town-day.png"); */
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
@@ -9,26 +9,111 @@ body {
     text-align: center;
 }
 
-.buttons-container {
-    
-    display: flex;
-    flex-direction: row;
-    
-    width: 80vh;
-    height: 25vh;
-    position: relative;
-    bottom: 20vh;
-    background: rgba(0, 0, 0, 0.5); /* Dark overlay */
+#mapContainer {
+    position: absolute;
+    bottom: 20px;
+    right: 100px;
 
+    display: flex;
+    
+    justify-content: center;
+    align-content: center;
 }
 
+#accuseContainer {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
 
-button {
-    margin-top: 20px;
+#accuseButton {
+    position: fixed;
+    left: 10px;
+    top: 10%;
+    font-size: 20px;
+    margin: 10px 5px;
     padding: 10px 20px;
-    font-size: 1.2rem;
-    cursor: pointer;
+    background: #777;
     border: none;
-    background: #7b3f00;
+    border-radius: 2px;
     color: white;
+    cursor: pointer;
+}
+
+#confirmAccuse {
+    flex: none;
+    margin: 10px 5px;
+    padding: 10px 20px;
+    background: #777;
+    border: none;
+    border-radius: 2px;
+    color: white;
+    cursor: pointer;
+}
+button:disabled {
+    pointer-events: none; /* Prevents hover and clicks */
+    opacity: 0.5; /* Makes it look visually disabled */
+}
+
+.modal {
+    display: none;
+    flex-direction: column;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: #333;   
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+.modal-content {
+    text-align: center;
+}
+
+#suspectList {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+.suspect {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    padding: 5px;
+    border: 2px solid transparent;
+    transition: 0.3s;
+}
+
+#accuseModal h2 {
+    font-size: 28px;
+}
+
+.suspect img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+}
+
+.suspect:hover, .suspect.selected {
+    border: 2px solid red;
+}
+
+.close {
+    cursor: pointer;
+    float: right;
+    font-size: 20px;
 }

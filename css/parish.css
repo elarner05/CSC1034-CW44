@@ -1,40 +1,23 @@
 body {
-
+    /* background-image: url("../assets/western-desert-night.png"); */
+    background-repeat: no-repeat;
+    background-size: contain;   
+    background-position: center;
     color: #f5e3c3; /* Old paper color */
+    background-color: #0B0C2A;
     font-family: "serif";
     text-align: center;
 }
-
-body.test{
-    background-color: #0B0C2A;
-}
-
-body.drifter{
-    background-color: #385575;
-}
-
-.test .background-container {
+body .background-container {
     width: 100%;
     height: 65%;
-    background-image: url("../assets/western-desert-night.png");
+    background-image: url("../assets/Preacher.png");
     background-repeat: no-repeat;
     background-size: contain;
     background-position: top center;
     position: relative;
     top: -15%;
 }
-
-.drifter .background-container {
-    width: 100%;
-    height: 65%;
-    background-image: url("../assets/Drifter.png");
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: top center;
-    position: relative;
-    top: -15%;
-}
-
 .text-box {
     position: fixed;
     left: 50%;
