@@ -334,6 +334,10 @@ export function createNotification(itemID) {
             notification.classList.remove("show");  // Slide out after 3 seconds
 
         }, 7000);
+        setTimeout(() => {
+            document.body.removeChild(notification);
+
+        }, 10000);
     }
 }
 
