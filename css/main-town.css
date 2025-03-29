@@ -8,16 +8,41 @@ body {
     font-family: "serif";
     text-align: center;
 }
+/* 
+#backgroundImage {
+    width: 100%;
+    background-image: url("../assets/main-town.png");
+    background-position: center;
+    aspect-ratio: auto;
+    background-repeat: no-repeat;
+    background-size: contain;
 
+    display: inline-block;
+    position: absolute;
 
+    bottom: 0px;
+} */
 
+#backgroundImage {
+    width: 50%;  /* Ensures the image scales properly */
+    height: auto; /* Maintains aspect ratio */
+    max-height: 100%; /* Prevents overflow */
 
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%); /* Centers the image */
+    
+    object-fit: contain; /* Ensures it fits without cropping */
+    z-index: 1;
+}
 
 
 
 
 #informationContainer {
     display: flex;
+    position: relative;
     top: 0;
     left: 0;
     width: 100%;
@@ -25,6 +50,7 @@ body {
     justify-content: center; /* Center horizontally */
     align-items: center; /* Center vertically */
     position: relative;
+    
 }
 
 
@@ -48,19 +74,21 @@ body {
     flex-direction: column;
     justify-content: space-evenly;
     align-content: space-evenly;
+    z-index: 2;
 }
 
 #mainInformation {
-
-    
+    display: block;
+    position: fixed;
     max-width: 55%;
     max-height: 70%;
     /* width: 55%;
     height: 70%; */
     width: clamp(200px, 55vw, 1000px); /* Shrinks when needed */
-    height: clamp(150px, 70vh, 1000px);
+    height: clamp(150px, 30vh, 1000px);
     min-width: 40%;
     
+    top: 10px;
 
     /* background-color: rgba(20,20,20,0.2); */
     border-style: solid;
@@ -69,6 +97,12 @@ body {
     border-radius: 4px;
     z-index: 10;
 }
+/* #mainInformation p {
+    background-color: rgba(0,0,0,0.3);
+}
+#mainInformation h1 {
+    background-color: rgba(0,0,0,0.3);
+} */
 
 
 
@@ -124,11 +158,11 @@ body {
     margin: 10px 5px;
     padding: 10px 20px;
     background: #a20000;
-    border: 1px solid black;
+    border: 1px solid rgb(166, 163, 163);
     border-radius: 2px;
     color: white;
     cursor: pointer;
-    z-index: 1001;
+    z-index: 98;
 }
 
 #confirmAccuse {

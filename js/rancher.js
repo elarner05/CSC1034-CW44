@@ -1,3 +1,10 @@
+
+import * as SideBar from "./side-bar.js";
+import * as Timer from "./timer.js";
+import * as SaveData from "./saveData.js";
+import ConversationHandler from "./story-line.js";
+
+
 const dialogue = [
     {
       "id": 1,
@@ -227,7 +234,8 @@ const dialogue = [
         {
             "text": "Further inspect the clothes?",
             "nextID": 20,
-            "itemID": 3
+            "itemID": 3,
+            "oneTime": true
         },
         {
             "text": "Stop examining the clothes?",
@@ -281,32 +289,19 @@ const dialogue = [
     }
   ]
 
-document.getElementById("backButton").addEventListener("click", () => {
-  window.location.href = "main-town.html";
-})
 
 
-import * as Timer from "./timer.js";
+SideBar.setupSideBar();
 
-Timer.injectClock();
-
-// Start the interval to update the clock
-setInterval(Timer.updateClockDisplay, 1000);
-
-// On page load, set the clock immediately
-document.addEventListener("DOMContentLoaded", Timer.updateClockDisplay);
-
-import * as SaveData from "./saveData.js";
+Timer.setupTimer();
 
 SaveData.visitRoom("Ranch");
-
-import ConversationHandler from "./story-line.js";
 
 const textElement = document.getElementById("storyText");
 const nextButton = document.getElementById("nextButton");
 const containerElement = document.getElementById("choicesContainer");
 
-const conversation = new ConversationHandler(dialogue, textElement, nextButton, containerElement, 20);
+const conversation = new ConversationHandler(dialogue, textElement, nextButton, containerElement, 1);
 conversation.start();
 
 conversation.getPromise().then(() => {
@@ -315,4 +310,8 @@ conversation.getPromise().then(() => {
   nextButton.addEventListener("click", () => {
     document.getElementById("textBox").classList.add("hidden");
   })
+})
+
+document.getElementById("backButton").addEventListener("click", () => {
+  window.location.href = "main-town.html";
 })
