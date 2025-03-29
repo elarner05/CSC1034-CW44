@@ -8,19 +8,29 @@ const preacherDialogue = [
   {
       "id": 1,
       "text": [
-          "You walk up to the town parish.", 
-          "You see Willie McCrea, the town preacher, overseeing the gravediggers."
+          "You walk up to the town parish."
       ],
       "choices": [
           {
-              "text": "Talk to Rev. McCrea",
-              "nextID": 2
-          },
-          {
-              "text": "Look for clues",
-              "nextID": 100
+              "text": "",
+              "nextID": 111
           }
       ]
+  }, {
+    "id": 111,
+    "text": [
+        "You see Willie McCrea, the town preacher, overseeing the gravediggers."
+    ],
+    "choices": [
+        {
+            "text": "Talk to Rev. McCrea",
+            "nextID": 2
+        },
+        {
+            "text": "Look for clues",
+            "nextID": 100
+        }
+    ]
   }, {
       "id": 2,
       "text": [
@@ -46,6 +56,30 @@ const preacherDialogue = [
           }
       ]
   }, {
+        "id": 112,
+        "text": [
+            "The reverend gives you a knowing look.",
+            "\"Do ye have any more questions?\""
+        ],
+        "choices": [
+            {
+                "text": "What did you think of the sheriff?",
+                "nextID": 3
+            },
+            {
+                "text": "How has the town been recently, Reverend?",
+                "nextID": 4
+            },
+            {
+                "text": "How come you're gravediggin' already?",
+                "nextID": 5
+            },
+            {
+                "text": "Seen anythin' suspicious lately?",
+                "nextID": 6
+            }
+        ]
+    }, {
       "id": 3,
       "text": [
           "\"The sheriff? A man of the law, yet also of sin. But ain't we all?\"",
@@ -439,7 +473,12 @@ const preacherDialogue = [
       "\"I speak only what I know.\"",
       "\"And what I know ain't always clear.\""
   ],
-  "choices": []
+  "choices": [
+    {
+        "text": "",
+        "nextID": 112
+    }
+]
 }, {
   "id": 29,
   "text": [
@@ -506,7 +545,12 @@ const preacherDialogue = [
         "\"Faith ain't about belief in man, but belief in Him.\"",
         "\"Doubt if you must, but the truth remains.\""
     ],
-    "choices": []
+    "choices": [
+        {
+            "text": "",
+            "nextID": 112
+        }
+    ]
 }, {
     "id": 35,
     "text": [
@@ -525,91 +569,156 @@ const preacherDialogue = [
         "\"Riddles hold truth, if one listens.\"",
         "\"But I see your ears are shut.\""
     ],
-    "choices": []
+    "choices": [
+        {
+            "text": "",
+            "nextID": 112
+        }
+    ]
 }, {
     "id": 37,
     "text": [
         "\"From himself. From the choices he made.\"",
         "\"But a man cannot outrun his own sins.\""
     ],
-    "choices": []
+    "choices": [
+        {
+            "text": "",
+            "nextID": 112
+        }
+    ]
 }, {
     "id": 38,
     "text": [
         "\"Some truths are best left buried.\"",
         "\"Dig too deep, and you may not like what you find.\""
     ],
-    "choices": []
+    "choices": [
+        {
+            "text": "",
+            "nextID": 112
+        }
+    ]
 }, {
     "id": 39,
     "text": [
         "\"A sinner, seeking redemption.\"",
         "\"A man just like you.\""
     ],
-    "choices": []
+    "choices": [
+        {
+            "text": "",
+            "nextID": 112
+        }
+    ]
 }, {
     "id": 40,
     "text": [
         "\"Someone must.\"",
         "\"Else who will listen?\""
     ],
-    "choices": []
+    "choices": [
+        {
+            "text": "",
+            "nextID": 112
+        }
+    ]
 }, {
     "id": 41,
     "text": [
         "\"Evil ain't always one man.\"",
         "\"Sometimes it's a sickness, spreadin’ quiet-like.\""
     ],
-    "choices": []
+    "choices": [
+        {
+            "text": "",
+            "nextID": 112
+        }
+    ]
 }, {
     "id": 42,
     "text": [
         "\"Convenience ain't got nothin' to do with it.\"",
         "\"It is simply the way of things.\""
     ],
-    "choices": []
+    "choices": [
+        {
+            "text": "",
+            "nextID": 112
+        }
+    ]
 }, {
     "id": 43,
     "text": [
         "\"Names are heavy things.\"",
         "\"One best be careful before speakin' 'em.\""
     ],
-    "choices": []
+    "choices": [
+        {
+            "text": "",
+            "nextID": 112
+        }
+    ]
 }, {
     "id": 44,
     "text": [
         "\"A man must be careful where he treads.\"",
         "\"Lest he step where he shouldn't.\""
     ],
-    "choices": []
+    "choices": [
+        {
+            "text": "",
+            "nextID": 112
+        }
+    ]
 }, {
     "id": 45,
     "text": [
         "\"A preacher ain't in the business of certainty.\"",
         "\"Only faith.\""
     ],
-    "choices": []
+    "choices": [
+        {
+            "text": "",
+            "nextID": 112
+        }
+    ]
 }, {
     "id": 46,
     "text": [
         "\"Some things ain't meant for mortal minds.\"",
         "\"Only for Him.\""
     ],
-    "choices": []
+    "choices": [
+        {
+            "text": "",
+            "nextID": 112
+        }
+    ]
 }, {
     "id": 47,
     "text": [
         "\"Acceptance brings peace.\"",
         "\"Fighting fate brings only sorrow.\""
     ],
-    "choices": []
+    "choices": [
+        {
+            "text": "",
+            "nextID": 112
+        }
+    ]
 }, {
     "id": 48,
     "text": [
         "\"He allows all things, good and bad alike.\"",
         "\"The meaning is not always for us to know.\""
     ],
-    "choices": []
+    "choices": [
+        {
+            "text": "",
+            "nextID": 112
+        }
+    ]
 }, {
     "id": 49,
     "text": [
@@ -628,21 +737,36 @@ const preacherDialogue = [
         "\"We all see the storm clouds.\"",
         "\"Some just know what they mean.\""
     ],
-    "choices": []
+    "choices": [
+        {
+            "text": "",
+            "nextID": 112
+        }
+    ]
 }, {
     "id": 51,
     "text": [
         "\"Who among us knows the hour of his end?\"",
         "\"Perhaps none. Perhaps all.\""
     ],
-    "choices": []
+    "choices": [
+        {
+            "text": "",
+            "nextID": 112
+        }
+    ]
 }, {
     "id": 52,
     "text": [
         "\"May the Lord guide your path, for it is a treacherous one.\"",
         "\"And may you not stumble where others have fallen.\""
     ],
-    "choices": []
+    "choices": [
+        {
+            "text": "",
+            "nextID": 112
+        }
+    ]
 }, {
     "id": 100,
     "text": [
@@ -654,6 +778,9 @@ const preacherDialogue = [
             "nextID": 101,
             "itemID": 7,
             "oneTime": true
+        }, {
+            "text": "Inspect the reverend",
+            "nextID": 102
         }
     ]
 }, {
@@ -665,7 +792,20 @@ const preacherDialogue = [
     "choices": [
         {
             "text": "",
-            "nextID": 1
+            "nextID": 111
+        }
+    ]
+}, {
+    "id":102,
+    "text": [
+        "You see the reverend in his fine dress, watching the gravediggers.",
+        "He appears very interested in the gravediggers work.",
+        "Suddenly, he spots you and calls out to you."
+    ],
+    "choices": [
+        {
+            "text": "",
+            "nextID": 2
         }
     ]
 }
