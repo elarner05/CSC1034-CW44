@@ -118,12 +118,14 @@ export class ChoiceHandler {
             button.classList.add("choice-button");
             button.addEventListener("click", () => {
                 if (choice.itemID && choice.itemID !== "") {
+                    SideBar.createNotification(choice.itemID);
                     if (SaveData.addItemToInventory) {
                         if (choice.oneTime === true && SaveData.itemInInventory(choice.itemID)) {
-                            console.log("No add item");
+
                         } else {
                             SaveData.addItemToInventory(choice.itemID, "nextAvailable");
                             SideBar.loadInventory();
+                            
                         }
                         
                     }

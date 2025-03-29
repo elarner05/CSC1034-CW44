@@ -309,6 +309,35 @@ export function resetInventory() {
 }
 
 
+export function createNotification(itemID) {
+    const itemInfo = itemData.find(item => item.id === itemID);
+    if (itemInfo) {
+        let notification = document.createElement("div");
+        notification.classList.add("notification");
+        
+        let img = document.createElement("img");
+        img.src = itemInfo.image;
+        notification.appendChild(img);
+
+        notification.innerHTML += `<span>Added to inventory: ${itemInfo.name}</span>`;
+        
+        
+        document.body.appendChild(notification);
+        notification.style.visibility = "visible";
+
+        setTimeout(() => {
+            notification.classList.add("show");
+        }, 10);
+
+
+        setTimeout(() => {
+            notification.classList.remove("show");  // Slide out after 3 seconds
+
+        }, 7000);
+    }
+}
+
+
 
 
 
