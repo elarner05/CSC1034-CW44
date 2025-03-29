@@ -5,6 +5,7 @@ const GAME_DURATION_MINUTES = 20;  // Real-world duration
 
 // Load or initialize start time
 export function setStartTime( ) {
+    localStorage.removeItem("gameOver"); // Resets the game over flag
     localStorage.setItem("gameStartTime", Date.now()); // Store real start time
 }
 
@@ -58,6 +59,9 @@ export function getPercentageLeft() {
 
 // Fucntion to end game when player runs out of time
 export function gameTimeOut() {
+    // Checks to make sure it can't retrigger over and over
+    if (localStorage.getItem("gameOver")) return;
+    localStorage.setItem("gameOver","true");
     // Creates a text box to let the user know what happened
     const dialogueBox = document.createElement("div");
     dialogueBox.textContent = "The sun has set...";
@@ -69,6 +73,7 @@ export function gameTimeOut() {
     dialogueBox.style.borderRadius = "10px";
     dialogueBox.style.fontSize = "64px";
     dialogueBox.style.textAlign = "center";
+    dialogueBox.style.zIndex = 100;
     document.body.appendChild(dialogueBox);
 
     // Fades out after 3 seconds and sends player to game over screen
@@ -76,7 +81,7 @@ export function gameTimeOut() {
         document.body.style.transition = "opacity 2s";
         document.body.style.opacity = "0";
         setTimeout(() => {
-            window.location.href = "time-out.html";
+            window.location.href = "../ending-screens/time-out.html";
         }, 2000); // Wait to fade
     }, 3000); // Wait 3 seconds then fade
 }
