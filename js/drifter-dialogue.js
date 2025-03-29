@@ -245,7 +245,7 @@ const dialogue = [
       "choices": [
         {
           "nextID": 1,
-          "itemID": 10
+          "itemID": 4
         }
       ]
     },

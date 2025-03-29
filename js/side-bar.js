@@ -114,6 +114,12 @@ const itemData =[
         name: "Muddy Cloth",
         description: "A muddy cloth found at the ranch. It has marks on it",
         image: "assets/muddy-rag.png",
+    },
+    {
+        id: 4,
+        name: "Letter to Drifter",
+        description: "A letter founded in the drifter's bag, addressed 'Dear friend,'. It requests his presence, simply signed \"S\".",
+        image: "assets/drifters-note.png",
     }
     ]
 
