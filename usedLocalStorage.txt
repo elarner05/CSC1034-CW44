@@ -1,14 +1,21 @@
 
 If you are using localStorage in your javascript code, these names have already been used
 
+
+
+localStorage
+
 UserName => ""
 ConnectionToken => "", some kind of link to the server token # probably needs removed
 SignedIn => true, false
 dyslexicFont => true, false
 fontSizeSetting => 0,1,2,3,4
+gameStartTime => long number
+pausedTime => long number
 
 
-Moved to session storage
+sessionStorage
+
 notes_name => "" for each suspect name
 inventoryData => JSON string
-
+roomData => JSON string 

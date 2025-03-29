@@ -1,3 +1,12 @@
+
+
+import * as Timer from "./timer.js";
+import * as SideBar from "./side-bar.js";
+import * as SaveData from "./saveData.js";
+import ConversationHandler from "./story-line.js";
+
+
+
 const dialogue = [
     {
         "id" : 1,
@@ -135,18 +144,30 @@ const dialogue = [
 
 
 ]
+
+
+Timer.setupTimer();
+
+SideBar.setupSideBar();
+
+SaveData.visitRoom("Saloon");
+
+
 const textElement = document.getElementById("storyText");
 const nextButton = document.getElementById("nextButton");
 const containerElement = document.getElementById("choicesContainer");
 
-const conversation = new ConversationHandler(dialogue, textElement, nextButton, containerElement, 20);
+const conversation = new ConversationHandler(dialogue, textElement, nextButton, containerElement, 1);
 conversation.start();
 
 conversation.getPromise().then(() => {
-  nextButton.innerHTML = "Close";
-  nextButton.classList.remove("hidden");
-  nextButton.addEventListener("click", () => {
-    document.getElementById("textBox").classList.add("hidden");
-    document.body.classList.add("drifter");
+    nextButton.innerHTML = "Close";
+    nextButton.classList.remove("hidden");
+    nextButton.addEventListener("click", () => {
+      document.getElementById("textBox").classList.add("hidden");
+    })
   })
+
+document.getElementById("backButton").addEventListener("click", () => {
+    window.location.href = "main-town.html";
 })

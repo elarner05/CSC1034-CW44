@@ -1,109 +1,66 @@
+import * as SaveData from "./saveData.js";
 
 
-// Notes elements
-const notesContainer = document.getElementById('notesContainer');
-const notesArea = document.getElementById('notesArea');
-const notesTabs = document.querySelectorAll('.notes-tab');
-
-// Inventory elements
-const inventoryContainer = document.getElementById('inventoryContainer');
-const inventorySpace = document.getElementById('inventorySpace');
-const closeInventoryButton = document.getElementById("closeInventoryButton");
-const closeDescriptionButton = document.getElementById("closeDescriptionButton");
-const itemDescriptionContainer = document.getElementById("itemDescriptionContainer");
+export function injectSidebar() {
+    document.body.innerHTML+= `
+    <div id="sideBar">
+        <button class="side-bar" id="inventory"></button>
+        <button class="side-bar" id="notes"></button>
+    </div>
 
 
-// Side bar buttons
-document.getElementById("inventory").addEventListener("click", () => {
-    inventoryContainer.classList.remove("hidden");
-})
+    <div class="inventory-container hidden" id="inventoryContainer">
+        <div class="inventory-box">
+            <h2>Inventory</h2>
+            
+            <div id="inventorySpace">
 
-document.getElementById("notes").addEventListener('click', () => {
-    notesContainer.classList.remove('hidden');
-    loadNotes(currentNotesSuspect);
-});
+            </div>
+
+            <button id="closeInventoryButton">Close</button>
+        </div>
+        <div class="inventory-item-description hidden" id="itemDescriptionContainer">
+            <h3>Item Description</h3>
+            <div class="inventory-item-data-container">
+                <img id="descriptionImage" src="assets/blank-image.png">
+                <div id="descriptionText">
+                    <h2 id="descriptionItemName"></h2>
+                    <p id="descriptionItemDescription"></p>
+                </div>
+            </div>
+
+            <button id="closeDescriptionButton">Close Description</button>
+        </div>
+    </div>
 
 
+    <div class="notes-container hidden" id="notesContainer">
+        <div class="notes-box">
+            <h2>Investigation Notes</h2>
+            <div class="notes-tabs" id="notesTabs">
+                <button class="notes-tab active-tab" data-suspect="suspect1">Deputy</button>
+                <button class="notes-tab" data-suspect="suspect2">Arms Dealer</button>
+                <button class="notes-tab" data-suspect="suspect3">Preacher</button>
+                <button class="notes-tab" data-suspect="suspect4">Drifter</button>
+                <button class="notes-tab" data-suspect="suspect5">Rancher</button>
+                <button class="notes-tab" data-suspect="suspect6">Saloon Owner</button>
+            </div>
+            <textarea id="notesArea" maxlength="10000" placeholder="Write your clues, suspicions, and theories here..."></textarea>
 
-
-// Notes script
-
-let currentNotesSuspect = 'suspect1';
-
-// Load initial notes on page load
-
-
-closeNotesButton.addEventListener('click', () => {
-    sessionStorage.setItem(`notes_${currentNotesSuspect}`, notesArea.value); // Save notes
-    notesContainer.classList.add('hidden');
-});
-
-notesTabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-        // Save current notes before switching
-        sessionStorage.setItem(`notes_${currentNotesSuspect}`, notesArea.value);
-
-        // Switch active tab
-        notesTabs.forEach(t => t.classList.remove('active-tab'));
-        tab.classList.add('active-tab');
-
-        // Change suspect and load new notes
-        currentNotesSuspect = tab.getAttribute('data-suspect');
-        loadNotes(currentNotesSuspect);
-    });
-});
-
-function loadNotes(suspectKey) {
-    const saved = sessionStorage.getItem(`notes_${suspectKey}`);
-    notesArea.value = saved || '';
+            <button id="closeNotesButton">Save & Close</button>
+        </div>
+    </div>`;
 }
 
 
-
-
-
-
-
-
-
-
-
-// Inventory script
-
-closeInventoryButton.addEventListener('click', () => {
-    
-    inventoryContainer.classList.add('hidden');
-});
-
-closeDescriptionButton.addEventListener('click', () => {
-    
-    itemDescriptionContainer.classList.add('hidden');
-});
-
-
-// Dynamically creates inventory slots so that i don't have to copy and paste 30 times
-// Increase the number to add more slots
-const numberOfInventorySlots = 30;
-for (let i=0;i<numberOfInventorySlots;i++) {
-    let inventorySlot = document.createElement('div');
-    inventorySlot.classList.add("inventory-slot");
-    inventorySlot.setAttribute("id", `slot-${i+1}`);
-    inventorySpace.appendChild(inventorySlot);
-}
-
-// Store all the inventory slots in a handy reusable array
-const inventorySlots = document.querySelectorAll('.inventory-slot');
-
-
-// Test data, overwritten by saved inventory
 const itemData =[
     {
         id: 1,
         name: "The One",
         description: "An ancient artifact of oneness.",
         image: "assets/test-item.png",
-      },
-      {
+    },
+    {
         id: 2,
         name: "Bloody Knife",
         description: "A knife with blood on it.",
@@ -120,165 +77,280 @@ const itemData =[
         name: "Letter to Drifter",
         description: "A letter founded in the drifter's bag, addressed 'Dear friend,'. It requests his presence, simply signed \"S\".",
         image: "assets/drifters-note.png",
-    }
-    ]
-
-let inventoryData = [
-    {
-      id: "item1",
-      itemID: 1,
-      slot: "slot-2"
+    
     },
     {
-      id: "item2",
-      itemID: 2,
-      slot: "slot-4"
+        id: 7,
+        name: "Torn Poster",
+        description: "A old torn poster found blown behind a gravestone. It states: \"WANTED: Bandit McCrea\". It must be over 20 years old",
+        image: "assets/torn-poster.png",
     }
-  ];
+]
+// Notes elements
+let notesContainer = document.getElementById('notesContainer');
+let notesArea = document.getElementById('notesArea');
+let notesTabs = document.querySelectorAll('.notes-tab');
+let closeNotesButton = document.getElementById("closeNotesButton");
 
-// Overwrite the test data
-const savedInventory = sessionStorage.getItem("inventoryData");
-if (savedInventory) {
-    inventoryData = JSON.parse(savedInventory);
+// Inventory elements
+let inventoryContainer = document.getElementById('inventoryContainer');
+let inventorySpace = document.getElementById('inventorySpace');
+let closeInventoryButton = document.getElementById("closeInventoryButton");
+let closeDescriptionButton = document.getElementById("closeDescriptionButton");
+let itemDescriptionContainer = document.getElementById("itemDescriptionContainer");
+
+
+let inventoryData = SaveData.getInventory();
+let inventorySlots = [];
+let currentNotesSuspect = 'Deputy';
+
+export function loadSidebarElements() {
+    // Notes elements
+    notesContainer = document.getElementById('notesContainer');
+    notesArea = document.getElementById('notesArea');
+    notesTabs = document.querySelectorAll('.notes-tab');
+
+    // Inventory elements
+    inventoryContainer = document.getElementById('inventoryContainer');
+    inventorySpace = document.getElementById('inventorySpace');
+    closeInventoryButton = document.getElementById("closeInventoryButton");
+    closeNotesButton = document.getElementById("closeNotesButton");
+    closeDescriptionButton = document.getElementById("closeDescriptionButton");
+    itemDescriptionContainer = document.getElementById("itemDescriptionContainer");
 }
 
+export function setupSideBar() {
+    injectSidebar();
+    loadSidebarElements();
 
+    // Side bar buttons
+    document.getElementById("inventory").addEventListener("click", () => {
+        inventoryContainer.classList.remove("hidden");
+    })
 
-// Use event delegation to handle all dragstart events
-document.addEventListener("dragstart", (e) => {
-    const draggedItem = e.target.closest('.inventory-item');
-    if (draggedItem) {
-        e.dataTransfer.setData('text/plain', draggedItem.id);
-    }
-});
-
-// Update and reveal description when an item is clicked
-document.addEventListener("click", (e) => {
-    const clickedItem = e.target.closest('.inventory-item');
-    if (clickedItem) {
-        
-        const itemInformation = inventoryData.find(data => {return data.id === clickedItem.id});
-        const thisItemData = itemData.find( item => {return item.id === itemInformation.itemID});
-        if (itemData) {
-            document.getElementById("descriptionItemName").innerHTML = thisItemData.name;
-            document.getElementById("descriptionItemDescription").innerHTML = thisItemData.description;
-            document.getElementById("descriptionImage").src = thisItemData.image;
-
-        }
-        
-        document.getElementById("itemDescriptionContainer").classList.remove("hidden");
-    }
-});
-
-// Implements the drag and drop functionality for the inventory slots
-inventorySlots.forEach(slot => {
-    slot.addEventListener('dragover', (e) => e.preventDefault());
-  
-    slot.addEventListener('drop', (e) => {
-        e.preventDefault();
-        const itemId = e.dataTransfer.getData('text/plain');
-        const draggedItem = document.getElementById(itemId);
-        if (!draggedItem) return;
-
-        const currentSlot = draggedItem.parentElement;
-
-        // Optional: Swap logic
-        if (!slot.querySelector('.inventory-item')) {
-            slot.appendChild(draggedItem);
-        } else {
-            const existingItem = slot.querySelector('.inventory-item');
-            currentSlot.appendChild(existingItem);
-            slot.appendChild(draggedItem);
-            updateItemSlot(existingItem.id, currentSlot.id);
-        
-        }
-
-        updateItemSlot(itemId, slot.id);
-        saveInventory(inventoryData);
+    document.getElementById("notes").addEventListener('click', () => {
+        notesContainer.classList.remove('hidden');
+        loadNotes(currentNotesSuspect);
     });
-});
+
+    // Load initial notes on page load
+
+
+    closeNotesButton.addEventListener('click', () => {
+        saveNotes(currentNotesSuspect, notesArea.value); // Save notes
+        notesContainer.classList.add('hidden');
+    });
+
+    notesTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            // Save current notes before switching
+            saveNotes(currentNotesSuspect, notesArea.value);
+
+            // Switch active tab
+            notesTabs.forEach(t => t.classList.remove('active-tab'));
+            tab.classList.add('active-tab');
+
+            // Change suspect and load new notes
+            currentNotesSuspect = tab.getAttribute('data-suspect');
+            loadNotes(currentNotesSuspect);
+        });
+    });
+    // Inventory script
+
+    closeInventoryButton.addEventListener('click', () => {
+        
+        inventoryContainer.classList.add('hidden');
+    });
+
+    closeDescriptionButton.addEventListener('click', () => {
+        
+        itemDescriptionContainer.classList.add('hidden');
+    });
+
+
+    // Dynamically creates inventory slots so that i don't have to copy and paste 30 times
+    // Increase the number to add more slots
+    const numberOfInventorySlots = 30;
+    for (let i=0;i<numberOfInventorySlots;i++) {
+        let inventorySlot = document.createElement('div');
+        inventorySlot.classList.add("inventory-slot");
+        inventorySlot.setAttribute("id", `slot-${i+1}`);
+        inventorySpace.appendChild(inventorySlot);
+    }
+
+    // Store all the inventory slots in a handy reusable array
+    inventorySlots = document.querySelectorAll('.inventory-slot');
+
+
+    // Test data, overwritten by saved inventory
+    
+
+    inventoryData = SaveData.getInventory();
+
+    // Use event delegation to handle all dragstart events
+    document.addEventListener("dragstart", (e) => {
+        const draggedItem = e.target.closest('.inventory-item');
+        if (draggedItem) {
+            e.dataTransfer.setData('text/plain', draggedItem.id);
+        }
+    });
+
+    // Update and reveal description when an item is clicked
+    document.addEventListener("click", (e) => {
+        inventoryData = SaveData.getInventory();
+        const clickedItem = e.target.closest('.inventory-item');
+        if (clickedItem) {
+            
+            const itemInformation = inventoryData.find(data => {return data.id === clickedItem.id});
+            const thisItemData = itemData.find( item => {return item.id === itemInformation.itemID});
+            if (itemData) {
+                document.getElementById("descriptionItemName").innerHTML = thisItemData.name;
+                document.getElementById("descriptionItemDescription").innerHTML = thisItemData.description;
+                document.getElementById("descriptionImage").src = thisItemData.image;
+
+            }
+            
+            document.getElementById("itemDescriptionContainer").classList.remove("hidden");
+        }
+    });
+
+    // Implements the drag and drop functionality for the inventory slots
+    inventorySlots.forEach(slot => {
+        slot.addEventListener('dragover', (e) => e.preventDefault());
+    
+        slot.addEventListener('drop', (e) => {
+            e.preventDefault();
+            const itemId = e.dataTransfer.getData('text/plain');
+            const draggedItem = document.getElementById(itemId);
+            if (!draggedItem) return;
+
+            const currentSlot = draggedItem.parentElement;
+
+            // Optional: Swap logic
+            if (!slot.querySelector('.inventory-item')) {
+                slot.appendChild(draggedItem);
+            } else {
+                const existingItem = slot.querySelector('.inventory-item');
+                currentSlot.appendChild(existingItem);
+                slot.appendChild(draggedItem);
+                updateItemSlot(existingItem.id, currentSlot.id);
+            
+            }
+
+            updateItemSlot(itemId, slot.id);
+            SaveData.saveInventory(inventoryData);
+            loadInventory();
+        });
+    });
+}
+
+export function loadNotes(suspectKey) {
+    loadSidebarElements();
+    if (notesArea) {
+        const saved = sessionStorage.getItem(`notes_${suspectKey}`);
+        notesArea.value = saved || '';
+    }
+}
+
+export function saveNotes(currentNotesSuspect, notes) {
+    sessionStorage.setItem(`notes_${currentNotesSuspect}`, notes);
+
+}
+
 
 
 // adds a new item to the inventory and saves it to be persistant
-function addItemToInventory(itemID, targetSlotID) {
-    let newItemId = "item" + (inventoryData.length + 1);
 
-
-    if (targetSlotID === "nextAvailable") {
-        targetSlotID = inventorySlots.length+1;
-        for (const slot of inventorySlots) {
-            if (document.getElementById(slot.id).children.length === 0) {
-                targetSlotID = slot.id;
-                break;
-            } 
-        }
-        
-    }
-
-    inventoryData.push({
-        id: newItemId,
-        itemID: itemID,
-        slot: targetSlotID
-    });
-
-    saveInventory(inventoryData);
-    loadInventory(); // You could optimize to only render that one item
-}
 
 
 // removes an item; for testing purposes only
-function _removeItemFromInventory(inventoryItemID) {
+export function _removeItemFromInventory(inventoryItemID) {
     inventoryData = inventoryData.filter(inventoryItem => {return inventoryItem.id !== inventoryItemID});
     let counter = 1;
     inventoryData.forEach(inventoryItem => {inventoryItem.id = "item" + counter;counter++;});
-    saveInventory(inventoryData);
+    SaveData.saveInventory(inventoryData);
     loadInventory();
 }
 
 // loads the data from 'inventoryData' into the inventory
-function loadInventory() {
-    inventoryData.forEach(invItem => {
-        const itemInfo = itemData.find(item => item.id === invItem.itemID);
-        if (!itemInfo) return;
-        const slot = document.getElementById(invItem.slot);
-        if (!slot) return;
-        if (slot.querySelectorAll(".inventory-item").length >0) return;
-    
-        const itemDiv = document.createElement("div");
-        itemDiv.classList.add("inventory-item");
-        itemDiv.setAttribute("draggable", "true");
-        itemDiv.id = invItem.id;
-        itemDiv.dataset.itemId = itemInfo.id;
-        itemDiv.dataset.name = itemInfo.name;
-        itemDiv.dataset.description = itemInfo.description;
-    
-        const img = document.createElement("img");
-        img.src = itemInfo.image;
-        img.alt = itemInfo.name;
-    
-        itemDiv.appendChild(img);
-    
-        if (slot) slot.appendChild(itemDiv);
-    });
+export function loadInventory() {
+    loadSidebarElements();
+    let inventoryData = SaveData.getInventory();
+    if (inventoryData) {
+        inventoryData.forEach(invItem => {
+            const itemInfo = itemData.find(item => item.id === invItem.itemID);
+            if (!itemInfo) return;
+            const slot = document.getElementById(invItem.slot);
+            if (!slot) return;
+            if (slot.querySelectorAll(".inventory-item").length >0) return;
+        
+            const itemDiv = document.createElement("div");
+            itemDiv.classList.add("inventory-item");
+            itemDiv.setAttribute("draggable", "true");
+            itemDiv.id = invItem.id;
+            itemDiv.dataset.itemId = itemInfo.id;
+            itemDiv.dataset.name = itemInfo.name;
+            itemDiv.dataset.description = itemInfo.description;
+        
+            const img = document.createElement("img");
+            img.src = itemInfo.image;
+            img.alt = itemInfo.name;
+        
+            itemDiv.appendChild(img);
+        
+            if (slot) slot.appendChild(itemDiv);
+        });
+    }
 }
 
-// Saves inventory json array
-function saveInventory(inventoryArray) {
-    sessionStorage.setItem("inventoryData", JSON.stringify(inventoryArray));
-}
 
-function updateItemSlot(itemId, newSlotId) {
+
+export function updateItemSlot(itemId, newSlotId) {
     const item = inventoryData.find(i => i.id === itemId);
     if (item) {
         item.slot = newSlotId;
-        saveInventory(); // Save updated state
+        SaveData.saveInventory(); // Save updated state
+        loadInventory();
     }
 }
 
 // removes the inventory from the 
-function resetInventory() {
+export function resetInventory() {
     sessionStorage.removeItem("inventoryData");
     location.reload();
+}
+
+
+export function createNotification(itemID) {
+    const itemInfo = itemData.find(item => item.id === itemID);
+    if (itemInfo) {
+        let notification = document.createElement("div");
+        notification.classList.add("notification");
+        
+        let img = document.createElement("img");
+        img.src = itemInfo.image;
+        notification.appendChild(img);
+
+        notification.innerHTML += `<span>Added to inventory: ${itemInfo.name}</span>`;
+        
+        
+        document.body.appendChild(notification);
+        notification.style.visibility = "visible";
+
+        setTimeout(() => {
+            notification.classList.add("show");
+        }, 10);
+
+
+        setTimeout(() => {
+            notification.classList.remove("show");  // Slide out after 3 seconds
+
+        }, 7000);
+        setTimeout(() => {
+            document.body.removeChild(notification);
+
+        }, 10000);
+    }
 }
 
 

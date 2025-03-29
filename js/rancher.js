@@ -1,3 +1,10 @@
+
+import * as SideBar from "./side-bar.js";
+import * as Timer from "./timer.js";
+import * as SaveData from "./saveData.js";
+import ConversationHandler from "./story-line.js";
+
+
 const dialogue = [
     {
       "id": 1,
@@ -5,6 +12,22 @@ const dialogue = [
         "You approach the Broken Spur Ranch.",
         "At the front, you see the rancher, Bernice Becker.",
         "She's leaning on a fence post as she sees you approach",
+      ],
+      "choices": [
+        {
+          "text": "Talk to Bernice Becker?",
+          "nextID": 2
+        },
+        {
+          "text": "Look for clues?",
+          "nextID": 15
+        },
+      ]
+    },
+    {
+      "id": 101,
+      "text": [
+        "You see Bernice Becker watching you by the fence"
       ],
       "choices": [
         {
@@ -42,6 +65,30 @@ const dialogue = [
         }
       ]
       },
+      {
+          "id": 102,
+          "text": [
+          "Is that all?",
+        ],
+        "choices": [
+          {
+            "text": "Could you tell me about the town?",
+            "nextID": 3
+          },
+          {
+            "text": "Tell me about your ranch?",
+            "nextID": 4
+          },
+          {
+            "text": "Have you seen anyone suspicious?",
+            "nextID": 6
+          },
+          {
+            "text": "How has the deputy handled the Sheriffs death?",
+            "nextID": 12
+          }
+        ]
+        },
     {
       "id": 3,
       "text": [
@@ -123,7 +170,10 @@ const dialogue = [
         "Then after a while we took off to make a place for ourselves.",
         "Such a good man...",
       ],
-      "choices": []
+      "choices": [{
+        "text": "",
+        "nextID": 102
+      }]
     },
     {
       "id": 8,
@@ -131,7 +181,10 @@ const dialogue = [
         "Yes it has. Never been enough people in the town to sustain much livelihood at all.",
         "S'why my husband was so keen to start a ranch"
       ],
-      "choices": []
+      "choices": [{
+        "text": "",
+        "nextID": 102
+      }]
     },
     {
         "id": 9,
@@ -142,7 +195,10 @@ const dialogue = [
             "One night though, he said he had to get a run away horse...",
             "Never came back..."
         ],
-        "choices": []
+        "choices": [{
+          "text": "",
+          "nextID": 102
+        }]
     },
     {
         "id": 10,
@@ -150,7 +206,10 @@ const dialogue = [
             "They always cause a ruckus. Get mud everywhere",
             "That's why I always have a spare change of clothes lying around"
         ],
-        "choices": []
+        "choices": [{
+          "text": "",
+          "nextID": 102
+        }]
     },
     {
       "id": 11,
@@ -160,7 +219,10 @@ const dialogue = [
         "Letting outlaws and drifters get of scot free when they broke our things.",
         "Sold himself out and left us with nothing."
       ],
-      "choices": []
+      "choices": [{
+        "text": "",
+        "nextID": 102
+      }]
     },
     {
       "id": 12,
@@ -169,7 +231,10 @@ const dialogue = [
         "Hasn't handled it well at all, he's been panicking and getting all worked up.",
         "He's too nervous, keeps accusing all of us of killing the Sheriff."
       ],
-      "choices": []
+      "choices": [{
+        "text": "",
+        "nextID": 102
+      }]
     },
     {
       "id": 13,
@@ -179,7 +244,10 @@ const dialogue = [
         "He's too armed, like he's been in fights.",
         "He showed up a few days before the Sheriff died as well..."
       ],
-      "choices": []
+      "choices": [{
+        "text": "I see...",
+        "nextID": 102
+      }]
     },
     {
       "id": 14,
@@ -188,7 +256,10 @@ const dialogue = [
         "Awfully proud of his guns and his shooting skills that he claims he has.",
         "He's always been dealing with shady people."
       ],
-      "choices": []
+      "choices": [{
+        "text": "",
+        "nextID": 102
+      }]
     },
     {
         "id": 15,
@@ -227,7 +298,8 @@ const dialogue = [
         {
             "text": "Further inspect the clothes?",
             "nextID": 20,
-            "itemID": 3
+            "itemID": 3,
+            "oneTime": true
         },
         {
             "text": "Stop examining the clothes?",
@@ -242,7 +314,10 @@ const dialogue = [
         "As you examine it, you notice that the revolver has one less round in its cylinder.",
         "There also appears to be gun powder marks on the barrel of the gun."
       ],
-      "choices": []
+      "choices": [{
+        "text": "",
+        "nextID": 101
+      }]
     },
     {
       "id": 18,
@@ -252,7 +327,10 @@ const dialogue = [
         "It's just a fence with some slight wear and tear.",
         "What else did you expect?"
       ],
-      "choices": []
+      "choices": [{
+        "text": "",
+        "nextID": 101
+      }]
     },
     {
       "id": 19,
@@ -261,7 +339,10 @@ const dialogue = [
         "She is wearing the usual attire of a ranch woman.",
         "She does not appreciate you staring at her."
       ],
-      "choices": []
+      "choices": [{
+        "text": "",
+        "nextID": 101
+      }]
     },
     {
       "id": 20,
@@ -269,38 +350,37 @@ const dialogue = [
         "You further inspect the clothes and see a muddy piece of cloth.",
         "You pick up the piece of cloth and put it in your bag."
       ],
-      "choices": [],
+      "choices": [{
+        "text": "",
+        "nextID": 101
+      }],
      
     },
     {
       "id": 21,
       "text": [
-        "You decide to stop looking at her old clothes because it is wierd"
+        "You decide to stop looking at her old clothes because it is weird"
       ],
-      "choices": []
+      "choices": [{
+        "text": "",
+        "nextID": 101
+      }]
     }
   ]
 
-document.getElementById("backButton").addEventListener("click", () => {
-  window.location.href = "main-town.html";
-})
 
-import ConversationHandler from "./story-line.js";
-import * as Timer from "./timer.js";
 
-Timer.injectClock();
+SideBar.setupSideBar();
 
-// Start the interval to update the clock
-setInterval(Timer.updateClockDisplay, 1000);
+Timer.setupTimer();
 
-// On page load, set the clock immediately
-document.addEventListener("DOMContentLoaded", Timer.updateClockDisplay);
+SaveData.visitRoom("Ranch");
 
 const textElement = document.getElementById("storyText");
 const nextButton = document.getElementById("nextButton");
 const containerElement = document.getElementById("choicesContainer");
 
-const conversation = new ConversationHandler(dialogue, textElement, nextButton, containerElement, 20);
+const conversation = new ConversationHandler(dialogue, textElement, nextButton, containerElement, 1);
 conversation.start();
 
 conversation.getPromise().then(() => {
@@ -309,4 +389,8 @@ conversation.getPromise().then(() => {
   nextButton.addEventListener("click", () => {
     document.getElementById("textBox").classList.add("hidden");
   })
+})
+
+document.getElementById("backButton").addEventListener("click", () => {
+  window.location.href = "main-town.html";
 })

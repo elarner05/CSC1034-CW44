@@ -9,7 +9,7 @@ body {
     text-align: center;
 }
 
-.prologue-container {
+.ending-container {
     display: flex;
     position: fixed;
     top: 0%;
@@ -37,6 +37,7 @@ body {
     text-align: right;
     margin-bottom: 10px;
 }
+
 .text-box p {
     text-align: left;
 }
@@ -58,4 +59,47 @@ body {
     background: rgba(0, 0, 0, 0);
     color: #f5e3c3; /* Old paper color */
     z-index: 10;
+}
+
+
+#wrongChoice {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: red;
+    font-family: 'Courier New', Courier, monospace;
+    color: white;
+    font-size: 3rem;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+#rightChoice {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: green;
+    font-family: 'Courier New', Courier, monospace;
+    color: white;
+    font-size: 3rem;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.hidden {
+    display: none;
 }

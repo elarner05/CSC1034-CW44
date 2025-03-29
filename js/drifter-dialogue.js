@@ -1,3 +1,9 @@
+import * as Timer from "./timer.js";
+import * as SideBar from "./side-bar.js";
+import * as SaveData from "./saveData.js";
+import ConversationHandler from "./story-line.js"; 
+
+
 const dialogue = [
     {
       "id": 1,
@@ -101,6 +107,7 @@ const dialogue = [
         {
             "text": "See anything in there?",
             "nextID": 7
+
         }
       ]
     },
@@ -297,7 +304,13 @@ const dialogue = [
     }
   ]
 
-import ConversationHandler from "./story-line.js"; 
+
+Timer.setupTimer();
+
+SideBar.setupSideBar();
+
+SaveData.visitRoom("Crossroads");
+
 
 const textElement = document.getElementById("storyText");
 const nextButton = document.getElementById("nextButton");
@@ -313,3 +326,8 @@ conversation.getPromise().then(() => {
     document.getElementById("textBox").classList.add("hidden");
   })
 })
+
+document.getElementById("backButton").addEventListener("click", () => {
+  window.location.href = "main-town.html";
+})
+
