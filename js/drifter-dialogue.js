@@ -46,28 +46,28 @@ const dialogue = [
       ],
       "choices": [
         {
-          "text": "Inspect his bag.",
+          "text": "Inspect his bag?",
           "nextID": 16
         },
         {
-          "text": "Inspect his gun",
-          "nextID": 10
+          "text": "Inspect his gun?",
+          "nextID": 17
         },
         {
-          "text": "Inspect his horse",
-          "nextID": 1
+          "text": "Inspect his horse?",
+          "nextID": 18
         },
         {
-          "text": "Inspect the drifter",
-          "nextID": 1
+          "text": "Inspect the drifter?",
+          "nextID": 19
         }
       ]
     },
     {
       "id": 4,
       "text": [
-        "I'd just got into town.",
-        "Settled my horse down and went lookin' for somewhere to rest."
+        "\"I'd just got into town.\"",
+        "\"Settled my horse down and went lookin' for somewhere to rest.\""
       ],
       "choices": [
         {
@@ -83,19 +83,19 @@ const dialogue = [
     {
       "id": 5,
       "text": [
-        "'Round dusk. Sun was just about set."
+        "\"'Round dusk. Sun was just about set.\""
       ],
       "choices": [
         {
-          "nextID": 2
+          "nextID": 1
         }
       ]
     },
     {
       "id": 6,
       "text": [
-        "Where'd you think?",
-        "The saloon."
+        "\"Where'd you think?\"",
+        "\"The saloon.\""
       ],
       "choices": [
         {
@@ -107,24 +107,24 @@ const dialogue = [
     {
       "id": 7,
       "text": [
-        "Drinking.",
-        "Gambling.",
-        "Fighting.",
-        "But that's not what you're looking for."
+        "\"Drinking.\"",
+        "\"Gambling.\"",
+        "\"Fighting.\"",
+        "\"But that's not what you're looking for.\""
       ],
       "choices": [
         {
-            "nextID": 2
+            "nextID": 1
         }
       ]
     },
     {
       "id": 8,
       "text": [
-        "Been hearin' an' seein' that pastor since I got here.",
+        "\"Been hearin' an' seein' that pastor since I got here.\"",
         "He gestures towards the man standing outside of the parish.",
-        "Hasn't stopped preachin' to himself or digging them graves.",
-        "Hard not to overhear when yer standin' here."
+        "\"Hasn't stopped preachin' to himself or digging them graves.\"",
+        "\"Hard not to overhear when yer standin' here.\""
       ],
       "choices": [
         {
@@ -136,10 +136,10 @@ const dialogue = [
     {
       "id": 9,
       "text": [
-        "You serious?",
-        "Listen to him for a second.",
-        "It's all existential business.",
-        "And the grave."
+        "\"You serious?\"",
+        "\"Listen to him for a second.\"",
+        "\"It's all existential business.\"",
+        "\"And the grave.\""
       ],
       "choices": [
         {
@@ -151,23 +151,23 @@ const dialogue = [
     {
       "id": 10,
       "text": [
-        "He's been at it since I got here.",
-        "Since yesterday."
+        "\"He's been at it since I got here.\"",
+        "\"Since yesterday.\""
       ],
       "choices": [
         {
-            "nextID": 2
+            "nextID": 1
         }
       ]
     },
     {
       "id": 11,
       "text": [
-        "Heard'a him.",
-        "Don't mix well with folks of his trade.",
+        "\"Heard'a him.\"",
+        "\"Don't mix well with folks of his trade.\"",
         "He stares through you.",
-        "But he's made a name for himself.",
-        "Ain't you heard about him?"
+        "\"But he's made a name for himself.\"",
+        "\"Ain't you heard about him?\""
       ],
       "choices": [
         {
@@ -179,11 +179,11 @@ const dialogue = [
     {
       "id": 12,
       "text": [
-        "He laughs to himself.",
-        "Mhm.",
-        "Hear his name round these parts a lot.",
-        "Even far beyond these parts.",
-        "Popular guy."
+        "\"He laughs to himself.\"",
+        "\"Mhm.\"",
+        "\"Hear his name round these parts a lot.\"",
+        "\"Even far beyond these parts.\"",
+        "\"Popular guy.\""
       ],
       "choices": [
         {
@@ -195,23 +195,23 @@ const dialogue = [
     {
       "id": 13,
       "text": [
-        "He runs with some rowdy crowds.",
-        "Hear they pass through here a lot.",
-        "Hear that's not something the folks here take kindly to."
+        "\"He runs with some rowdy crowds.\"",
+        "\"Hear they pass through here a lot.\"",
+        "\"Hear that's not something the folks here take kindly to.\""
       ],
       "choices": [
         {
-            "nextID": 2
+            "nextID": 1
         }
       ]
     },
     {
       "id": 14,
       "text": [
-        "Had business here.",
-        "Someone I had to talk to.",
-        "He waits for a second.",
-        "I best be leavin' soon."
+        "\"Had business here.\"",
+        "\"Someone I had to talk to.\"",
+        "\"He waits for a second\".",
+        "\"I best be leavin' soon.\""
       ],
       "choices": [
         {
@@ -223,14 +223,14 @@ const dialogue = [
     {
       "id": 15,
       "text": [
-        "Private matter.",
-        "All taken care of.",
-        "Don't you worry 'bout a thing.",
-        "He turns away from you and takes a draw of his cigar."
+        "\"Private matter.\"",
+        "\"All taken care of.\"",
+        "\"Don't you worry 'bout a thing.\"",
+        "\"He turns away from you and takes a draw of his cigar.\""
       ],
       "choices":[
         {
-            "nextID": 2
+            "nextID": 1
         }
       ]
     },
@@ -244,7 +244,54 @@ const dialogue = [
       ],
       "choices": [
         {
-          "itemID": 1
+          "nextID": 1,
+          "itemID": 10
+        }
+      ]
+    },
+    {
+      "id": 17,
+      "text": [
+        "You look at the gun on the right drifter's hip.",
+        "It's a revolver, all six chambers filled.",
+        "You lean your head over to look at the gun.",
+        "He interrupts you.",
+        "\"Does that seem like a good idea?\"",
+        "You back off."
+      ],
+      "choices": [
+        {
+          "nextID": 1
+        }
+      ]
+    },
+    {
+      "id": 18,
+      "text": [
+        "You approach his horse.",
+        "It stares at you.",
+        "You stare back.",
+        "It doesn't seem to know anything."
+      ],
+      "choices": [
+        {
+          "nextID": 1
+        }
+      ]
+    },
+    {
+      "id": 19,
+      "text": [
+        "The man smells of gunpowder.",
+        "His clothes are stained in the soot of it.",
+        "His face is scarred and rough.",
+        "His hands never stray too far from his gun holsters.",
+        "He squints his eyes at you.",
+        "\"There something on my face?\""
+      ],
+      "choices": [
+        {
+          "nextID": 1
         }
       ]
     }
