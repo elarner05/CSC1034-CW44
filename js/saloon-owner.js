@@ -171,4 +171,3 @@ conversation.getPromise().then(() => {
 document.getElementById("backButton").addEventListener("click", () => {
     window.location.href = "main-town.html";
 })
-  

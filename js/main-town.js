@@ -15,15 +15,16 @@ document.addEventListener("DOMContentLoaded", function () {
     const confirmButton = document.getElementById("confirmAccuse");
 
     let selectedSuspect = null;
+    let selectedLocation = null;
 
     // Sample suspects (Replace with actual ones)
     const suspects = [
-        { name: "Deputy Cain Chambers", img: "deputy.png" },
-        { name: "Arms Dealer", img: "arms-dealer.png" },
-        { name: "Rev. Willie McCrea", img: "assets/preacher-portrait.png" },
-        { name: "The Drifter", img: "assets/drifter-portrait.png" },
-        { name: "Bernice Becker", img: "assets/rancher-portrait.png" },
-        { name: "Denice Doherty", img: "assets/saloon-owner-portrait.png" }
+        { name: "Deputy Cain Chambers", img: "deputy.png", loc: "ending-screens/deputy-ending.html" },
+        { name: "Arms Dealer", img: "arms-dealer.png", loc: "ending-screens/gun-store-ending.html" },
+        { name: "Rev. Willie McCrea", img: "assets/preacher-portrait.png", loc: "ending-screens/reverend-ending.html" },
+        { name: "The Drifter", img: "assets/drifter-portrait.png", loc: "ending-screens/drifter-ending.html" },
+        { name: "Bernice Becker", img: "assets/rancher-portrait.png", loc: "ending-screens/rancher-ending.html" },
+        { name: "Denice Doherty", img: "assets/saloon-owner-portrait.png", loc: "ending-screens/saloon-ending.html" }
     ];
 
     // Populate suspects in modal
@@ -38,6 +39,7 @@ document.addEventListener("DOMContentLoaded", function () {
             document.querySelectorAll(".suspect").forEach(el => el.classList.remove("selected"));
             suspectDiv.classList.add("selected");
             selectedSuspect = suspect.name;
+            selectedLocation = suspect.loc;
             confirmButton.disabled = false;
         });
         suspectList.appendChild(suspectDiv);
@@ -63,9 +65,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         }
         else if (selectedSuspect) {
-            alert(`You accused ${selectedSuspect}!`);
-            accuseModal.style.display = "none";
-            // Here, send the accusation to your PHP/SQL backend for processing
+            window.location.href = selectedLocation;
         }
     });
 });

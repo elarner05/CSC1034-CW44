@@ -71,6 +71,12 @@ const itemData =[
         name: "Muddy Cloth",
         description: "A muddy cloth found at the ranch. It has marks on it",
         image: "assets/muddy-rag.png",
+    },
+    {
+        id: 7,
+        name: "Torn Poster",
+        description: "A old torn poster found blown behind a gravestone. It states: \"WANTED: Bandit McCrea\". It must be over 20 years old",
+        image: "assets/torn-poster.png",
     }
 ]
 // Notes elements

@@ -643,6 +643,31 @@ const preacherDialogue = [
         "\"And may you not stumble where others have fallen.\""
     ],
     "choices": []
+}, {
+    "id": 100,
+    "text": [
+        "You look around the scene for clues"
+    ],
+    "choices": [
+        {
+            "text": "Look behind a nearby gravestone",
+            "nextID": 101,
+            "itemID": 7,
+            "oneTime": true
+        }
+    ]
+}, {
+    "id":101,
+    "text": [
+        "You find a scrunched up poster, blown there sometime ago",
+        "You pick up the poster to read it later."
+    ],
+    "choices": [
+        {
+            "text": "",
+            "nextID": 1
+        }
+    ]
 }
 ];
 

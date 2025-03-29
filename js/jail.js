@@ -329,7 +329,8 @@ const dialogue = [
         "You examine the deputy's rifle.",
         "it is a Winchester Model 1866, a 'Yellow-Boy'.",
         "Looks barely used."     
-      ]
+      ],
+      choices: []
     },
     {
       "id":25,

@@ -22,7 +22,7 @@ export function getRoomData() {
             "name": "Ranch",
             "visited": false
         }, {
-            "name": "Gun Shop",
+            "name": "Gun Store",
             "visited": false
         }
         ]
