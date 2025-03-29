@@ -1,14 +1,20 @@
+import * as Timer from "./timer.js";
+import * as SideBar from "./side-bar.js";
+import * as SaveData from "./saveData.js";
+import ConversationHandler from "./story-line.js";
+
+
 const dialogue = [
     {
         "id":1,
         "text": [
-            "You walk into the gun shop.",
+            "You walk into the gun store.",
             "The arms dealer is arguing with a customer.",
             "As they notice you, they quickly become friendly together, and the customer leaves."
         ],
         "choices": [
             {
-                "text":"Converse with the gun shop owner",
+                "text":"Converse with the gun store owner",
                 "nextID": 2
             },
             {   
@@ -80,7 +86,7 @@ const dialogue = [
         "id": 5,
         "text":[
             "I dont recall any suspicious behaviour, but it has be really tense around the sherif recently",
-            "He used to be one of my best customers, but recently he hasn't been in the shop.",
+            "He used to be one of my best customers, but recently he hasn't been in the store.",
             "Must've been his new friends from out of town...",
             "Anyways.",
             "Was there anything else?"
@@ -156,7 +162,7 @@ const dialogue = [
         "id": 10,
         "text":[
             "I dont recall any suspicious behaviour, but it has be really tense around the sherif recently",
-            "He used to be one of my best customers, but recently he hasn't been in the shop.",
+            "He used to be one of my best customers, but recently he hasn't been in the store.",
             "Must've been his new friends from out of town...",
             "Anyways.",
             "I have to get back to work. Dollars don't make themselves."
@@ -222,7 +228,7 @@ const dialogue = [
     {
         "id": 14,
         "text":[
-            "Perhaps you would find more information elsewhere, not in my shop..."
+            "Perhaps you would find more information elsewhere, not in my store..."
         ],
         "choices":[
             {
@@ -301,7 +307,7 @@ const dialogue = [
             {
                 "text": "Yes please, that would be useful",
                 "nextID": 21,
-                "itemID": 
+                "itemID": 5
             },
             {
                 "text": "No, I have all I need",
@@ -339,7 +345,7 @@ const dialogue = [
             {
                 "text": "Yes, that would help.",
                 "nextID": 24 ,
-                "itemID":
+                "itemID": 6
             }
         ]
     },
@@ -403,7 +409,7 @@ const dialogue = [
             {
                 "text": "Thank you. This will help me a lot",
                 "nextID": 15,
-                "itemID":
+                "itemID": 9 
             }
         ]
     },
@@ -414,7 +420,12 @@ const dialogue = [
         ]
     }
 ]
-import ConversationHandler from "./story-line.js";
+
+Timer.setupTimer();
+
+SideBar.setupSideBar();
+
+SaveData.visitRoom("Gun Store");
 
 const textElement = document.getElementById("storyText");
 const nextButton = document.getElementById("nextButton");
@@ -430,3 +441,8 @@ conversation.getPromise().then(() => {
     document.getElementById("textBox").classList.add("hidden");
   })
 })
+
+document.getElementById("backButton").addEventListener("click", () => {
+    window.location.href = "main-town.html";
+  })
+  
