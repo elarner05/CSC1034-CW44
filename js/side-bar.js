@@ -73,6 +73,13 @@ const itemData =[
         image: "assets/muddy-rag.png",
     },
     {
+        id: 4,
+        name: "Letter to Drifter",
+        description: "A letter founded in the drifter's bag, addressed 'Dear friend,'. It requests his presence, simply signed \"S\".",
+        image: "assets/drifters-note.png",
+    
+    },
+    {
         id: 7,
         name: "Torn Poster",
         description: "A old torn poster found blown behind a gravestone. It states: \"WANTED: Bandit McCrea\". It must be over 20 years old",
