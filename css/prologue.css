@@ -1,5 +1,5 @@
 body {
-    background-image: url("../assets/western-desert-night.png");
+    background-image: url("../assets/main-town-dawn.png");
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
@@ -11,36 +11,51 @@ body {
 
 .prologue-container {
     display: flex;
+    position: fixed;
+    top: 0%;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    
     width: 600px;
-    height: 100vh;
-    background: rgba(0, 0, 0, 0.6); /* Dark overlay */
+    height: 50vh;
+    background: rgba(0, 0, 0, 0); /* Dark overlay */
 }
 
 .text-box {
+    
+    flex-direction: column;
     width: 80%;
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(0, 0, 0, 0.4);
     padding: 20px;
+    gap: 0px;
     border-radius: 10px;
     font-size: 1.5rem;
+
+    
+
+    text-align: right;
+    margin-bottom: 10px;
+}
+.text-box p {
+    text-align: left;
 }
 
 
-.buttons {
-    position: fixed;
-    bottom: 25%;
-}
+#nextButton {
+    margin-top: 0px;
+    position: relative;
+    right: 1px;
+    bottom: 1px;
+    width: 100px;
 
-
-
-button {
-    margin-top: 20px;
-    padding: 10px 20px;
-    font-size: 1.2rem;
+    margin: 1px;
+    padding: 1px 1px;
+    font-size: 0.875rem;
     cursor: pointer;
     border: none;
-    background: #7b3f00;
-    color: white;
+    border: rgba(0, 0, 0, 0.1);;
+    background: rgba(0, 0, 0, 0);
+    color: #f5e3c3; /* Old paper color */
+    z-index: 10;
 }

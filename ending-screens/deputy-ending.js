@@ -1,5 +1,13 @@
 
-const testText = [
+function showWrongChoice() {
+    const wrongChoiceDiv = document.getElementById('wrongChoice');
+    wrongChoiceDiv.classList.remove('hidden');
+    setTimeout(() => {
+        wrongChoiceDiv.style.opacity = "1";
+    }, 10);
+}
+
+const dialogueText = [
     "You enter the jail.",
     "The deputy sees you",
     "You ask the deputy for handcuffs, he gladly gives them to you.",
@@ -9,12 +17,12 @@ const testText = [
     "You explain to him that you believe he is the murder",
     "‘I can’t believe you think I killed him…’ he murmurs",
     "As you lock him up the jail, you hear him gently sobbing.",
-    "You know that those have to crocodile tears, those of a murderer.",
+    "You know that those have to be crocodile tears, those of a murderer.",
     "…",
     "As you make your way back home, you feel a sense of unease.",
     "Like you’ve made a mistake.",
     "…",
-    "You chose wrong…",
+    showWrongChoice
 ];
 
 import { DialogueUpdater } from "../js/story-line.js";
@@ -22,14 +30,14 @@ import { DialogueUpdater } from "../js/story-line.js";
 const textElement = document.getElementById("storyText");
 const nextButton = document.getElementById("nextButton");
 
-const dialogue = new DialogueUpdater(testText, textElement, nextButton);
+const dialogue = new DialogueUpdater(dialogueText, textElement, nextButton);
 
 dialogue.start();
 
 dialogue.getPromise().then(() => {
-    nextButton.innerHTML = "Return to Home";
-    nextButton.classList.remove("hidden");
-    nextButton.addEventListener("click", () => {
-        window.location.href = "../index.html"; // Change to your next game page
+    dialogue.getPromise().then(() => {
+        setTimeout(() => {
+            window.location.href = "../index.html"; // Change to your next game page
+        }, 5000);
     });
 });
