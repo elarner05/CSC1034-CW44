@@ -91,6 +91,7 @@ savedRoomData.forEach(room => {
     }
     roomsDiv.appendChild(newDiv);
 })
+
 setInterval(() => {
     if (Timer.getPercentageLeft()<(4/16) || Timer.getPercentageLeft()>(12/16)) {
         document.getElementById("backgroundImage").src = "assets/main-town-dawn.png";
@@ -98,3 +99,9 @@ setInterval(() => {
         document.getElementById("backgroundImage").src = "assets/main-town.png";
     }
 }, 1000)
+
+if (Timer.getPercentageLeft()<(4/16) || Timer.getPercentageLeft()>(12/16)) {
+    document.getElementById("backgroundImage").src = "assets/main-town-dawn.png";
+} else {
+    document.getElementById("backgroundImage").src = "assets/main-town.png";
+}
