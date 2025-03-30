@@ -1,3 +1,50 @@
+
+//This should point to YOUR copy of the dbCnnector.php file. 
+export const dbConnectorUrl = "https://elarner01.webhosting1.eeecs.qub.ac.uk/dbConnector.php";
+
+//Update this with YOUR database credentials. 
+export let dbConfig = new URLSearchParams({
+    hostname: 'localhost',
+    username: 'elarner01',
+    password: '9X2WPPjMjQr4d34C',
+    database: 'CSC1034_CW_44',
+});
+
+//Useful debug function to print the values of all Session Storage items
+export function printSessionStorage() {
+    console.log("Session Storage Items:");
+    for (let i = 0; i < sessionStorage.length; i++) {
+        let key = sessionStorage.key(i);
+        let value = sessionStorage.getItem(key);
+        console.log(`${key}: ${value}`);
+    }
+}
+
+// Check to see if a user is logged in, if not, direct to login page. 
+export function checkLogin() {
+    if (!sessionStorage.getItem('userId')) {
+        window.location.href = 'login.html';
+        return;
+    }
+}
+
+export async function sendSQL(sqlQuery) {
+    dbConfig.set('query', sqlQuery);
+    try {
+        let response = await fetch(dbConnectorUrl, {
+            method: "POST",
+            body: dbConfig
+        });
+        let result = await response.json();
+        return result;
+
+    } catch (error) {
+        console.error("Error sending sql code:", error);
+        console.log("Problem query: ", sqlQuery);
+        return null;
+    }
+}
+
 export function getRoomData() {
     let savedRoomData = sessionStorage.getItem("roomData");
     try{
