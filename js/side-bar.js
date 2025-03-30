@@ -84,6 +84,12 @@ const itemData =[
         name: "Torn Poster",
         description: "A old torn poster found blown behind a gravestone. It states: \"WANTED: Bandit McCrea\". It must be over 20 years old",
         image: "assets/torn-poster.png",
+    },
+    {
+        id: 8,
+        name: "Deputy's Notes",
+        description: "A note taken from the deputy's desk. Rants of hatred directed towards the Sherif.",
+        image: "assets/deputy-notes.png"
     }
 ]
 // Notes elements
