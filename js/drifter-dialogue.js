@@ -186,7 +186,7 @@ const dialogue = [
     {
       "id": 12,
       "text": [
-        "\"He laughs to himself.\"",
+        "He laughs to himself.",
         "\"Mhm.\"",
         "\"Hear his name round these parts a lot.\"",
         "\"Even far beyond these parts.\"",
@@ -217,7 +217,7 @@ const dialogue = [
       "text": [
         "\"Had business here.\"",
         "\"Someone I had to talk to.\"",
-        "\"He waits for a second\".",
+        "He waits for a second.",
         "\"I best be leavin' soon.\""
       ],
       "choices": [
@@ -233,7 +233,7 @@ const dialogue = [
         "\"Private matter.\"",
         "\"All taken care of.\"",
         "\"Don't you worry 'bout a thing.\"",
-        "\"He turns away from you and takes a draw of his cigar.\""
+        "He turns away from you and takes a draw of his cigar."
       ],
       "choices":[
         {
@@ -252,7 +252,8 @@ const dialogue = [
       "choices": [
         {
           "nextID": 1,
-          "itemID": 4
+          "itemID": 4,
+          "oneTime": true
         }
       ]
     },
