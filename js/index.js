@@ -1,4 +1,8 @@
 
+if (!localStorage.getItem("fontSizeSetting")) {
+    localStorage.setItem("fontSizeSetting", "2");
+}
+
 document.querySelectorAll("*").forEach(element => {
     // Store original font size as a custom data attribute
     const style = window.getComputedStyle(element);
@@ -7,11 +11,10 @@ document.querySelectorAll("*").forEach(element => {
 
 
 // Volume variables
-var soundSlider = document.getElementById("soundRange");
-var volume = 0.5
+let soundSlider = document.getElementById("soundRange");
+let volume = 0.5
 
-var fontSizeSlider = document.getElementById("fontSizeRange");
-var fontSizeMultiplier = 1;
+let fontSizeSlider = document.getElementById("fontSizeRange");
 
 
 try {
@@ -20,13 +23,13 @@ try {
     console.warn("Previous sound setting not found");
 }
 
-try {
-    fontSizeSlider.value = Number(localStorage.getItem("fontSizeSetting"));
-    fontSizeMultiplier = 1+(0.25*(fontSizeSlider.value-2));
-    applyFontMultiplier(fontSizeMultiplier);
-} catch (e) {
-    
-}
+// try {
+//     fontSizeSlider.value = Number(localStorage.getItem("fontSizeSetting"));
+//     fontSizeMultiplier = 1+(0.25*(fontSizeSlider.value-2));
+//     applyFontMultiplier(fontSizeMultiplier);
+// } catch (e) {
+
+// }
 
 // Update the current slider value (each time you drag the slider handle)
 soundSlider.oninput = function() {
@@ -35,7 +38,7 @@ soundSlider.oninput = function() {
 }
 
 fontSizeSlider.oninput = function() {
-    fontSizeMultiplier = 1+(0.25*(this.value-2));
+    let fontSizeMultiplier = 1+(0.25*(this.value-2));
     applyFontMultiplier(fontSizeMultiplier);
     localStorage.setItem("fontSizeSetting", this.value);
 }

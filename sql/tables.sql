@@ -1,6 +1,6 @@
 CREATE TABLE userData (
     userID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    userName VARCHAR(20) NOT NULL UNIQUE,
+    usernameField VARCHAR(20) NOT NULL UNIQUE,
     passwordField VARCHAR(20) NOT NULL,
     currentSessionID INT DEFAULT 0,
     noOfSessions INT DEFAULT 0,
@@ -9,7 +9,7 @@ CREATE TABLE userData (
 );
 
 CREATE TABLE itemData (
-    itemID INT NOT NULL PRIMARY KEY,
+    itemID INT NOT NULL UNIQUE PRIMARY KEY,
     itemName VARCHAR(255) NOT NULL,
     itemDescription VARCHAR(255) NOT NULL,
     itemPath VARCHAR(255) NOT NULL
