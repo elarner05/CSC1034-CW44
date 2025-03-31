@@ -86,7 +86,13 @@ const itemData =[
         image: "assets/torn-poster.png",
     },
     {
-        id: 8,
+        id : 8,
+        name: "Customer Logbook",
+        description: "A logbook that contains records of all the customers that visited the saloon.",
+        image: "assets/ledger.png",
+    }, 
+    {
+        id: 9,
         name: "Deputy's Notes",
         description: "A note taken from the deputy's desk. Rants of hatred directed towards the Sherif.",
         image: "assets/deputy-notes.png"
