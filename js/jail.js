@@ -364,7 +364,8 @@ const dialogue = [
         {
           "text": "Inspect the notes?",
           "nextID": 28,
-          "itemID": ""
+          "itemID": 8,
+          "oneTime": true
         },
         {
           "text": "Stop inspecting?",
