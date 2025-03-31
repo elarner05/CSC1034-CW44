@@ -22,9 +22,49 @@ const dialogue = [
       ]
     },
     {
+      "id": 101,
+      "text": [
+        "The man stares at you."
+      ],
+      "choices": [
+        {
+          "text": "I have some more questions.",
+          "nextID": 102
+        },
+        {
+          "text": "Look for clues",
+          "nextID": 3
+        }
+      ]
+    },
+    {
       "id": 2,
       "text": [
         "The man looks towards you. He nods his head slightly. He stares towards you, the shadow from his hat obscuring his face."
+      ],
+      "choices": [
+        {
+          "text": "Where were you on the night of the murder?",
+          "nextID": 4
+        },
+        {
+          "text": "See or hear anything strange?",
+          "nextID": 8
+        },
+        {
+          "text": "Did you know the sheriff?",
+          "nextID": 11
+        },
+        {
+          "text": "Why'd you stick around?",
+          "nextID": 14
+        }
+      ]
+    },
+    {
+      "id": 102,
+      "text": [
+        "\"Mhm...\""
       ],
       "choices": [
         {
@@ -93,7 +133,8 @@ const dialogue = [
       ],
       "choices": [
         {
-          "nextID": 1
+          "text": "",
+          "nextID": 101
         }
       ]
     },
@@ -121,7 +162,8 @@ const dialogue = [
       ],
       "choices": [
         {
-            "nextID": 1
+            "text": "",
+            "nextID": 101
         }
       ]
     },
@@ -163,7 +205,8 @@ const dialogue = [
       ],
       "choices": [
         {
-            "nextID": 1
+            "text": "",
+            "nextID": 101
         }
       ]
     },
@@ -208,7 +251,8 @@ const dialogue = [
       ],
       "choices": [
         {
-            "nextID": 1
+            "text": "",
+            "nextID": 101
         }
       ]
     },
@@ -237,6 +281,7 @@ const dialogue = [
       ],
       "choices":[
         {
+            "text": "",
             "nextID": 1
         }
       ]
@@ -251,7 +296,8 @@ const dialogue = [
       ],
       "choices": [
         {
-          "nextID": 1,
+          "text": "",
+          "nextID": 101,
           "itemID": 4,
           "oneTime": true
         }
@@ -269,7 +315,8 @@ const dialogue = [
       ],
       "choices": [
         {
-          "nextID": 1
+          "text": "",
+          "nextID": 101
         }
       ]
     },
@@ -283,7 +330,8 @@ const dialogue = [
       ],
       "choices": [
         {
-          "nextID": 1
+          "text": "",
+          "nextID": 101
         }
       ]
     },
@@ -299,7 +347,8 @@ const dialogue = [
       ],
       "choices": [
         {
-          "nextID": 1
+          "text": "",
+          "nextID": 101
         }
       ]
     }
