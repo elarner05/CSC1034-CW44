@@ -45,7 +45,7 @@ export function injectSidebar() {
                 <button class="notes-tab" data-suspect="suspect5">Rancher</button>
                 <button class="notes-tab" data-suspect="suspect6">Saloon Owner</button>
             </div>
-            <textarea id="notesArea" maxlength="10000" placeholder="Write your clues, suspicions, and theories here..."></textarea>
+            <textarea id="notesArea" maxlength="1000" placeholder="Write your clues, suspicions, and theories here..."></textarea>
 
             <button id="closeNotesButton">Save & Close</button>
         </div>
@@ -73,6 +73,13 @@ const itemData =[
         image: "assets/muddy-rag.png",
     },
     {
+        id: 4,
+        name: "Letter to Drifter",
+        description: "A letter founded in the drifter's bag, addressed 'Dear friend,'. It requests his presence, simply signed \"S\".",
+        image: "assets/drifters-note.png",
+    
+    },
+    {
         id: 7,
         name: "Torn Poster",
         description: "A old torn poster found blown behind a gravestone. It states: \"WANTED: Bandit McCrea\". It must be over 20 years old",
@@ -83,6 +90,12 @@ const itemData =[
         name: "Customer Logbook",
         description: "A logbook that contains records of all the customers that visited the saloon.",
         image: "assets/ledger.png",
+    }, 
+    {
+        id: 9,
+        name: "Deputy's Notes",
+        description: "A note taken from the deputy's desk. Rants of hatred directed towards the Sherif.",
+        image: "assets/deputy-notes.png"
     }
 ]
 // Notes elements

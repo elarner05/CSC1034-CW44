@@ -25,7 +25,7 @@ try {
     fontSizeMultiplier = 1+(0.25*(fontSizeSlider.value-2));
     applyFontMultiplier(fontSizeMultiplier);
 } catch (e) {
-    console.warn("Previous font size setting not found");
+    
 }
 
 // Update the current slider value (each time you drag the slider handle)

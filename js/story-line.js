@@ -52,6 +52,16 @@ export class DialogueUpdater {
     }
 
     typeNextLetter() {
+        if (typeof this.text[this.sentenceIndex] === "function") {
+            this.text[this.sentenceIndex](); // Run the function
+            this.sentenceIndex++;
+            if (this.sentenceIndex < this.text.length) {
+                setTimeout(this.typeNextLetter(), 1); // Start typing next sentence
+            } else {
+                this.resolve("Finished dialogue updating");
+            }
+            return;
+        }
         if (this.charIndex < this.text[this.sentenceIndex].length) {
             this.textElement.innerHTML += this.text[this.sentenceIndex].charAt(this.charIndex);
             this.charIndex++;

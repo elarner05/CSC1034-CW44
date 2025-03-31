@@ -19,8 +19,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Sample suspects (Replace with actual ones)
     const suspects = [
-        { name: "Deputy Cain Chambers", img: "deputy.png", loc: "ending-screens/deputy-ending.html" },
-        { name: "Arms Dealer", img: "arms-dealer.png", loc: "ending-screens/gun-store-ending.html" },
+        { name: "Deputy Cain Chambers", img: "assets/deputy-portrait.png", loc: "ending-screens/deputy-ending.html" },
+        { name: "Arms Dealer", img: "assets/arms-dealer-portrait.png", loc: "ending-screens/gun-store-ending.html" },
         { name: "Rev. Willie McCrea", img: "assets/preacher-portrait.png", loc: "ending-screens/reverend-ending.html" },
         { name: "The Drifter", img: "assets/drifter-portrait.png", loc: "ending-screens/drifter-ending.html" },
         { name: "Bernice Becker", img: "assets/rancher-portrait.png", loc: "ending-screens/rancher-ending.html" },
@@ -60,6 +60,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Confirm accusation
     confirmButton.addEventListener("click", () => {
+
         if (selectedSuspect === "Rory Keogh") {
             window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
 
@@ -90,6 +91,7 @@ savedRoomData.forEach(room => {
     }
     roomsDiv.appendChild(newDiv);
 })
+
 setInterval(() => {
     if (Timer.getPercentageLeft()<(4/16) || Timer.getPercentageLeft()>(12/16)) {
         document.getElementById("backgroundImage").src = "assets/main-town-dawn.png";
@@ -97,3 +99,9 @@ setInterval(() => {
         document.getElementById("backgroundImage").src = "assets/main-town.png";
     }
 }, 1000)
+
+if (Timer.getPercentageLeft()<(4/16) || Timer.getPercentageLeft()>(12/16)) {
+    document.getElementById("backgroundImage").src = "assets/main-town-dawn.png";
+} else {
+    document.getElementById("backgroundImage").src = "assets/main-town.png";
+}
