@@ -1,0 +1,31 @@
+
+table{
+    width: 50px;
+    border-width: 10px;
+}
+
+th,td{
+    border-color: #FFFFFF;
+    border-width: 1px solid;
+}
+
+.center-menu {
+    width: 100%;
+    background: #444444;
+    padding: 20px;
+    border-radius: 10px;
+    display: inline-block;
+}
+
+#userInformation{
+    text-align: center;
+
+}
+
+
+.button-wrapper {
+    position: relative;
+}
+
+
+

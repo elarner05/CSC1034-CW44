@@ -103,7 +103,7 @@ document.getElementById("newGameButton").addEventListener("click", async functio
 });
 
 document.getElementById("statsButton").addEventListener("click", function() {
-
+    window.location.href = "user-statistics.html";
 });
 
 
