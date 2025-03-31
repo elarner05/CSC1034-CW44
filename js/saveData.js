@@ -86,18 +86,42 @@ export async function createNewSession() {
         console.log("SQL Update Error:", result2.error);
         return false;
     }
+    // Insert into sessionNotes (Initialize with empty strings)
+    let sessionNotesQuery = `INSERT INTO sessionNotes (sessionID, deputyNotes, armsDealerNotes, preacherNotes, drifterNotes, rancherNotes, saloonOwnerNotes) 
+                             VALUES (${sessionID}, '', '', '', '', '', '');`;
 
+    let notesResult = await sendSQL(sessionNotesQuery);
+    if (!notesResult || notesResult.error) {
+        console.log("SQL Insert Error (sessionNotes):", notesResult.error);
+        return false;
+    }
+    await updateUserData();
     console.log("Session created successfully.");
     return true;
+}
+
+export async function updateUserData() {
+    if (!localStorage.getItem("CurrentUserData")) {
+        console.log("no starting user data")
+        return false;
+    }
+    let oldUserData = localStorage.getItem("CurrentUserData");
+    let sqlQuery = `SELECT * FROM userData WHERE usernameField = '${oldUserData.username}' AND passwordField = '${oldUserData.password}';`;
+
+    let result = await sendSQL(sqlQuery);
+    console.log("New user data: ", result);
+
+    localStorage.setItem("CurrentUserData", JSON.stringify(result.data[0]));
 }
     
 
 export async function getSession() {
     if (!localStorage.getItem("CurrentUserData")) {
+        console.log("No user data");
         return false;
     }
     let userData = JSON.parse(localStorage.getItem("CurrentUserData"));
-    let createQuery = `SELECT * FROM sessionData  WHERE userID = '${userData.userID}' AND sessionID = ${userData.currentSessionID};`;
+    let createQuery = `SELECT * FROM sessionData WHERE userID = '${userData.userID}' AND sessionID = ${userData.currentSessionID};`;
     let result = await sendSQL(createQuery);
     console.log(result);
     if (!result || result.error) {
@@ -111,7 +135,7 @@ export async function getSession() {
         return false;
     }
     
-    return result.data;
+    return result.data[0];
 
 }
 

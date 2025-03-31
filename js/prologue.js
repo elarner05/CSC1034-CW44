@@ -30,7 +30,7 @@ dialogue.getPromise().then(() => {
     nextButton.addEventListener("click", () => {
         if (nextButton.innerHTML === "Continue") {    // Move to the next page when clicking "Continue"
             Timer.setStartTime();
-            window.location.href = "main-town.html"; // Change to your next game page
+            //window.location.href = "main-town.html"; // Change to your next game page
         }
     });
 });
