@@ -4,6 +4,7 @@ import * as SaveData from "./saveData.js";
 document.getElementById('createAccountForm').addEventListener('submit', async function(event) {
     event.preventDefault();
     const username = document.getElementById("username").value;
+    const playerName = document.getElementById("playerName").value;
     const password = document.getElementById("password").value;
     const errorMessage = document.getElementById("errorMessage");
 
@@ -15,7 +16,7 @@ document.getElementById('createAccountForm').addEventListener('submit', async fu
     errorMessage.textContent = ""; // Clear error if valid
 
     //let insertUserQuery = `INSERT INTO Users (UserName, Password) VALUES ('${username}', '${password}')`;
-    let insertUserQuery = `INSERT INTO userData (usernameField, passwordField) VALUES ('${username}', '${password}')`;
+    let insertUserQuery = `INSERT INTO userData (usernameField, passwordField, playerName) VALUES ('${username}', '${password}','${playerName}')`;
     
     let userResult = await SaveData.sendSQL(insertUserQuery);
     
