@@ -116,3 +116,16 @@ button:disabled:hover {
     visibility: visible;
     opacity: 1;
 }
+
+.error {
+    background-color: #000000b9;
+    text-align: center;
+    padding: 5px;
+    border-radius: 5px;
+    opacity: 0;
+
+    position: absolute;
+    left: 75%;
+    top: 15%;
+    transition: opacity .5s ease-in-out;
+}
