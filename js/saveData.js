@@ -45,14 +45,61 @@ export async function sendSQL(sqlQuery) {
     }
 }
 
+
 export async function createNewSession() {
     if (!localStorage.getItem("CurrentUserData")) {
         return false;
     }
     let userData = JSON.parse(localStorage.getItem("CurrentUserData"));
-    let createQuery = `INSERT INTO sessionData (userID, timeStart, timePause, runningBoolean, winBoolean) \
-    VALUES (${userData.userID}, ${Date.now()}, 0, 1, 0);`;
+
+    // Insert a new session
+    let createQuery = `INSERT INTO sessionData (userID, timeStart, timePause, runningBoolean, winBoolean) 
+                        VALUES (${userData.userID}, 0, 0, 1, 0);`;
+    
     let result = await sendSQL(createQuery);
+    if (!result || result.error) {
+        console.log("SQL Insert Error:", result.error);
+        return false;
+    }
+
+    // Get the last inserted session ID
+    let sessionIDQuery = `SELECT sessionID FROM sessionData 
+                      WHERE userID = ${userData.userID} 
+                      ORDER BY sessionID DESC 
+                      LIMIT 1;`;
+
+    let sessionResult = await sendSQL(sessionIDQuery);
+    let sessionID = sessionResult.data.length > 0 ? sessionResult.data[0].sessionID : null;
+    if (!sessionID) {
+        console.log("no sessionID")
+        return false;
+    }
+    console.log("New Session ID:", sessionID);
+
+    // Update userData with the correct session ID
+    let updateQuery = `UPDATE userData 
+                        SET currentSessionID = ${sessionID} 
+                        WHERE userID = ${userData.userID};`;
+
+    let result2 = await sendSQL(updateQuery);
+    if (!result2 || result2.error) {
+        console.log("SQL Update Error:", result2.error);
+        return false;
+    }
+
+    console.log("Session created successfully.");
+    return true;
+}
+    
+
+export async function getSession() {
+    if (!localStorage.getItem("CurrentUserData")) {
+        return false;
+    }
+    let userData = JSON.parse(localStorage.getItem("CurrentUserData"));
+    let createQuery = `SELECT * FROM sessionData  WHERE userID = '${userData.userID}' AND sessionID = ${userData.currentSessionID};`;
+    let result = await sendSQL(createQuery);
+    console.log(result);
     if (!result || result.error) {
         if (result.error) {
             console.log(result.error)
@@ -60,8 +107,11 @@ export async function createNewSession() {
         return false;
         
     }
-    console.log(result);
-    return true;
+    if (result.data.length === 0) {
+        return false;
+    }
+    
+    return result.data;
 
 }
 
