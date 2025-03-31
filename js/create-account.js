@@ -15,18 +15,27 @@ document.getElementById('createAccountForm').addEventListener('submit', async fu
     errorMessage.textContent = ""; // Clear error if valid
 
     //let insertUserQuery = `INSERT INTO Users (UserName, Password) VALUES ('${username}', '${password}')`;
-    let insertUserQuery = `INSERT INTO Users (UserName, Password) VALUES ('${username}', '${password}')`;
+    let insertUserQuery = `INSERT INTO userData (usernameField, passwordField) VALUES ('${username}', '${password}')`;
     
     let userResult = await SaveData.sendSQL(insertUserQuery);
     
     if (!userResult || userResult.error) {
-        console.error("Error inserting user:", userResult);
-        errorMessage.textContent = "Failed to create user.";
+        if (userResult.error && userResult.error.includes('Duplicate entry')) {
+            console.error("Duplicate username error:", userResult.error);
+            errorMessage.textContent = "Username already exists. Please choose a different one.";
+        } else {
+            console.error("Error inserting user:", userResult.error);
+            errorMessage.textContent = "Failed to create user. SQL Error";
+        }
+        errorMessage.classList.remove("hidden");
         return;
     }
-    console.log(userResult);
 
-    //window.location.href = 'sign-in.html';
+    if (errorMessage.textContent !== '') {
+        errorMessage.classList.remove("hidden");
+    }
+
+    window.location.href = 'sign-in.html';
 });
 
 // Redirect to title screen

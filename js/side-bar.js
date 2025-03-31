@@ -365,13 +365,6 @@ export function createNotification(itemID) {
     }
 }
 
-
-
-
-
-
-
-
 // loads the saved notes and inventory when the page is loaded
 window.addEventListener('DOMContentLoaded', () => {
     loadNotes(currentNotesSuspect);
