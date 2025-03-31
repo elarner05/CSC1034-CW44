@@ -2,6 +2,7 @@ CREATE TABLE userData (
     userID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     usernameField VARCHAR(20) NOT NULL UNIQUE,
     passwordField VARCHAR(20) NOT NULL,
+    playerName VARCHAR(20) NOT NULL,
     currentSessionID INT DEFAULT 0,
     noOfSessions INT DEFAULT 0,
     totalTime INT DEFAULT 0,
@@ -9,7 +10,7 @@ CREATE TABLE userData (
 );
 
 CREATE TABLE itemData (
-    itemID INT NOT NULL UNIQUE PRIMARY KEY,
+    itemID INT NOT NULL PRIMARY KEY,
     itemName VARCHAR(255) NOT NULL,
     itemDescription VARCHAR(255) NOT NULL,
     itemPath VARCHAR(255) NOT NULL
@@ -18,8 +19,8 @@ CREATE TABLE itemData (
 CREATE TABLE sessionData (
     sessionID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     userID INT NOT NULL,
-    timeStart INT NOT NULL,
-    timePause INT NOT NULL,
+    timeStart BIGINT NOT NULL,
+    timePause BIGINT NOT NULL,
     runningBoolean TINYINT(1) DEFAULT 1,
     winBoolean TINYINT(1) DEFAULT 0,
     FOREIGN KEY (userID) REFERENCES userData(userID) ON DELETE CASCADE
@@ -64,13 +65,13 @@ VALUES
     (4, 'Letter to Drifter', 'A letter founded in the drifter''s bag, addressed ''Dear friend,''. It requests his presence, simply signed "S".', 'assets/drifters-note.png'),
     (7, 'Torn Poster', 'A old torn poster found blown behind a gravestone. It states: "WANTED: Bandit McCrea". It must be over 20 years old', 'assets/torn-poster.png');
 
-INSERT INTO userData (userName, passwordField) 
+INSERT INTO userData (usernameField, passwordField, playerName) 
 VALUES 
-    ('john_doe', 'password123'),
-    ('jane_smith', 'securePass456'),
-    ('emily_clark', 'abc123xyz'),
-    ('david_brown', 'myPass789'),
-    ('lucas_jones', '1234Secure!');
+    ('john_doe', 'password123', 'john doe'),
+    ('jane_smith', 'securePass456', 'jane smith'),
+    ('emily_clark', 'abc123xyz', 'emily clark'),
+    ('david_brown', 'myPass789', 'david brown'),
+    ('lucas_jones', '1234Secure!', 'lucas jones');
 
 -- Step 1: Insert session
 INSERT INTO sessionData (userID, timeStart, timePause, runningBoolean, winBoolean)
@@ -95,3 +96,10 @@ VALUES
     (1, 1),
     (1, 2),
     (1, 3);
+
+DROP TABLE `sessionItems`;
+DROP TABLE `sessionNotes`;
+DROP TABLE `itemData`;
+DROP TABLE `sessionVisits`;
+DROP TABLE `sessionData`;
+DROP TABLE `userData`;
