@@ -97,7 +97,7 @@ document.getElementById("newGameButton").addEventListener("click", function() {
 });
 
 document.getElementById("statsButton").addEventListener("click", function() {
-
+    window.location.href = "user-statistics.html";
 });
 
 
