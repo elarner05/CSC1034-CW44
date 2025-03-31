@@ -45,7 +45,7 @@ export function injectSidebar() {
                 <button class="notes-tab" data-suspect="suspect5">Rancher</button>
                 <button class="notes-tab" data-suspect="suspect6">Saloon Owner</button>
             </div>
-            <textarea id="notesArea" maxlength="10000" placeholder="Write your clues, suspicions, and theories here..."></textarea>
+            <textarea id="notesArea" maxlength="1000" placeholder="Write your clues, suspicions, and theories here..."></textarea>
 
             <button id="closeNotesButton">Save & Close</button>
         </div>

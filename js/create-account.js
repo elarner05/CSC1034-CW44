@@ -14,7 +14,9 @@ document.getElementById('createAccountForm').addEventListener('submit', async fu
 
     errorMessage.textContent = ""; // Clear error if valid
 
+    //let insertUserQuery = `INSERT INTO Users (UserName, Password) VALUES ('${username}', '${password}')`;
     let insertUserQuery = `INSERT INTO Users (UserName, Password) VALUES ('${username}', '${password}')`;
+    
     let userResult = await SaveData.sendSQL(insertUserQuery);
     
     if (!userResult || userResult.error) {
@@ -22,7 +24,7 @@ document.getElementById('createAccountForm').addEventListener('submit', async fu
         errorMessage.textContent = "Failed to create user.";
         return;
     }
-    console.log(result);
+    console.log(userResult);
 
     //window.location.href = 'sign-in.html';
 });
