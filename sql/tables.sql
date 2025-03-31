@@ -1,3 +1,10 @@
+DROP TABLE `sessionItems`;
+DROP TABLE `sessionNotes`;
+DROP TABLE `itemData`;
+DROP TABLE `sessionVisits`;
+DROP TABLE `sessionData`;
+DROP TABLE `userData`;
+
 CREATE TABLE userData (
     userID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     usernameField VARCHAR(20) NOT NULL UNIQUE,
@@ -97,9 +104,3 @@ VALUES
     (1, 2),
     (1, 3);
 
-DROP TABLE `sessionItems`;
-DROP TABLE `sessionNotes`;
-DROP TABLE `itemData`;
-DROP TABLE `sessionVisits`;
-DROP TABLE `sessionData`;
-DROP TABLE `userData`;

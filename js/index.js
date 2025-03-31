@@ -95,7 +95,11 @@ document.getElementById("continueButton").addEventListener("click", function() {
 
 document.getElementById("newGameButton").addEventListener("click", async function() {
     let result = await SaveData.createNewSession();
-    // window.location.href = "prologue.html";
+    if (result) {
+        window.location.href = "prologue.html";
+    } else {
+        
+    }
 });
 
 document.getElementById("statsButton").addEventListener("click", function() {
