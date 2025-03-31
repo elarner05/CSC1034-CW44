@@ -45,6 +45,26 @@ export async function sendSQL(sqlQuery) {
     }
 }
 
+export async function createNewSession() {
+    if (!localStorage.getItem("CurrentUserData")) {
+        return false;
+    }
+    let userData = JSON.parse(localStorage.getItem("CurrentUserData"));
+    let createQuery = `INSERT INTO sessionData (userID, timeStart, timePause, runningBoolean, winBoolean) \
+    VALUES (${userData.userID}, ${Date.now()}, 0, 1, 0);`;
+    let result = await sendSQL(createQuery);
+    if (!result || result.error) {
+        if (result.error) {
+            console.log(result.error)
+        }
+        return false;
+        
+    }
+    console.log(result);
+    return true;
+
+}
+
 export function getRoomData() {
     let savedRoomData = sessionStorage.getItem("roomData");
     try{
@@ -78,6 +98,8 @@ export function getRoomData() {
         
     return savedRoomData;
 }
+
+
 
 export function visitRoom(roomName) {
     let savedRoomData = getRoomData();

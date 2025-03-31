@@ -34,7 +34,8 @@ document.getElementById('signinForm').addEventListener('submit', async function(
       // Username and password is in table
       localStorage.setItem("UserName", username);
       localStorage.setItem("SignedIn", "true");
-      localStorage.setItem("CurrentTableRow", JSON.stringify(result.data));
+      localStorage.setItem("CurrentUserData", JSON.stringify(result.data[0]));
+      // console.log(result.data);
     }
       
 
@@ -45,5 +46,3 @@ document.getElementById('signinForm').addEventListener('submit', async function(
 document.getElementById("createAccountButton").addEventListener("click", function() {
   window.location.href = "create-account.html"
 });
-
-

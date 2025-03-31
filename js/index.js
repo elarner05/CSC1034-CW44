@@ -1,3 +1,4 @@
+import * as SaveData from "./saveData.js";
 
 if (!localStorage.getItem("fontSizeSetting")) {
     localStorage.setItem("fontSizeSetting", "2");
@@ -92,8 +93,9 @@ document.getElementById("continueButton").addEventListener("click", function() {
 
 });
 
-document.getElementById("newGameButton").addEventListener("click", function() {
-    window.location.href = "prologue.html";
+document.getElementById("newGameButton").addEventListener("click", async function() {
+    let result = await SaveData.createNewSession();
+    // window.location.href = "prologue.html";
 });
 
 document.getElementById("statsButton").addEventListener("click", function() {
