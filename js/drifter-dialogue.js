@@ -296,7 +296,7 @@ const dialogue = [
       ],
       "choices": [
         {
-          "text": "",
+          "text": "Go back.",
           "nextID": 101,
           "itemID": 4,
           "oneTime": true
