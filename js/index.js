@@ -47,7 +47,7 @@ fontSizeSlider.oninput = function() {
 // Try to load the username for the profile section
 let currentUser = null;
 try {
-    currentUser = { name: localStorage.getItem("UserName") };
+    currentUser = {name: SaveData.getLocalUsername()};
 } catch(e) {}
 
 // Check if user is signed in

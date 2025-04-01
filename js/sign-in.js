@@ -9,8 +9,7 @@ document.getElementById('signinForm').addEventListener('submit', async function(
     const password = document.getElementById('password').value;
     const errorMessage = document.getElementById("errorMessage");
     
-    // localStorage.setItem("UserName", username);
-    // localStorage.setItem("SignedIn", "true");
+    
 
     let sqlQuery = `SELECT * FROM userData WHERE usernameField = '${username}' AND passwordField = '${password}';`;
 
@@ -32,14 +31,16 @@ document.getElementById('signinForm').addEventListener('submit', async function(
 
     } else {
       // Username and password is in table
-      localStorage.setItem("UserName", username);
+      localStorage.setItem("Username", username);
+      localStorage.setItem("UserID", result.data[0].userID);
       localStorage.setItem("SignedIn", "true");
-      localStorage.setItem("CurrentUserData", JSON.stringify(result.data[0]));
+      localStorage.setItem("Password", password);
       // console.log(result.data);
+      window.location.href = 'index.html';
     }
       
 
-    window.location.href = 'index.html';
+    
 });
 
 // Redirect to create account page

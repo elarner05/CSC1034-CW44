@@ -1,34 +1,9 @@
-import * as SaveData from "./saveData.js";
 
 // Constants
 const GAME_START_HOUR = 6;  // 6 AM start
 const GAME_END_HOUR = 22;   // 10 PM end
 const GAME_DURATION_MINUTES = 20;  // Real-world duration
 
-// Load or initialize start time
-export async function setStartTime( ) {
-    localStorage.removeItem("gameOver"); // Resets the game over flag
-    let time = Date.now()
-    localStorage.setItem("gameStartTime", time); // Store real start time
-    
-    
-    let sessionData = await SaveData.getSession()
-    if (!sessionData || sessionData.error) {
-        console.log("could not find session", sessionData);
-        return;
-    }
-    let sessionID = sessionData.sessionID;
-    let updateQuery = `UPDATE sessionData 
-                    SET timeStart =  ${time}
-                    WHERE sessionID = ${sessionID};`;
-
-    let result = await sendSQL(updateQuery);
-    if (!result || result.error) {
-        console.log("SQL Update Error:", result.error);
-    } else {
-        console.log("Session start time updated successfully!");
-    }
-}
 
 // Inject the clock into the html
 export function injectClock() {
@@ -126,14 +101,5 @@ export function updateClockDisplay() {
 
 
 export function pauseGame() {
-    localStorage.setItem("pausedTime", Date.now()); // Store the pause timestamp
-}
-
-export function resumeGame() {
-    if (localStorage.getItem("pausedTime")) {
-        let pausedDuration = Date.now() - parseInt(localStorage.getItem("pausedTime"));
-        let newStartTime = parseInt(localStorage.getItem("gameStartTime")) + pausedDuration;
-        localStorage.setItem("gameStartTime", newStartTime); // Adjust start time
-        localStorage.removeItem("pausedTime"); // Remove pause record
-    }
+    clearSaveData.setPauseTime();
 }

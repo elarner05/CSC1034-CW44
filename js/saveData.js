@@ -11,20 +11,12 @@ export let dbConfig = new URLSearchParams({
 });
 
 //Useful debug function to print the values of all Session Storage items
-export function printSessionStorage() {
+export function _printSessionStorage() {
     console.log("Session Storage Items:");
     for (let i = 0; i < sessionStorage.length; i++) {
         let key = sessionStorage.key(i);
         let value = sessionStorage.getItem(key);
         console.log(`${key}: ${value}`);
-    }
-}
-
-// Check to see if a user is logged in, if not, direct to login page. 
-export function checkLogin() {
-    if (!sessionStorage.getItem('userId')) {
-        window.location.href = 'login.html';
-        return;
     }
 }
 
@@ -45,99 +37,273 @@ export async function sendSQL(sqlQuery) {
     }
 }
 
+export function noErrors(finishedResult) {
+    if (finishedResult === null) {
+        console.log("Null result from server: ", finishedResult);
+        return false;
+    } else if (finishedResult.error) {
+        console.log("Error result from server: ", finishedResult.error);
+        return false;
+    } else {
+        console.log("Valid result from server");
+    }
+    return true;
+}
+
+export function getLocalUserID() {
+    try {
+        let UserID = JSON.parse(localStorage.getItem("UserID"));
+        if (UserID) {
+            console.log("Local UserID found.")
+            return UserID;
+        }
+        console.log("No UserID found in local storage")
+        return null;
+    } catch {
+        console.error("No UserID found in local storage")
+        return null;
+    }
+}
+
+export function getLocalUsername() {
+    try {
+        let Username = localStorage.getItem("Username");
+        if (Username) {
+            console.log("Local Username found.")
+            return Username;
+        }
+        console.log("No Username found in local storage")
+        return null;
+    } catch {
+        console.log("No Username found in local storage")
+        return null;
+    }
+}
+
+export function getLocalPassword() {
+    try {
+        let Password = localStorage.getItem("Password");
+        if (Password) {
+            console.log("Local Password found.")
+            return Password;
+        }
+        console.log("No Password found in local storage")
+        return null;
+    } catch {
+        console.error("No Password found in local storage")
+        return null;
+    }
+}
+
+export function getLocalCurrentSessionID() {
+    try {
+        let CurrentSessionID = localStorage.getItem("CurrentSessionID");
+        if (CurrentSessionID) {
+            console.log("Local CurrentSessionID found.")
+            return CurrentSessionID;
+        }
+        console.log("No CurrentSessionID found in local storage")
+        return null;
+    } catch {
+        console.error("No CurrentSessionID found in local storage")
+        return null;
+    }
+}
+
+
+
+
 
 export async function createNewSession() {
-    if (!localStorage.getItem("CurrentUserData")) {
-        return false;
-    }
-    let userData = JSON.parse(localStorage.getItem("CurrentUserData"));
+    let userID = getLocalUserID();
 
     // Insert a new session
     let createQuery = `INSERT INTO sessionData (userID, timeStart, timePause, runningBoolean, winBoolean) 
-                        VALUES (${userData.userID}, 0, 0, 1, 0);`;
+                        VALUES (${userID}, 0, 0, 1, 0);`;
     
     let result = await sendSQL(createQuery);
-    if (!result || result.error) {
-        console.log("SQL Insert Error:", result.error);
+    if (!noErrors(result)) {
         return false;
     }
 
     // Get the last inserted session ID
     let sessionIDQuery = `SELECT sessionID FROM sessionData 
-                      WHERE userID = ${userData.userID} 
+                      WHERE userID = ${userID} 
                       ORDER BY sessionID DESC 
                       LIMIT 1;`;
 
     let sessionResult = await sendSQL(sessionIDQuery);
     let sessionID = sessionResult.data.length > 0 ? sessionResult.data[0].sessionID : null;
+
     if (!sessionID) {
         console.log("no sessionID")
         return false;
     }
+
     console.log("New Session ID:", sessionID);
+    localStorage.setItem("CurrentSessionID", sessionID);
 
     // Update userData with the correct session ID
     let updateQuery = `UPDATE userData 
                         SET currentSessionID = ${sessionID} 
-                        WHERE userID = ${userData.userID};`;
+                        WHERE userID = ${userID};`;
 
     let result2 = await sendSQL(updateQuery);
-    if (!result2 || result2.error) {
-        console.log("SQL Update Error:", result2.error);
+    if (!noErrors(result2)) {
         return false;
     }
+
     // Insert into sessionNotes (Initialize with empty strings)
     let sessionNotesQuery = `INSERT INTO sessionNotes (sessionID, deputyNotes, armsDealerNotes, preacherNotes, drifterNotes, rancherNotes, saloonOwnerNotes) 
                              VALUES (${sessionID}, '', '', '', '', '', '');`;
 
     let notesResult = await sendSQL(sessionNotesQuery);
-    if (!notesResult || notesResult.error) {
-        console.log("SQL Insert Error (sessionNotes):", notesResult.error);
+    if (!noErrors(notesResult)) {
         return false;
     }
-    await updateUserData();
+
     console.log("Session created successfully.");
+
     return true;
 }
 
-export async function updateUserData() {
-    if (!localStorage.getItem("CurrentUserData")) {
-        console.log("no starting user data")
-        return false;
-    }
-    let oldUserData = localStorage.getItem("CurrentUserData");
-    let sqlQuery = `SELECT * FROM userData WHERE usernameField = '${oldUserData.username}' AND passwordField = '${oldUserData.password}';`;
 
-    let result = await sendSQL(sqlQuery);
-    console.log("New user data: ", result);
 
-    localStorage.setItem("CurrentUserData", JSON.stringify(result.data[0]));
-}
-    
+
 
 export async function getSession() {
-    if (!localStorage.getItem("CurrentUserData")) {
-        console.log("No user data");
-        return false;
+    let currentSessionID = getLocalCurrentSessionID();
+
+    let selectQuery = `SELECT * FROM sessionData WHERE sessionID = ${currentSessionID};`;
+
+    let result = await sendSQL(selectQuery);
+    
+    if (!noErrors(result)) {
+        return null;
     }
-    let userData = JSON.parse(localStorage.getItem("CurrentUserData"));
-    let createQuery = `SELECT * FROM sessionData WHERE userID = '${userData.userID}' AND sessionID = ${userData.currentSessionID};`;
-    let result = await sendSQL(createQuery);
-    console.log(result);
-    if (!result || result.error) {
-        if (result.error) {
-            console.log(result.error)
-        }
-        return false;
-        
-    }
+
     if (result.data.length === 0) {
-        return false;
+        return null;
     }
     
     return result.data[0];
-
 }
+
+export async function getUserData() {
+    let userID = getLocalUserID();
+
+    let selectQuery = `SELECT * FROM userData WHERE userID = ${userID};`;
+
+    let result = await sendSQL(selectQuery);
+    
+    if (!noErrors(result)) {
+        return null;
+    }
+
+    if (result.data.length === 0) {
+        return null;
+    }
+    
+    return result.data[0];
+}
+
+
+
+
+export async function setStartTime() {
+    let time = Date.now()
+    localStorage.removeItem("gameOver")
+    localStorage.setItem("gameStartTime", time); // Store real start time
+    
+    
+    let sessionID = getLocalCurrentSessionID();
+    let updateQuery = `UPDATE sessionData 
+                    SET timeStart =  ${time}
+                    WHERE sessionID = ${sessionID};`;
+
+    let result = await sendSQL(updateQuery);
+    if (noErrors(result)) {
+        console.log("Session start time updated successfully!");
+    }
+}
+
+export async function getStartTime() {
+    let currentSessionID = getLocalCurrentSessionID();
+
+    let getQuery = `SELECT timeStart FROM sessionData 
+                    WHERE sessionID = ${currentSessionID};`;
+
+    let result = await sendSQL(getQuery);
+    if (noErrors(result)) {
+        return result.data[0];
+    }
+    console.log("timeStart error: ", result);
+    return null;
+}
+
+export async function setPauseTime() {
+    let time = Date.now()
+    localStorage.setItem("pausedTime", time); // Store real start time
+    
+    
+    let sessionID = getLocalCurrentSessionID();
+    let updateQuery = `UPDATE sessionData 
+                    SET timeStart =  ${time}
+                    WHERE sessionID = ${sessionID};`;
+
+    let result = await sendSQL(updateQuery);
+    if (noErrors(result)) {
+        console.log("Session pause time updated successfully!");
+    }
+}
+
+export async function getPauseTime() {
+    let currentSessionID = getLocalCurrentSessionID();
+
+    let getQuery = `SELECT timePause FROM sessionData 
+                    WHERE sessionID = ${currentSessionID};`;
+
+    let result = await sendSQL(getQuery);
+    if (noErrors(result)) {
+        return result.data[0];
+    }
+    console.log("timeStart error: ", result);
+    return null;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 export function getRoomData() {
     let savedRoomData = sessionStorage.getItem("roomData");
@@ -184,7 +350,7 @@ export function visitRoom(roomName) {
     sessionStorage.setItem("roomData", JSON.stringify(savedRoomData));
 }
 
-export function getInventory() {
+export function getLocalInventory() {
     let savedInventory = sessionStorage.getItem("inventoryData");
     try {
         savedInventory = JSON.parse(savedInventory);
@@ -209,8 +375,8 @@ export function getInventory() {
     return savedInventory;
 }
 
-export function addItemToInventory(itemID, targetSlotID) {
-    let inventoryData = getInventory();
+export async function addItemToInventory(itemID, targetSlotID) {
+    let inventoryData = getLocalInventory();
     let inventorySlots = document.querySelectorAll('.inventory-slot');
     let newItemId = "item" + (inventoryData.length + 1);
 
@@ -233,17 +399,37 @@ export function addItemToInventory(itemID, targetSlotID) {
     });
 
     saveInventory(inventoryData);
+    
+    let sessionID = getLocalCurrentSessionID();
+
+    let insertQuery = `INSERT INTO sessionItems (sessionID, itemID, inventorySlotName) VALUES (${sessionID}, ${itemID}, '${targetSlotID}');`;
+
+    let result = await sendSQL(insertQuery);
+
+    if(noErrors(result)) {
+        console.log("Added to database inventory");
+    }
+
+}
+export async function moveItem(itemID, slotName) {
+    let currentSessionID = getLocalCurrentSessionID();
+
+    let updateQuery = `UPDATE sessionItems 
+                   SET inventorySlotName = '${slotName}' 
+                   WHERE sessionID = ${currentSessionID} 
+                   AND itemID = ${itemID};`;
+    let result = await sendSQL(updateQuery);
+    noErrors(result);
 }
 
 export function itemInInventory(itemID) {
-    let inventoryData = getInventory();
+    let inventoryData = getLocalInventory();
 
     for (let i = 0;i<inventoryData.length;i++) {
         if (inventoryData[i].itemID === itemID) {
             return true;
         }
     }
-
     return false;
 }
 

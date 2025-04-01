@@ -1,9 +1,9 @@
-DROP TABLE `sessionItems`;
-DROP TABLE `sessionNotes`;
-DROP TABLE `itemData`;
-DROP TABLE `sessionVisits`;
-DROP TABLE `sessionData`;
-DROP TABLE `userData`;
+    DROP TABLE `sessionItems`;
+    DROP TABLE `sessionNotes`;
+    DROP TABLE `itemData`;
+    DROP TABLE `sessionVisits`;
+    DROP TABLE `sessionData`;
+    DROP TABLE `userData`;
 
 CREATE TABLE userData (
     userID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -36,6 +36,7 @@ CREATE TABLE sessionData (
 CREATE TABLE sessionItems (
     sessionID INT NOT NULL,
     itemID INT NOT NULL,
+    inventorySlotName VARCHAR(10) NOT NULL,
     FOREIGN KEY (sessionID) REFERENCES sessionData(sessionID) ON DELETE CASCADE,
     FOREIGN KEY (itemID) REFERENCES itemData(itemID) ON DELETE CASCADE,
     PRIMARY KEY (sessionID, itemID)  -- Composite primary key for uniqueness
@@ -74,6 +75,7 @@ VALUES
 
 INSERT INTO userData (usernameField, passwordField, playerName) 
 VALUES 
+    ('pass', 'pass', 'pass'),
     ('john_doe', 'password123', 'john doe'),
     ('jane_smith', 'securePass456', 'jane smith'),
     ('emily_clark', 'abc123xyz', 'emily clark'),
@@ -82,7 +84,9 @@ VALUES
 
 -- Step 1: Insert session
 INSERT INTO sessionData (userID, timeStart, timePause, runningBoolean, winBoolean)
-VALUES (1, 1625376000, 0, 1, 0);
+VALUES (1, 1625376000, 0, 1, 0),
+    (1, 0, 300000, 0, 1),
+    (1, 0, 400000, 0, 0);
 
 -- Step 2: Update userData to reference the session
 UPDATE userData 
@@ -98,9 +102,12 @@ INSERT INTO sessionVisits (sessionID, crossroadsVisited, jailVisited, parishVisi
 VALUES (1, 0, 0, 0, 0, 0, 0);
 
 -- Step 5: Insert session items
-INSERT INTO sessionItems (sessionID, itemID)
+INSERT INTO sessionItems (sessionID, itemID, inventorySlotName)
 VALUES 
-    (1, 1),
-    (1, 2),
-    (1, 3);
+    (1, 1, 'slot-1'),
+    (1, 2, 'slot-2'),
+    (1, 3, 'slot-3'),
+    (2, 1, 'slot-1'),
+    (2, 7, 'slot-2'),
+    (3, 2, 'slot-1');
 

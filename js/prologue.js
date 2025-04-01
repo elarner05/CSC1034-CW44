@@ -1,4 +1,3 @@
-import * as Timer from "./timer.js";
 import * as SaveData from "./saveData.js";
 import { DialogueUpdater } from "./story-line.js";
 
@@ -20,7 +19,7 @@ SaveData.clearSaveData();
 const textElement = document.getElementById("storyText");
 const nextButton = document.getElementById("nextButton");
 
-const dialogue = new DialogueUpdater(prologueText, textElement, nextButton);
+const dialogue = new DialogueUpdater(prologueText, textElement, nextButton, 1);
 
 dialogue.start();
 
@@ -29,8 +28,10 @@ dialogue.getPromise().then(() => {
     nextButton.classList.remove("hidden");
     nextButton.addEventListener("click", () => {
         if (nextButton.innerHTML === "Continue") {    // Move to the next page when clicking "Continue"
-            Timer.setStartTime();
-            //window.location.href = "main-town.html"; // Change to your next game page
+            SaveData.setStartTime().then(()=> {
+                window.location.href = "main-town.html";   // Change to your next game page
+
+            })
         }
     });
 });

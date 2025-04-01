@@ -112,7 +112,7 @@ let closeDescriptionButton = document.getElementById("closeDescriptionButton");
 let itemDescriptionContainer = document.getElementById("itemDescriptionContainer");
 
 
-let inventoryData = SaveData.getInventory();
+let inventoryData = SaveData.getLocalInventory();
 let inventorySlots = [];
 let currentNotesSuspect = 'Deputy';
 
@@ -197,7 +197,7 @@ export function setupSideBar() {
     // Test data, overwritten by saved inventory
     
 
-    inventoryData = SaveData.getInventory();
+    inventoryData = SaveData.getLocalInventory();
 
     // Use event delegation to handle all dragstart events
     document.addEventListener("dragstart", (e) => {
@@ -209,7 +209,7 @@ export function setupSideBar() {
 
     // Update and reveal description when an item is clicked
     document.addEventListener("click", (e) => {
-        inventoryData = SaveData.getInventory();
+        inventoryData = SaveData.getLocalInventory();
         const clickedItem = e.target.closest('.inventory-item');
         if (clickedItem) {
             
@@ -266,28 +266,15 @@ export function loadNotes(suspectKey) {
 
 export function saveNotes(currentNotesSuspect, notes) {
     sessionStorage.setItem(`notes_${currentNotesSuspect}`, notes);
-
 }
 
 
 
-// adds a new item to the inventory and saves it to be persistant
-
-
-
-// removes an item; for testing purposes only
-export function _removeItemFromInventory(inventoryItemID) {
-    inventoryData = inventoryData.filter(inventoryItem => {return inventoryItem.id !== inventoryItemID});
-    let counter = 1;
-    inventoryData.forEach(inventoryItem => {inventoryItem.id = "item" + counter;counter++;});
-    SaveData.saveInventory(inventoryData);
-    loadInventory();
-}
 
 // loads the data from 'inventoryData' into the inventory
 export function loadInventory() {
     loadSidebarElements();
-    let inventoryData = SaveData.getInventory();
+    let inventoryData = SaveData.getLocalInventory();
     if (inventoryData) {
         inventoryData.forEach(invItem => {
             const itemInfo = itemData.find(item => item.id === invItem.itemID);
@@ -315,14 +302,13 @@ export function loadInventory() {
     }
 }
 
-
-
 export function updateItemSlot(itemId, newSlotId) {
     const item = inventoryData.find(i => i.id === itemId);
     if (item) {
         item.slot = newSlotId;
         SaveData.saveInventory(); // Save updated state
         loadInventory();
+        SaveData.moveItem(item.itemID, newSlotId);
     }
 }
 
