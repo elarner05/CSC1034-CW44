@@ -104,7 +104,14 @@ document.getElementById("newGameButton").addEventListener("click", async functio
     if (result) {
         window.location.href = "prologue.html";
     } else {
+        const errorDisplay = document.getElementById("errorMessage");
         
+        errorDisplay.style.opacity = 1;
+
+
+        setTimeout(()=>{
+            errorDisplay.style.opacity = 0;
+        }, 2000);
     }
 });
 
