@@ -134,7 +134,7 @@ const dialogue = [
     {
       "id": 5,
       "text": [
-        "Depends on what your asking..."
+        "Depends on what you're asking..."
       ],
       "choices": [
         {
@@ -197,7 +197,7 @@ const dialogue = [
             "We've never had trouble with them before, my husband would always be keeping an eye out for them.",
             "He made sure that the fences where always secure.",
             "Made sure that nothing got moved out.",
-            "One night though, he said he had to get a run away horse...",
+            "One night though, he said he had to get a run-away horse...",
             "Never came back..."
         ],
         "choices": [{

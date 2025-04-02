@@ -33,13 +33,13 @@ const dialogue = [
     {
         "id": 2,
         "text": [
-            "You walk upto the counter and wait for Denise to be done with her bartender duties.",
+            "You walk up to the counter and wait for Denise to be done with her bartender duties.",
             "As soon as she's done she makes a swift turn in your direction,",
             "\"So, do you really think you can solve the dead sheriff's case, huh?\""
         ],
         "choices": [
             {
-                "text": "Oh! So you were expecting me? This will make things much easier for the both of us.",
+                "text": "Oh! So, you were expecting me? This will make things much easier for the both of us.",
                 "nextID": 4,
             },
             {
@@ -61,11 +61,11 @@ const dialogue = [
         "text": [
             "You approach an old friendly looking man and he offers you the seat next to him.",
             "You introduce yourself and the old man grumbles,",
-            "\"You're a good lad, but honestly its for the better that that man's gone\""
+            "\"You're a good lad, but honestly it's for the better that that man's gone\""
         ],
         "choices": [
             {
-                "text": "Well, you dont seem to be the only one with that opinion.",
+                "text": "Well, you don't seem to be the only one with that opinion.",
                 "nextID": 7,
             },
             {
@@ -85,7 +85,7 @@ const dialogue = [
     {
         "id": 4,
         "text": [
-            "\"Make sure you ask the right questions only, dont waste my time,\"",
+            "\"Make sure you ask the right questions only, don't waste my time,\"",
             "Denise huffs",
         ],
         "choices": [
@@ -143,7 +143,7 @@ const dialogue = [
     },
     {
         "id": 8,
-        "text": ["\"I'm sorry son, but this hag here is only ever sober in his sleep. I wish I could've witnessed soemthing too but unfortunately I'm of no help.\"",
+        "text": ["\"I'm sorry son, but this hag here is only ever sober in his sleep. I wish I could've witnessed something too but unfortunately I'm of no help.\"",
         ],
         "choices": [
             {
@@ -172,7 +172,7 @@ const dialogue = [
     },
     {
         "id": 13,
-        "text": ["\"Ofcourse, that strange new man who recently got here.\"",
+        "text": ["\"Of course, that strange new man who recently got here.\"",
             "\"He was here that night, Could've been the last man to retire to bed, seemed like he was waiting for something.\"",
             "\"Very odd fella,\"",
             "She adds as an afterthought.",],
