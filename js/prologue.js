@@ -8,7 +8,7 @@ const prologueText = [
     "You can hear the quiet whistle of the wind echo through the desolate town.",
     "As you look to the town board, you see a sign.",
     "‘New sheriff wanted’",
-    "The old sheriff has died.",
+    "The old sheriff is dead.",
     "You are a detective, and you have been tasked with solving the murder of the sheriff.",
     "Your superiors have given you a logbook and a bag to keep track of evidence or clues you may find.",
     "And now you must solve the case."

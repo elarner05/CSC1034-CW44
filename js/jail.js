@@ -53,7 +53,7 @@ const dialogue = [
       "text": [
         "I-I've been doing fine since th-the Sherif died...",
         "I've had to make sure that the townspeople don't cause any trouble.",
-        "Its been hard trying to fill out his position while we wait for a new Sherif..."
+        "It's been hard trying to fill out his position while we wait for a new Sherif..."
       ],
       "choices":[
         {
@@ -69,9 +69,9 @@ const dialogue = [
     {
       "id":4,
       "text": [
-        "Th-theres a few suspicious people about in the town.",
+        "Th-there's a few suspicious people about in the town.",
         "There's that Reverand Willie McCrea",
-        "He alwauys talks about scary stuff",
+        "He always talks about scary stuff",
         "There's also that Rancher, Bernice Becker",
         "She is not fun to deal with"
       ],
@@ -123,9 +123,9 @@ const dialogue = [
     {
       "id": 7,
       "text":[
-        "N-no, suprisingly...",
+        "N-no, surprisingly...",
         "Everyone seemed rather calm about it all.",
-        "I dont think they cared that the Sherif died...."
+        "I don't think they cared that the Sherif died...."
       ],
       "choices":[]
     },
@@ -133,7 +133,7 @@ const dialogue = [
       "id":8,
       "text":[
         "Well...",
-        "I dont think anyone here in this town wants the job.",
+        "I don't think anyone here in this town wants the job.",
         "Everyone is wrapped up in their own things to think about being the Sherif."
       ],
       "choices":[
@@ -148,7 +148,7 @@ const dialogue = [
       "text":[
         "H-he always talks about how we are all going to die...",
         "And how we will all turn to dust.",
-        "I-I dont think he liked the Sherif at all, he seemed to think that he had death coming for him."
+        "I-I don't think he liked the Sherif at all, he seemed to think that he had death coming for him."
       ],
       "choices":[
         {
@@ -196,7 +196,7 @@ const dialogue = [
     {
       "id":13,
       "text":[
-        "From what i saw of it, he had been shot in the back of the spine.",
+        "From what I saw of it, he had been shot in the back of the spine.",
         "It seemed planned to give him a slow and painful death",
         "He couldn't move after he was shot, just left to bleed out.",
         "Found him in a puddle of his own blood"
@@ -211,7 +211,7 @@ const dialogue = [
     {
       "id":14,
       "text":[
-        "There seemed to be a peice of torn cloth that the Sherif was clutching on to...",
+        "There seemed to be a piece of torn cloth that the Sherif was clutching on to...",
         "I'm not sure what it was but it looked like he was holding on for dear life."
       ],
       "choices":[
@@ -235,7 +235,7 @@ const dialogue = [
       "text":[
         "I-I can't say something like that...",
         "But...",
-        "The Reverand is really creepy, he digging a grave a few days before the Sherif died..."
+        "The Reverand is really creepy, he was digging a grave a few days before the Sherif died..."
       ],
       "choices":[]
     },
@@ -243,7 +243,7 @@ const dialogue = [
       "id":17,
       "text":[
         "I-I think she blamed us for her husband going missing...",
-        "I think her husband had to talk to the Sherif about something but he never came back."
+        "I think her husband had to talk to the Sherif about something, but he never came back."
       ]
     },
     {
