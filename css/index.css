@@ -1,9 +1,75 @@
+html, body {
+    overflow: hidden;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.suspect {
+    position: absolute;
+    width: 100px; /* Adjust as needed */
+    height: auto;
+    border: 3px solid red; /* Makes it look pinned */
+    transform: rotate(-5deg); /* Slightly tilted for a real-life effect */
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
+}
+
+.suspect:nth-child(2) {
+    transform: rotate(+5deg); /* Slightly tilted for a real-life effect */
+
+}
+
+.suspect::before {
+    content: "";
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background-color: red;
+    border-color: black;
+    border-radius: 50%;
+    top: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+}
+
+.suspect::after {
+    content: "";
+    position: absolute;
+    width: 2px;
+    height: 120px; /* Length of the "string" */
+    background-color: red;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.suspect:nth-child(1)::after {
+    height: 300px;
+    width: 2px;
+    background-color: red;
+    transform: rotate(20deg);
+}
+
+.suspect:nth-child(2)::after {
+    height: 130px;
+    width: 2px;
+    background-color: red;
+    transform: rotate(-20deg);
+}
+
+
 
 .center-menu {
     background: #555;
     padding: 20px;
     border-radius: 10px;
     display: inline-block;
+    width: fit-content;
+}
+
+.center-menu button {
+    width: fit-content;
 }
 
 .profile-menu {

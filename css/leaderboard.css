@@ -20,7 +20,7 @@
 }
 
 thead {
-    position: sticky;
+    /* position: sticky; */
     top: 0;
     background: #555; /* Keeps it visually distinct */
     z-index: 1;
