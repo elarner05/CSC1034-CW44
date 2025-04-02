@@ -7,10 +7,10 @@ if (!SaveData.checkUserID()) {
 let userID = SaveData.getLocalUserID();
 
 let itemCollectorQuery = `\
-SELECT COUNT(DISTINCT i.itemID) = COUNT(i.itemID) AS allItemsCollected
-FROM itemData i
-LEFT JOIN sessionItems si ON i.itemID = si.itemID
-LEFT JOIN sessionData sd ON si.sessionID = sd.sessionID
+SELECT 
+    COUNT(DISTINCT si.itemID) = (SELECT COUNT(itemID) FROM itemData) AS allItemsCollected
+FROM sessionItems si
+INNER JOIN sessionData sd ON si.sessionID = sd.sessionID
 WHERE sd.userID = ${userID};`
 
 SaveData.sendSQL(itemCollectorQuery).then(result=>{
