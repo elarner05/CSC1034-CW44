@@ -3,6 +3,12 @@ import * as SideBar from "./side-bar.js";
 import * as SaveData from "./saveData.js";
 import ConversationHandler from "./story-line.js";
 
+if (!SaveData.checkSessionID()) {
+    window.location.href = "index.html";
+}
+
+
+SaveData.setupAutoSaveTime();
 
 const dialogue = [
     {

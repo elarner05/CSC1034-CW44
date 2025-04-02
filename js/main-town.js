@@ -1,10 +1,17 @@
 import * as Timer from "./timer.js";
 import * as SideBar from "./side-bar.js";
 
+import * as SaveData from "./saveData.js";
+
+if (!SaveData.checkSessionID()) {
+    window.location.href = "index.html";
+}
+
 Timer.setupTimer();
 
 SideBar.setupSideBar();
 
+SaveData.setupAutoSaveTime();
 
 document.addEventListener("DOMContentLoaded", function () {
     const accuseButton = document.getElementById("accuseButton");
@@ -66,7 +73,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
         }
         else if (selectedSuspect) {
-            window.location.href = selectedLocation;
+            let win = selectedSuspect === "Bernice Becker";
+            SaveData.endGame(win, selectedSuspect).then(()=>{window.location.href = selectedLocation;});
         }
     });
 });
@@ -75,7 +83,6 @@ document.addEventListener("DOMContentLoaded", function () {
 const roomsDiv = document.getElementById("roomInformation");
 
 
-import * as SaveData from "./saveData.js";
 
 let savedRoomData = SaveData.getRoomData();
 

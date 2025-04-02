@@ -21,6 +21,7 @@ export function _printSessionStorage() {
 }
 
 export async function sendSQL(sqlQuery) {
+    console.log("Sending: ", sqlQuery);
     dbConfig.set('query', sqlQuery);
     try {
         let response = await fetch(dbConnectorUrl, {
@@ -110,12 +111,27 @@ export function getLocalCurrentSessionID() {
     }
 }
 
+export function checkSessionID() {
+    return localStorage.getItem("CurrentSessionID") !== null;
+}
+
+export function checkUserID() {
+    return localStorage.getItem("UserID") !== null;
+}
+
 
 
 
 
 export async function createNewSession() {
     let userID = getLocalUserID();
+    let currentSessionID = parseInt(getLocalCurrentSessionID());
+    if (currentSessionID !== 0) {
+        let updateQuery = `UPDATE sessionData SET runningBoolean = 0 WHERE sessionID = ${currentSessionID};`;
+    
+        let result = await sendSQL(updateQuery);
+        noErrors(result);
+    }
 
     // Insert a new session
     let createQuery = `INSERT INTO sessionData (userID, timeStart, timePause, runningBoolean, winBoolean) 
@@ -162,6 +178,15 @@ export async function createNewSession() {
         return false;
     }
 
+    // Insert into sessionVisits (Initialize with sessionID)
+    let sessionVisitsQuery = `INSERT INTO sessionVisits (sessionID) 
+                             VALUES (${sessionID});`;
+
+    let visitsResult = await sendSQL(sessionVisitsQuery);
+    if (!noErrors(visitsResult)) {
+        return false;
+    }
+
     console.log("Session created successfully.");
 
     return true;
@@ -189,6 +214,79 @@ export async function getSession() {
     return result.data[0];
 }
 
+export async function loadSessionData() {
+    let currentSessionID = getLocalCurrentSessionID();
+    if (!currentSessionID) return;
+
+    let sessionData = await getSession();
+    let newTime = Date.now()-(sessionData.timePause-sessionData.timeStart);
+    setStartTime(newTime);
+    console.log("New Time: ", newTime);
+
+    sessionStorage.clear();
+
+    if(!sessionData) {
+        return false;
+    }
+
+    let inventoryDataQuery = `SELECT * FROM sessionItems WHERE sessionID = ${currentSessionID};`
+    let result = await sendSQL(inventoryDataQuery);
+    if (!noErrors(result)) {
+        return false;
+    }
+
+    if (result.data.length !== 0) {
+        result.data.forEach(item=>{
+            console.log(item);
+            console.log(item.itemID, item.inventorySlotName);
+            addItemToInventoryOnlyLocal(parseInt(item.itemID), item.inventorySlotName);
+        })
+    }
+
+    let notesDataQuery = `SELECT * FROM sessionNotes WHERE sessionID = ${currentSessionID};`
+    result = await sendSQL(notesDataQuery);
+    if (!noErrors(result)) {
+        return false;
+    }
+
+
+    saveNotes("Deputy", result.data[0].deputyNotes);
+    saveNotes("Arms Dealer", result.data[0].armsDealerNotes);
+    saveNotes("Preacher", result.data[0].preacherNotes);
+    saveNotes("Drifter", result.data[0].drifterNotes);
+    saveNotes("Rancher", result.data[0].rancherNotes);
+    saveNotes("Saloon Owner", result.data[0].saloonOwnerNotes);
+    
+    
+    let visitRoomQuery = `SELECT * FROM sessionVisits WHERE sessionID = ${currentSessionID}`;
+
+    result = await sendSQL(visitRoomQuery);
+    if (!noErrors(result)) {
+        return false;
+    }
+
+    if (result.data[0].crossroadsVisited === "1") {
+        visitRoomOnlyLocal("Crossroads");
+    }
+    if (result.data[0].saloonVisited === "1") {
+        visitRoomOnlyLocal("Saloon");
+    }
+    if (result.data[0].parishVisited === "1") {
+        visitRoomOnlyLocal("Parish");
+    }
+    if (result.data[0].jailVisited === "1") {
+        visitRoomOnlyLocal("Jail");
+    }
+    if (result.data[0].ranchVisited === "1") {
+        visitRoomOnlyLocal("Ranch");
+    }
+    if (result.data[0].gunStoreVisited === "1") {
+        visitRoomOnlyLocal("Gun Store");
+    }
+
+    return true;
+}
+
 export async function getUserData() {
     let userID = getLocalUserID();
 
@@ -210,8 +308,11 @@ export async function getUserData() {
 
 
 
-export async function setStartTime() {
-    let time = Date.now()
+export async function setStartTime(time=0) {
+    if (time===0) {
+        time = Date.now()
+    }
+    
     localStorage.removeItem("gameOver")
     localStorage.setItem("gameStartTime", time); // Store real start time
     
@@ -248,13 +349,24 @@ export async function setPauseTime() {
     
     let sessionID = getLocalCurrentSessionID();
     let updateQuery = `UPDATE sessionData 
-                    SET timeStart =  ${time}
+                    SET timePause =  ${time}
                     WHERE sessionID = ${sessionID};`;
 
     let result = await sendSQL(updateQuery);
     if (noErrors(result)) {
         console.log("Session pause time updated successfully!");
     }
+}
+
+export async function resetPauseTime() {
+    localStorage.removeItem("pausedTime");
+    let sessionID = getLocalCurrentSessionID();
+    let updateQuery = `UPDATE sessionData 
+                    SET timePause = 0
+                    WHERE sessionID = ${sessionID};`;
+
+    let result = await sendSQL(updateQuery);
+    noErrors(result);
 }
 
 export async function getPauseTime() {
@@ -267,11 +379,38 @@ export async function getPauseTime() {
     if (noErrors(result)) {
         return result.data[0];
     }
-    console.log("timeStart error: ", result);
+    console.log("timePause error: ", result);
     return null;
 }
 
+export function setupAutoSaveTime() {
+    setInterval(setPauseTime, 10000);
+}
 
+export async function endGame(win, accusedName="") {
+
+    await setPauseTime();
+    let userID = getLocalUserID();
+    let currentSessionID = getLocalCurrentSessionID();
+    if (win) {
+        win = 1;
+    } else {
+        win = 0;
+    }
+
+    let updateQuery = `UPDATE sessionData SET runningBoolean = 0, winBoolean = ${win}, accusedName = '${accusedName}' WHERE sessionID = ${currentSessionID};`
+    let result = await sendSQL(updateQuery);
+
+    noErrors(result)
+
+    updateQuery = `UPDATE userData SET currentSessionID = 0 WHERE userID = ${userID};`;
+    
+    result = await sendSQL(updateQuery);
+    noErrors(result);
+
+    localStorage.removeItem("CurrentSessionID");
+
+}
 
 
 
@@ -306,6 +445,7 @@ export async function getPauseTime() {
 
 
 export function getRoomData() {
+
     let savedRoomData = sessionStorage.getItem("roomData");
     try{
         savedRoomData = JSON.parse(savedRoomData);
@@ -339,7 +479,14 @@ export function getRoomData() {
     return savedRoomData;
 }
 
-
+function visitRoomOnlyLocal(roomName) {
+    let savedRoomData = getRoomData();
+    
+    savedRoomData.forEach(room => {
+        if (room.name === roomName) {room.visited = true;}
+    });
+    sessionStorage.setItem("roomData", JSON.stringify(savedRoomData));
+}
 
 export function visitRoom(roomName) {
     let savedRoomData = getRoomData();
@@ -348,6 +495,36 @@ export function visitRoom(roomName) {
         if (room.name === roomName) {room.visited = true;}
     });
     sessionStorage.setItem("roomData", JSON.stringify(savedRoomData));
+
+    // Insert into sessionNotes (Initialize with empty strings)
+    let DBRoomName;
+    switch (roomName){
+    case "Crossroads":
+        DBRoomName = "crossroadsVisited";
+        break
+    case "Jail":
+        DBRoomName = "jailVisited";
+        break
+    case "Parish":
+        DBRoomName = "parishVisited";
+        break
+    case "Saloon":
+        DBRoomName = "saloonVisited";
+        break
+    case "Ranch":
+        DBRoomName = "ranchVisited";
+        break;
+    case "Gun Store":
+        DBRoomName = "gunStoreVisited";
+        break
+    }
+    let currentSessionID = getLocalCurrentSessionID();
+    let sessionNotesQuery = `UPDATE sessionVisits SET ${DBRoomName} = 1 WHERE sessionID = ${currentSessionID};`;
+
+    sendSQL(sessionNotesQuery).then(notesResult => {
+        noErrors(notesResult);
+    })
+    
 }
 
 export function getLocalInventory() {
@@ -373,6 +550,33 @@ export function getLocalInventory() {
         sessionStorage.setItem("inventoryData", JSON.stringify(savedInventory));
     }
     return savedInventory;
+}
+
+export async function addItemToInventoryOnlyLocal(itemID, targetSlotID) {
+    let inventoryData = getLocalInventory();
+    let inventorySlots = document.querySelectorAll('.inventory-slot');
+    let newItemId = "item" + (inventoryData.length + 1);
+
+
+    if (targetSlotID === "nextAvailable") {
+        targetSlotID = inventorySlots.length+1;
+        for (const slot of inventorySlots) {
+            if (document.getElementById(slot.id).children.length === 0) {
+                targetSlotID = slot.id;
+                console.log("Added item to slot.id: ", slot.id);
+                break;
+            } 
+        }
+        
+    }
+
+    inventoryData.push({
+        id: newItemId,
+        itemID: itemID,
+        slot: targetSlotID
+    });
+
+    saveInventory(inventoryData);
 }
 
 export async function addItemToInventory(itemID, targetSlotID) {
@@ -431,6 +635,43 @@ export function itemInInventory(itemID) {
         }
     }
     return false;
+}
+
+export function saveNotes(currentNotesSuspect, notes) {
+    sessionStorage.setItem(`notes_${currentNotesSuspect}`, notes);
+
+    let DBNotesName;
+    console.log(currentNotesSuspect);
+    switch (currentNotesSuspect) {
+    case "Deputy":
+        DBNotesName = "deputyNotes";
+        break;
+    case "Arms Dealer":
+        DBNotesName = "armsDealerNotes";
+        break;
+    case "Preacher":
+        DBNotesName = "preacherNotes";
+        break;
+    case "Drifter":
+        DBNotesName = "drifterNotes";
+        break;
+    case "Rancher":
+        DBNotesName = "rancherNotes";
+        break;
+    case "Saloon Owner":
+        DBNotesName = "saloonOwnerNotes";
+        break;
+    default:
+        console.log("Unknown notes reference: ", currentNotesSuspect);
+        return;
+    }
+    let currentSessionID = getLocalCurrentSessionID();
+    
+    notes = notes.replaceAll("'", "''");
+    
+    let updateQuery = `UPDATE sessionNotes SET ${DBNotesName} = '${notes}' WHERE sessionID = ${currentSessionID};`;
+
+    sendSQL(updateQuery).then(result => noErrors(result));
 }
 
 // Saves inventory json array

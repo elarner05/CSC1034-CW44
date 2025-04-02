@@ -1,6 +1,9 @@
 import * as SaveData from "./saveData.js";
 import { DialogueUpdater } from "./story-line.js";
 
+if (!SaveData.checkSessionID()) {
+    window.location.href = "index.html";
+}
 
 const prologueText = [
     "As the sun rises, you arrive at Obsidian Springs.",

@@ -30,6 +30,7 @@ CREATE TABLE sessionData (
     timePause BIGINT NOT NULL,
     runningBoolean TINYINT(1) DEFAULT 1,
     winBoolean TINYINT(1) DEFAULT 0,
+    accusedName VARCHAR(20) DEFAULT '',
     FOREIGN KEY (userID) REFERENCES userData(userID) ON DELETE CASCADE
 );
 

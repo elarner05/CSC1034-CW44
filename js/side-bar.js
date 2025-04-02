@@ -6,6 +6,7 @@ export function injectSidebar() {
     <div id="sideBar">
         <button class="side-bar" id="inventory"></button>
         <button class="side-bar" id="notes"></button>
+        <button class="side-bar" id="saveQuit"></button>
     </div>
 
 
@@ -38,12 +39,12 @@ export function injectSidebar() {
         <div class="notes-box">
             <h2>Investigation Notes</h2>
             <div class="notes-tabs" id="notesTabs">
-                <button class="notes-tab active-tab" data-suspect="suspect1">Deputy</button>
-                <button class="notes-tab" data-suspect="suspect2">Arms Dealer</button>
-                <button class="notes-tab" data-suspect="suspect3">Preacher</button>
-                <button class="notes-tab" data-suspect="suspect4">Drifter</button>
-                <button class="notes-tab" data-suspect="suspect5">Rancher</button>
-                <button class="notes-tab" data-suspect="suspect6">Saloon Owner</button>
+                <button class="notes-tab active-tab" data-suspect="Deputy">Deputy</button>
+                <button class="notes-tab" data-suspect="Arms Dealer">Arms Dealer</button>
+                <button class="notes-tab" data-suspect="Preacher">Preacher</button>
+                <button class="notes-tab" data-suspect="Drifter">Drifter</button>
+                <button class="notes-tab" data-suspect="Rancher">Rancher</button>
+                <button class="notes-tab" data-suspect="Saloon Owner">Saloon Owner</button>
             </div>
             <textarea id="notesArea" maxlength="1000" placeholder="Write your clues, suspicions, and theories here..."></textarea>
 
@@ -145,18 +146,22 @@ export function setupSideBar() {
         loadNotes(currentNotesSuspect);
     });
 
+    document.getElementById("saveQuit").addEventListener('click', () => {
+        SaveData.setPauseTime().then(window.location.href = "index.html")
+    });
+
     // Load initial notes on page load
 
 
     closeNotesButton.addEventListener('click', () => {
-        saveNotes(currentNotesSuspect, notesArea.value); // Save notes
+        SaveData.saveNotes(currentNotesSuspect, notesArea.value); // Save notes
         notesContainer.classList.add('hidden');
     });
 
     notesTabs.forEach(tab => {
         tab.addEventListener('click', () => {
             // Save current notes before switching
-            saveNotes(currentNotesSuspect, notesArea.value);
+            SaveData.saveNotes(currentNotesSuspect, notesArea.value);
 
             // Switch active tab
             notesTabs.forEach(t => t.classList.remove('active-tab'));
@@ -264,9 +269,7 @@ export function loadNotes(suspectKey) {
     }
 }
 
-export function saveNotes(currentNotesSuspect, notes) {
-    sessionStorage.setItem(`notes_${currentNotesSuspect}`, notes);
-}
+
 
 
 

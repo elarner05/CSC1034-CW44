@@ -60,7 +60,10 @@ if (localStorage.getItem("SignedIn") === "true") {
     document.getElementById("userName").textContent = currentUser.name;
 
     // Reenable buttons
-    document.getElementById("continueButton").disabled = false;
+    if (SaveData.checkSessionID()) {
+        document.getElementById("continueButton").disabled = false;
+    }
+    
     document.getElementById("newGameButton").disabled = false;
     document.getElementById("statsButton").disabled = false;
     document.getElementById("editProfileButton").disabled = false;
@@ -90,7 +93,7 @@ if (localStorage.getItem("SignedIn") === "true") {
 // Eventlisteners    
 
 document.getElementById("continueButton").addEventListener("click", function() {
-
+    SaveData.loadSessionData().then(success=>{if (success) {window.location.href = "main-town.html";}});
 });
 
 document.getElementById("newGameButton").addEventListener("click", async function() {
@@ -116,7 +119,11 @@ document.getElementById("signInButton").addEventListener("click", function() {
 });
 
 document.getElementById("logoutButton").addEventListener("click", function() {
-    localStorage.setItem("SignedIn", "false");
+    localStorage.removeItem("Username");
+    localStorage.removeItem("UserID");
+    localStorage.removeItem("SignedIn");
+    localStorage.removeItem("Password");
+    localStorage.removeItem("CurrentSessionID");
     window.location.reload();
 });
 

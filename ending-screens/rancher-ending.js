@@ -1,3 +1,7 @@
+import * as SaveData from "../js/saveData.js";
+if (!SaveData.checkUserID()) {
+      window.location.href = "../index.html";
+}
 
 function showRightChoice() {
     const wrongChoiceDiv = document.getElementById('rightChoice');

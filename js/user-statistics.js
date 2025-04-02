@@ -1,8 +1,8 @@
 
 import * as SaveData from "./saveData.js";
 
-if (!localStorage.getItem("CurrentUserData")){
-  window.location.href ="index.html"
+if (!SaveData.checkUserID()) {
+      window.location.href = "index.html";
 }
 
 let userData = JSON.parse(localStorage.getItem("CurrentUserData"));

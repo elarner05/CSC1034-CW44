@@ -35,6 +35,9 @@ document.getElementById('signinForm').addEventListener('submit', async function(
       localStorage.setItem("UserID", result.data[0].userID);
       localStorage.setItem("SignedIn", "true");
       localStorage.setItem("Password", password);
+      if (result.data[0].currentSessionID > 0) {
+        localStorage.setItem("CurrentSessionID", result.data[0].currentSessionID);
+      }
       // console.log(result.data);
       window.location.href = 'index.html';
     }

@@ -336,6 +336,10 @@
     
 }
 
+#saveQuit {
+    background-image: url("../assets/save-icon.png");
+}
+
 #gameClock {
     position: absolute;
     top: 2px;

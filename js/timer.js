@@ -1,4 +1,6 @@
 
+import { endGame } from "./saveData.js";
+
 // Constants
 const GAME_START_HOUR = 6;  // 6 AM start
 const GAME_END_HOUR = 22;   // 10 PM end
@@ -58,6 +60,9 @@ export function gameTimeOut() {
     // Checks to make sure it can't retrigger over and over
     if (localStorage.getItem("gameOver")) return;
     localStorage.setItem("gameOver","true");
+
+    endGame(false); // End the game in the database
+    
     // Creates a text box to let the user know what happened
     const dialogueBox = document.createElement("div");
     dialogueBox.textContent = "The sun has set...";
@@ -97,9 +102,4 @@ export function updateClockDisplay() {
             clock.style.color = "#f5e3c3";
         }
     } catch {}
-}
-
-
-export function pauseGame() {
-    clearSaveData.setPauseTime();
 }
