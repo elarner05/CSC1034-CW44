@@ -74,14 +74,14 @@ VALUES
     (4, 'Letter to Drifter', 'A letter founded in the drifter''s bag, addressed ''Dear friend,''. It requests his presence, simply signed "S".', 'assets/drifters-note.png'),
     (7, 'Torn Poster', 'A old torn poster found blown behind a gravestone. It states: "WANTED: Bandit McCrea". It must be over 20 years old', 'assets/torn-poster.png');
 
-INSERT INTO userData (usernameField, passwordField, playerName) 
+INSERT INTO userData (usernameField, passwordField, playerName, noOfSessions, totalTime, noOfWins) 
 VALUES 
-    ('pass', 'pass', 'pass'),
-    ('john_doe', 'password123', 'john doe'),
-    ('jane_smith', 'securePass456', 'jane smith'),
-    ('emily_clark', 'abc123xyz', 'emily clark'),
-    ('david_brown', 'myPass789', 'david brown'),
-    ('lucas_jones', '1234Secure!', 'lucas jones');
+    ('pass', 'pass', 'pass', 21, 361829730, 5),
+    ('john_doe', 'password123', 'john doe', 0, 0, 0),
+    ('jane_smith', 'securePass456', 'jane smith', 0, 0, 0),
+    ('emily_clark', 'abc123xyz', 'emily clark', 0, 0, 0),
+    ('david_brown', 'myPass789', 'david brown', 0, 0, 0),
+    ('lucas_jones', '1234Secure!', 'lucas jones', 0, 0, 0);
 
 -- Step 1: Insert session
 INSERT INTO sessionData (userID, timeStart, timePause, runningBoolean, winBoolean)
