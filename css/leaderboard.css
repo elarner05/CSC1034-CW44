@@ -1,0 +1,56 @@
+
+.information {
+    width: 50vw;
+    max-height: 60vh; /* Limits height to avoid overflow */
+    overflow-y: auto; /* Enables vertical scrolling */
+    background: #444444;
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Makes the table header fixed */
+.information table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: auto;
+}
+
+thead {
+    position: sticky;
+    top: 0;
+    background: #555; /* Keeps it visually distinct */
+    z-index: 1;
+}
+
+th {
+    border: 1px solid black;
+}
+
+tr .sortBy{
+    background-color: #444;
+}
+
+th, td {
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    min-width: fit-content;
+}
+
+
+#backButton {
+    margin: 10px 5px;
+    padding: 10px 20px;
+    background: #777;
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 10px;
+}
+

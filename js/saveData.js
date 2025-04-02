@@ -220,8 +220,12 @@ export async function loadSessionData() {
 
     let sessionData = await getSession();
     let newTime = Date.now()-(sessionData.timePause-sessionData.timeStart);
-    setStartTime(newTime);
+
+    await setStartTime(newTime);
+    await setPauseTime();
+
     console.log("New Time: ", newTime);
+    console.log("Time passed: ", (Date.now()-newTime)/1000, "seconds.");
 
     sessionStorage.clear();
 

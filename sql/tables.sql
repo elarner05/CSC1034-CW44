@@ -74,35 +74,40 @@ VALUES
     (4, 'Letter to Drifter', 'A letter founded in the drifter''s bag, addressed ''Dear friend,''. It requests his presence, simply signed "S".', 'assets/drifters-note.png'),
     (7, 'Torn Poster', 'A old torn poster found blown behind a gravestone. It states: "WANTED: Bandit McCrea". It must be over 20 years old', 'assets/torn-poster.png');
 
-INSERT INTO userData (usernameField, passwordField, playerName, noOfSessions, totalTime, noOfWins) 
+INSERT INTO userData (usernameField, passwordField, playerName, currentSessionID, noOfSessions, totalTime, noOfWins) 
 VALUES 
-    ('pass', 'pass', 'pass', 21, 361829730, 5),
-    ('john_doe', 'password123', 'john doe', 0, 0, 0),
-    ('jane_smith', 'securePass456', 'jane smith', 0, 0, 0),
-    ('emily_clark', 'abc123xyz', 'emily clark', 0, 0, 0),
-    ('david_brown', 'myPass789', 'david brown', 0, 0, 0),
-    ('lucas_jones', '1234Secure!', 'lucas jones', 0, 0, 0);
+    ('pass', 'pass', 'pass', 1, 3, 3629730, 5),
+    ('john_doe', 'password123', 'john doe', 0, 4, 500000, 0),
+    ('jane_smith', 'securePass456', 'jane smith', 0, 2, 594027, 2),
+    ('emily_clark', 'abc123xyz', 'emily clark', 0, 7, 3849503, 1),
+    ('david_brown', 'myPass789', 'david brown', 0, 1, 284950, 0),
+    ('lucas_jones', '1234Secure!', 'lucas jones', 0, 6, 103948, 3);
 
 -- Step 1: Insert session
-INSERT INTO sessionData (userID, timeStart, timePause, runningBoolean, winBoolean)
-VALUES (1, 1625376000, 0, 1, 0),
-    (1, 0, 300000, 0, 1),
-    (1, 0, 400000, 0, 0);
+INSERT INTO sessionData (userID, timeStart, timePause, runningBoolean, winBoolean, accusedName)
+VALUES (1, 1743604274634, 1743604454634, 1, 0, ''),
+    (1, 1743604314992, 1743604477992, 0, 1, 'Bernice Becker'),
+    (1, 1743604160781, 1743604502781, 0, 0, ''),
+    (2, 1743604274634, 1743604454634, 1, 0, ''),
+    (2, 1743604314992, 1743604476992, 0, 1, 'Bernice Becker'),
+    (2, 1743604339185, 1743604681185, 0, 0, 'Bernice Becker'),
+    (2, 1743604160781, 1743604502781, 0, 0, 'The Drifter');
 
--- Step 2: Update userData to reference the session
-UPDATE userData 
-SET currentSessionID = 1
-WHERE userID = 1;
-
--- Step 3: Insert session notes
+-- Step 2: Insert session notes
 INSERT INTO sessionNotes (sessionID, deputyNotes, armsDealerNotes, preacherNotes, drifterNotes, rancherNotes, saloonOwnerNotes)
 VALUES (1, '', '', '', '', '', '');
 
--- Step 4: Insert session visits
+-- Step 3: Insert session visits
 INSERT INTO sessionVisits (sessionID, crossroadsVisited, jailVisited, parishVisited, saloonVisited, gunStoreVisited, ranchVisited)
-VALUES (1, 0, 0, 0, 0, 0, 0);
+VALUES (1, 1, 1, 1, 1, 1, 1),
+(2, 1, 1, 1, 1, 1, 1),
+(3, 1, 1, 0, 1, 1, 1),
+(4, 1, 1, 1, 1, 1, 1),
+(5, 1, 0, 1, 1, 1, 1),
+(6, 1, 1, 1, 1, 0, 1),
+(7, 1, 1, 1, 1, 1, 0);
 
--- Step 5: Insert session items
+-- Step 4: Insert session items
 INSERT INTO sessionItems (sessionID, itemID, inventorySlotName)
 VALUES 
     (1, 1, 'slot-1'),
@@ -110,5 +115,8 @@ VALUES
     (1, 3, 'slot-3'),
     (2, 1, 'slot-1'),
     (2, 7, 'slot-2'),
-    (3, 2, 'slot-1');
+    (3, 2, 'slot-1'),
+    (4, 4, 'slot-1'),
+    (4, 2, 'slot-7'),
+    (6, 3, 'slot-2');
 

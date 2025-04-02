@@ -5,16 +5,36 @@ table{
 }
 
 th,td{
-    border-color: #FFFFFF;
-    border-width: 1px solid;
+    border: 1px solid #F0F0F0;
+    padding: 5px;
+    text-align: center; 
+    text-wrap: nowrap;
 }
 
-.center-menu {
+td {
+}
+
+.main-container {
+    display: flex;
+    top: 0;
+    left: 0;
     width: 100%;
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.information {
+    width: auto;
     background: #444444;
     padding: 20px;
     border-radius: 10px;
-    display: inline-block;
+}
+
+.information table {
+    margin: 0 auto;
+    border-spacing: 10px;
 }
 
 #userInformation{

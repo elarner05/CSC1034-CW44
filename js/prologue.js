@@ -31,10 +31,10 @@ dialogue.getPromise().then(() => {
     nextButton.classList.remove("hidden");
     nextButton.addEventListener("click", () => {
         if (nextButton.innerHTML === "Continue") {    // Move to the next page when clicking "Continue"
-            SaveData.setStartTime().then(()=> {
+            SaveData.setStartTime().then(()=>SaveData.setPauseTime.then(()=> {
                 window.location.href = "main-town.html";   // Change to your next game page
 
-            })
+            }))
         }
     });
 });

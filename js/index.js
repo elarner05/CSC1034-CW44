@@ -113,6 +113,7 @@ document.getElementById("statsButton").addEventListener("click", function() {
 
 
 document.getElementById("leaderboardButton").addEventListener("click", function() {
+    window.location.href = "leaderboard.html";
 });
 
 
