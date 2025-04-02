@@ -4,7 +4,7 @@
     max-height: 60vh; /* Limits height to avoid overflow */
     overflow-y: auto; /* Enables vertical scrolling */
     background: #444444;
-    padding: 20px;
+    padding: 0px;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
@@ -14,13 +14,14 @@
 
 /* Makes the table header fixed */
 .information table {
+    padding: 5px;
     width: 100%;
     border-collapse: collapse;
     table-layout: auto;
 }
 
 thead {
-    /* position: sticky; */
+    position: sticky;
     top: 0;
     background: #555; /* Keeps it visually distinct */
     z-index: 1;

@@ -56,7 +56,7 @@ async function fillUserData(userData) {
       timesWon.innerHTML = userData.noOfWins;
       timesLost.innerHTML = parseInt(userData.noOfSessions) - parseInt(userData.noOfWins);
       let rate = parseInt((parseInt(userData.noOfWins)/parseInt(userData.noOfSessions)*100));
-      winRate.innerHTML = rate === NaN ? rate+"%" : "N/A";
+      winRate.innerHTML = rate !== NaN ? rate+"%" : "N/A";
 
 
       let getItemsQuery = `SELECT si.itemID, i.itemName, i.itemDescription, i.itemPath 
@@ -71,8 +71,9 @@ async function fillUserData(userData) {
             console.log(userData.noOfSessions);
 
             let aveItems = (result.data.length/parseInt(userData.noOfSessions)).toFixed(2);
+            console.log(aveItems);
       
-            averageItems.innerHTML = aveItems === NaN ? aveItems : "N/A";
+            averageItems.innerHTML = aveItems !== NaN ? aveItems : "N/A";
       }
 }
 
