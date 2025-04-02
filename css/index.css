@@ -172,7 +172,7 @@ button:disabled:hover {
     border-radius: 5px;
     
     position: absolute;
-    bottom: 125%; /* Position above the button/group of buttons */
+    bottom: 116%; /* Position above the button/group of buttons */
     left: 50%;
     transform: translateX(-50%);
     white-space: nowrap;
