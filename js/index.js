@@ -68,6 +68,7 @@ if (localStorage.getItem("SignedIn") === "true") {
     
     document.getElementById("newGameButton").disabled = false;
     document.getElementById("statsButton").disabled = false;
+    document.getElementById("achievementsButton").disabled = false;
     document.getElementById("editProfileButton").disabled = false;
 
     document.querySelectorAll(".tooltip").forEach(tooltip => {
@@ -110,6 +111,11 @@ document.getElementById("newGameButton").addEventListener("click", async functio
 document.getElementById("statsButton").addEventListener("click", function() {
     window.location.href = "user-statistics.html";
 });
+
+document.getElementById("achievementsButton").addEventListener("click", function() {
+    window.location.href = "achievements.html";
+});
+
 
 
 document.getElementById("leaderboardButton").addEventListener("click", function() {
