@@ -16,6 +16,7 @@ let soundSlider = document.getElementById("soundRange");
 let volume = 0.5
 
 let fontSizeSlider = document.getElementById("fontSizeRange");
+let fontSizeMultiplier = 1;
 
 
 try {
@@ -24,13 +25,14 @@ try {
     console.warn("Previous sound setting not found");
 }
 
-// try {
-//     fontSizeSlider.value = Number(localStorage.getItem("fontSizeSetting"));
-//     fontSizeMultiplier = 1+(0.25*(fontSizeSlider.value-2));
-//     applyFontMultiplier(fontSizeMultiplier);
-// } catch (e) {
+document.addEventListener("DOMContentLoaded", () => {
+    
+        fontSizeSlider.value = parseInt(localStorage.getItem("fontSizeSetting"));
+        fontSizeMultiplier = 1+(0.25*(fontSizeSlider.value-2));
+        applyFontMultiplier(fontSizeMultiplier);
+    
+});
 
-// }
 
 // Update the current slider value (each time you drag the slider handle)
 soundSlider.oninput = function() {
