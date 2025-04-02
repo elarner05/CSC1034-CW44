@@ -392,18 +392,23 @@ export async function endGame(win, accusedName="") {
     await setPauseTime();
     let userID = getLocalUserID();
     let currentSessionID = getLocalCurrentSessionID();
+
+    let userData = await getUserData();
+    let sessionData = await getSession();
     if (win) {
         win = 1;
     } else {
         win = 0;
     }
 
+
+
     let updateQuery = `UPDATE sessionData SET runningBoolean = 0, winBoolean = ${win}, accusedName = '${accusedName}' WHERE sessionID = ${currentSessionID};`
     let result = await sendSQL(updateQuery);
 
     noErrors(result)
 
-    updateQuery = `UPDATE userData SET currentSessionID = 0 WHERE userID = ${userID};`;
+    updateQuery = `UPDATE userData SET currentSessionID = 0, noOfSessions = ${parseInt(userData.noOfSessions)+1}, totalTime = ${parseInt(userData.totalTime) + (parseInt(sessionData.timePause) - parseInt(sessionData.timeStart))}, noOfWins = ${win ? parseInt(userData.noOfWins)+1 : parseInt(userData.noOfWins)} WHERE userID = ${userID};`;
     
     result = await sendSQL(updateQuery);
     noErrors(result);
