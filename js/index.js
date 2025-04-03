@@ -35,10 +35,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 // Update the current slider value (each time you drag the slider handle)
-soundSlider.oninput = function() {
-    volume = this.value/100;
-    localStorage.setItem("soundSetting", this.value);
-}
+// soundSlider.oninput = function() {
+//     volume = this.value/100;
+//     localStorage.setItem("soundSetting", this.value);
+// }
 
 fontSizeSlider.oninput = function() {
     let fontSizeMultiplier = 1+(0.25*(this.value-2));
