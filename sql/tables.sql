@@ -69,10 +69,12 @@ CREATE TABLE sessionVisits (
 INSERT INTO itemData (itemID, itemName, itemDescription, itemPath) VALUES
 (3, 'Muddy Cloth', 'A muddy cloth found at the ranch. It has marks on it', 'assets/muddy-rag.png'),
 (4, 'Letter to Drifter', 'A letter found in the drifter''s bag, addressed ''Dear friend,''. It requests his presence, simply signed "S".', 'assets/drifters-note.png'),
+(5, 'Yellow Boy Specifications', 'Fires a .44 caliber round, 24 inches long, with lever action and a tubular magazine', 'assets/yellow-boy-gun-specs.png'),
+(6, 'Colt Single Action Revolver Specifications', 'Fires a colt .45, 11 inches long, unparalleled durability, with hammer loading', 'assets/colt-revolver-gun-specs.png'),
 (7, 'Torn Poster', 'An old torn poster found blown behind a gravestone. It states: "WANTED: Bandit McCrea". It must be over 20 years old', 'assets/torn-poster.png'),
 (8, 'Customer Logbook', 'A logbook that contains records of all the customers that visited the saloon.', 'assets/ledger.png'),
-(9, 'Deputy''s Notes', 'A note taken from the deputy''s desk. Rants of hatred directed towards the Sheriff.', 'assets/deputy-notes.png');
-
+(9, 'Deputy''s Notes', 'A note taken from the deputy''s desk. Rants of hatred directed towards the Sheriff.', 'assets/deputy-notes.png'),
+(10. 'Glass Shard', 'Found at the arms dealer''s, likely from an arguement about money', 'assets/glass-shard.png');
 
 -- INSERT INTO userData (usernameField, passwordField, playerName, currentSessionID, noOfSessions, totalTime, noOfWins) 
 -- VALUES 
@@ -185,6 +187,9 @@ VALUES
     -- Session where all items are found (sessionID = 10)
     (10, 3, 'slot-3'),
     (10, 4, 'slot-4'),
-    (10, 7, 'slot-5'),
-    (10, 8, 'slot-6'),
-    (10, 9, 'slot-7');
+    (10, 5, 'slot-5'),
+    (10, 6, 'slot-6'),
+    (10, 7, 'slot-7'),
+    (10, 8, 'slot-8'),
+    (10, 9, 'slot-9'),
+    (10, 10, 'slot-11');
