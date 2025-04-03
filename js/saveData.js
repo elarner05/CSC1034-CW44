@@ -362,17 +362,6 @@ export async function setPauseTime() {
     }
 }
 
-export async function resetPauseTime() {
-    localStorage.removeItem("pausedTime");
-    let sessionID = getLocalCurrentSessionID();
-    let updateQuery = `UPDATE sessionData 
-                    SET timePause = 0
-                    WHERE sessionID = ${sessionID};`;
-
-    let result = await sendSQL(updateQuery);
-    noErrors(result);
-}
-
 export async function getPauseTime() {
     let currentSessionID = getLocalCurrentSessionID();
 

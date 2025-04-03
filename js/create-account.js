@@ -16,7 +16,7 @@ document.getElementById('createAccountForm').addEventListener('submit', async fu
     errorMessage.textContent = ""; // Clear error if valid
 
     //let insertUserQuery = `INSERT INTO Users (UserName, Password) VALUES ('${username}', '${password}')`;
-    let insertUserQuery = `INSERT INTO userData (usernameField, passwordField, playerName) VALUES ('${username}', '${password}','${playerName}')`;
+    let insertUserQuery = `INSERT INTO userData (usernameField, passwordField, playerName) VALUES ('${username}', '${password}','${playerName}');`;
     
     let userResult = await SaveData.sendSQL(insertUserQuery);
     
