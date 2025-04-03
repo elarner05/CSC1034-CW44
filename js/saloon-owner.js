@@ -22,11 +22,11 @@ const dialogue = [
         "choices": [
             {
                 "text": "Head towards Denise Doherty.",
-                "nextID": 2,
+                "nextID": 2
             },
             {
                 "text": "Mingle with the customers and chat.",
-                "nextID": 3,
+                "nextID": 3
             },
         ],
     },
@@ -40,19 +40,19 @@ const dialogue = [
         "choices": [
             {
                 "text": "Oh! So, you were expecting me? This will make things much easier for the both of us.",
-                "nextID": 4,
+                "nextID": 4
             },
             {
                 "text": "That is correct. Let me just ask you some questions regarding the case then.",
-                "nextID": 4,
+                "nextID": 4
             },
             {
                 "text": "How did you know that?",
-                "nextID": 5,
+                "nextID": 5
             },
             {
                 "text": "Well I'm not really here for that right now. Just want a drink and wanted to know the town's people.",
-                "nextID": 6,
+                "nextID": 3
             },
         ],
     },
@@ -61,159 +61,212 @@ const dialogue = [
         "text": [
             "You approach an old friendly looking man and he offers you the seat next to him.",
             "You introduce yourself and the old man grumbles,",
-            "\"You're a good lad, but honestly it's for the better that that man's gone\""
+            "\"You're a good lad, but honestly its for the better that that man's gone.\""
+
         ],
         "choices": [
             {
                 "text": "Well, you don't seem to be the only one with that opinion.",
-                "nextID": 7,
+                "nextID": 7
             },
             {
                 "text": "Now, why would you say that about a man whose grave is still wet?",
-                "nextID": 7,
+                "nextID": 6
             },
             {
                 "text": "Right, Do you know anything you could help me with?",
-                "nextID": 8,
+                "nextID": 8
             },
             {
-                "text": "Really? Is there any reason why you say that?",
-                "nextID": 9,
+                "text": "I should just speak to the owner about this.",
+                "nextID": 2
             }
         ]
     },
     {
         "id": 4,
         "text": [
-            "\"Make sure you ask the right questions only, don't waste my time,\"",
-            "Denise huffs",
+            "Denise crosses her arms and sighs,",
+            "\"Make sure you ask the right questions only, dont waste my time,\""
         ],
         "choices": [
             {
                 "text": "Was the sheriff a regular at your establishment?",
-                "nextID": 12,
+                "nextID": 12
             },
             {
                 "text": "Have you noticed anything peculiar about the town recently? Any changes worth noting?",
-                "nextID": 13,
-            },
-            {
-                "text": "How often did you see the sheriff?",
-                "nextID": 12,
-            },
-            {
-                "text": "Would you be able to provide an alibi for the night of the murder?",
-                "nextID": 13,
+                "nextID": 13
             }
         ]
     },
     {
         "id": 5,
-        "text": ["In a town this small word spreads fast.",
-            "Listen I have a saloon to run, can you hurry with this investigation?"
+        "text": ["Denise shakes her head and chuckles,",
+            "\"In a town this small word spreads fast. Now do you have any actual questions?\""
         ],
         "choices": [
             {
-                "text": "Thats true. But..",
-                "nextID": 4,
+                "text": "I do have some questions.",
+                "nextID": 4
+            },
+            {
+                "text" : "I want to go check in on the cutomers first.",
+                "nextID" : 3
             }
         ]
     },
     {
-        "id": 6,
-        "text": ["\"Go ahead then, make yourself at home.\"",],
-        "choices": [
+        "id" : 6,
+        "text" : ["The old man just takes another sip of his drink and shakes his head.",
+                  "\"Do not misunderstand me, for I am just relieved that the town is free from his corruption.\""
+        ],
+        "choices" : [
             {
-                "text": "You look around the room.",
-                "nextID": 3,
+                "text" : "He was corrupt? How so?",
+                "nextID" : 7
             }
         ]
+
     },
     {
         "id": 7,
-        "text": ["\"Because it is the truth only\"",
-            "He takes a large sip of his drink and continues,",
-            "\"I mean just take our Denise here as an example.\"",
-            "\"He was running her dry of supply and never once paid her back.\""
-        ],
-        "choices": [{
-            "text": "I see..",
-            "nextID": 14,
-        }]
+        "text": [  "The old man sighs, \"I say this for good reason,\"",
+                  "\"He didn't leave poor Denise alone either. That sheriff ran her dry of supply and never paid her back.\""],
+        "choices": [
+            {
+                "text": "Could there be a proof for that?",
+                "nextID": 17
+            },
+            {
+                "text" : "I should ask Denise herself then.",
+                "nextID" : 2
+            }
+        ]
     },
+   
     {
         "id": 8,
-        "text": ["\"I'm sorry son, but this hag here is only ever sober in his sleep. I wish I could've witnessed something too but unfortunately I'm of no help.\"",
+        "text": ["\"I'm sorry son, but this hag here is only ever sober in his sleep. I wish I could have helped you.\""
         ],
         "choices": [
             {
                 "text": "I should try talking to Denise",
-                "nextID": 2,
+                "nextID": 2
 
             }]
     },
-    {
-        "id": 9,
-        "text": ["The old man slams his cup down and stares you down.",],
-        "choices": [{
-            "text" : "You reel back.",
-            "nextID": 7,
-        }]
-    },
+   
     {
         "id": 12,
         "text": ["\"The man was a drunkard and this is the only saloon in this area.\"",
             "She looks down and chuckles,",
-            "\"He always wanted everything for free.\"",],
+            "\"He always wanted everything for free.\""],
         "choices": [{
-            "text": "Really?",
-            "nextID": 14,
+
+            "text": "Do you have any proof for accusation.",
+            "nextID": 16
+        },
+        {
+            "text": "I'm not done with the investigation.",
+            "nextID" : 4
         }]
     },
     {
         "id": 13,
-        "text": ["\"Of course, that strange new man who recently got here.\"",
-            "\"He was here that night, Could've been the last man to retire to bed, seemed like he was waiting for something.\"",
+        "text": [
+            "Denise ponders for a bit,",
+            "\"That strange man who appeared recently got here.\"",
+            "\"He was here that night, could've been the last man to retire to bed. Seemed like he was waiting for something.\"",
             "\"Very odd fella,\"",
-            "She adds as an afterthought.",],
+            "She adds as an afterthought."],
         "choices": [{
             "text" : "That does sound odd.",
-            "nextID": 15,
-        }]
-    },
-    {
-        "id": 14,
-        "text": ["Is there any proof that he was a regular?",],
-        "choices": [{
-            "nextID": 16,
-        }]
+            "nextID": 15
+        },
+        {
+            "text" : "I need to ask you something.",
+            'nextID' : 4
+        }
+    ]
+
     },
     {
         "id": 15,
-        "text": ["I still have a few more questions to ask you.",],
-        "choices": [{
-            "nextID": 4,
-        }]
+        "text": ["You take note of the mysterious man and decide to get back to that later."],
+        "choices": [
+            {
+            "text" :"I should check in with the customers.",
+            "nextID": 3
+            },
+            {
+                "text" : "I still have a few more questions.",
+                "nextID" : 4
+            }
+
+         ]
+
     },
     {
         "id": 16,
-        "text": ["\"Yes, every customer's logs are kept in a ledger.\"",
+        "text": [
+            "Denise nods and pulls out an old, worn-out ledger.",
+            "\"We keep records of everything. The sheriff's name should be all over this.\""
 
         ],
         "choices": [
             {
-                "nextID": 4,
+                "text" : "Let me take a look at it.",
+                "nextID": 101,
                 "itemID": 8,
                 "oneTime": true
             },
         ]
 
+
+    },
+    {
+        "id" : 17,
+        "text" : [
+            "\"Yes, the ledger that Denise keeps behind the counter should have all the records of the sheriff's visits here.\"",
+            "The man points towards the counter."
+        ],
+        "choices" : [
+            {
+                "text" : "I'll go take a look at it.",
+                "nextID" : 102,
+                "itemID" : 8,
+                "oneTime" : true
+            },
+        ]
+    },
+    {
+        "id" : 101,
+        "text" : ["You go through the ledger and confirm that the sheriff did owe Denise a lot of money."],
+        "choices" : [
+            {
+                "text" : "I still need to speak to you further.",
+                "nextID" : 4
+
+            },
+            {
+                "text" : "I might go talk to a few customers.",
+                "nextID" : 3
+            },
+        ],
+    },
+    {
+        "id" : 102,
+        "text" : ["You walk upto the counter and ask for Denise to cooperate,",
+                  "She's surprisingly obedient and hands over the old ledger to you."
+        ],
+        "choices" :[
+            {
+                "text" : "You were right. Had you noticed anything else as well?",
+                "nextID" : 8
+            }
+        ]
     }
-
-
-
-
-
 
 ]
 
