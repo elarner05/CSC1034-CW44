@@ -159,7 +159,7 @@ const dialogue = [
       "choices":[
         {
           "text": "Do you think that he killed the Sherif?",
-          "nextId":16
+          "nextID":16
         }
       ]
     },
