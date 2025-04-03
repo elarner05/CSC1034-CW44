@@ -20,11 +20,11 @@ const dialogue = [
         ],
         "choices": [
             {
-                "text":"Converse with the gun store owner",
+                "text":"Converse with the gun store owner.",
                 "nextID": 2
             },
             {   
-                "text":"Look for clues",
+                "text":"Look for clues.",
                 "nextID": 100
             },
         ]
@@ -36,11 +36,11 @@ const dialogue = [
         ],
         "choices": [
             {
-                "text": "I'm from out of town looking into the sherif's death",
+                "text": "I'm from out of town looking into the sheriff's death.",
                 "nextID": 3
             },
             {
-                "text":"I'm from out of town looking for some supplies",
+                "text":"I'm from out of town looking for some supplies.",
                 "nextID": 19
             },
             {
@@ -58,7 +58,7 @@ const dialogue = [
         ],
         "choices": [
             {
-                "text": "I just have some questions, that's all, would you mind answering them",
+                "text": "I just have some questions, that's all, would you mind answering them?",
                 "nextID": 4,
             },
             {
@@ -71,11 +71,11 @@ const dialogue = [
         "id": 4,
         "text":[
             "Of course, what upstanding citizen wouldn't help an investigation.",
-            "What were you wondering about."
+            "What were you wondering about?"
         ],
         "choices": [
             {
-                "text": "Have you seen any suspicion behaviour before the sherif's death?",
+                "text": "Have you seen any suspicion behaviour before the sheriff's death?",
                 "nextID": 5,
             },
             {
@@ -83,7 +83,7 @@ const dialogue = [
                 "nextID": 9,
             } ,
             {
-                "text": "Do you know if anyone had problems with the sherif?",
+                "text": "Do you know if anyone had problems with the sheriff?",
                 "nextID": 11,
             }
         ]
@@ -91,7 +91,7 @@ const dialogue = [
     {  
         "id": 5,
         "text":[
-            "I don't recall any suspicious behaviour, but it has been really tense around the sherif recently",
+            "I don't recall any suspicious behaviour, but it has been really tense around the sheriff recently.",
             "He used to be one of my best customers, but recently he hasn't been in the store.",
             "Must've been his new friends from out of town...",
             "Anyways.",
@@ -128,8 +128,8 @@ const dialogue = [
         "id": 7,
         "text":[
             "That is a popular gun, I do sell quite a chunk of them.",
-            "I think I sold one to the sherif a while ago, and the rancher",
-            "Thats all I've wrote in my logbook",
+            "I think I sold one to the sherif a while ago, and the rancher.",
+            "Thats all I've wrote in my logbook.",
             "Now if you don't mind I need to get back to work, can't spend all day talking."
         ],
         "choices": [
@@ -142,7 +142,7 @@ const dialogue = [
     {
         "id": 8,
         "text":[
-            "I would be shocked if there was anyone without problems with the sherif.",
+            "I would be shocked if there was anyone without problems with the sheriff.",
             "Apart from me of course!!",
             "There were some rumours that he was working with some bad people out in the country.",
             "Brought lots of worry for the folk here.",
@@ -160,8 +160,8 @@ const dialogue = [
         "id": 9,
         "text":[
             "That is a popular gun, I do sell quite a chunk of them.",
-            "I think I sold one to the sherif a while ago, and the rancher",
-            "Thats all I've wrote in my logbook",
+            "I think I sold one to the sheriff a while ago, and the rancher.",
+            "Thats all I've wrote in my logbook.",
             "Is there anything else you have, to ask?"
         ],
         "choices":[
@@ -170,11 +170,11 @@ const dialogue = [
                 "nextID": 6
             },
             {
-                "text": "Yeah, Have you seen any suspicion behaviour before the sherif's death?",
+                "text": "Yeah, Have you seen any suspicion behaviour before the sheriff's death?",
                 "nextID": 10,
             },
             {
-               "text": "Yes, do you know if anyone had problems with the sherif?",
+               "text": "Yes, do you know if anyone had problems with the sheriff?",
                 "nextID": 8,
             }
         ]
@@ -182,7 +182,7 @@ const dialogue = [
     {
         "id": 10,
         "text":[
-            "I don't recall any suspicious behaviour, but it has be really tense around the sherif recently",
+            "I don't recall any suspicious behaviour, but it has be really tense around the sheriff recently.",
             "He used to be one of my best customers, but recently he hasn't been in the store.",
             "Must've been his new friends from out of town...",
             "Anyways.",
@@ -198,7 +198,7 @@ const dialogue = [
     {
         "id": 11,
         "text":[
-            "I would be shocked if there was anyone without problems with the sherif.",
+            "I would be shocked if there was anyone without problems with the sheriff.",
             "Apart from me of course!!",
             "There were some rumours that he was working with some bad people out in the country.",
             "Brought lots of worry for the folk here.",
@@ -207,7 +207,7 @@ const dialogue = [
         ],
         "choices":[
             {
-                "text": "No, I don't think so",
+                "text": "No, I don't think so.",
                 "nextID": 6,
             },
             {
@@ -223,17 +223,17 @@ const dialogue = [
     {
         "id": 12,
         "text":[
-            "You should be careful with what you say to strangers",
-            "Its a very risky game",
+            "You should be careful with what you say to strangers.",
+            "Its a very risky game.",
             "*Arms Dealer's hand slowly makes it's way near his revolver*"
         ],
         "choices":[
             {
-                "text": "I don't mean to offend, was just seeing how you respond",
+                "text": "I don't mean to offend, was just seeing how you respond.",
                 "nextID": 13
             },
             {
-                "text": "Is that how you talked to the sherif before murdering him",
+                "text": "Is that how you talked to the sheriff before murdering him.?",
                 "nextID": 16
             }
         ]
@@ -241,8 +241,8 @@ const dialogue = [
     {
         "id": 13,
         "text":[
-            "I see, I recommend you don't try that strategy anymore",
-            "You might just end up like the sherif."
+            "I see, I recommend you don't try that strategy anymore.",
+            "You might just end up like the sheriff."
         ],
         "choices":[
             {
@@ -258,7 +258,7 @@ const dialogue = [
         ],
         "choices":[
             {
-                "text": "Alright, I'll be on my way",
+                "text": "Alright, I'll be on my way.",
                 "nextID": 15
             }
         ]
@@ -281,7 +281,7 @@ const dialogue = [
         "text":[
             "I think it's about time you leave.",
             "We both know how this will end elsewise...",
-            "It's your choice"
+            "It's your choice."
         ],
         "choices":[
             {
@@ -289,7 +289,7 @@ const dialogue = [
                 "nextID": 17
             },
             {
-                "text":"I think I don't want to leave",
+                "text":"I think I don't want to leave.",
                 "nextID": 18
             }
         ]
@@ -320,15 +320,15 @@ const dialogue = [
         ],
         "choices":[
             {
-                "text": "Do you sell any colt single action revolvers",
+                "text": "Do you sell any colt single action revolvers?",
                 "nextID": 20
             },
             {
-                "text": "Do you have any yellow boys",
+                "text": "Do you have any yellow boys?",
                 "nextID": 23
             },
             {
-                "text": "No, what would you recommend",
+                "text": "No, what would you recommend?",
                 "nextID": 25
             }
         ]
@@ -336,19 +336,19 @@ const dialogue = [
     {
         "id": 20,
         "text":[
-            "Yeah, we sell those, very nice gun",
-            "In fact, we are almost out of them",
-            "would you like the model information"
+            "Yeah, we sell those, very nice gun.",
+            "In fact, we are almost out of them.",
+            "would you like the model information?"
         ],
         "choices":[
             {
-                "text": "Yes please, that would be useful",
+                "text": "Yes please, that would be useful.",
                 "nextID": 21,
                 "itemID": 6,
                 "oneTime": true
             },
             {
-                "text": "No, I have all I need",
+                "text": "No, I have all I need.",
                 "nextID": 22
             }
         ]
@@ -370,13 +370,18 @@ const dialogue = [
         "text":[
             "Alright, well if you need anything else, you know where I'll be."
         ],
-        "choices":[]
+        "choices":[
+            {
+                "text":"Restart Dialogue*",
+                "nextID": 99
+            }
+        ]
     },
     {
         "id": 23,
         "text":[
-            "Yeah I think there is a few of those in stock",
-            "One the best-looking guns in my experience",
+            "Yeah I think there is a few of those in stock.",
+            "One the best-looking guns in my experience.",
             "would you like the model information for this gun?"
         ],
         "choices":[
@@ -392,7 +397,7 @@ const dialogue = [
         "id": 24,
         "text":[
             "There, that should be it.",
-            "I hope it helps you come to a decision"
+            "I hope it helps you come to a decision."
         ],
         "choices":[
             {
@@ -405,17 +410,17 @@ const dialogue = [
         "id": 25,
         "text":[
             "Hmmm, if I had to choose a single gun...",
-            "It would have to be the colt single action revolver",
-            "That gun is the perfect combination of form and function",
+            "It would have to be the colt single action revolver.",
+            "That gun is the perfect combination of form and function.",
             "An example of immaculate engineering."
         ],
         "choices":[
             {
-                "text": "Is that the gun you wield",
+                "text": "Is that the gun you wield?",
                 "nextID": 26
             },
             {
-                "text": "Do you have any specific information about the gun",
+                "text": "Do you have any specific information about the gun?",
                 "nextID": 28
             }
         ]
@@ -423,11 +428,11 @@ const dialogue = [
     {
         "id": 26,
         "text":[
-            "Yes, it hasn't failed me to this day"
+            "Yes, it hasn't failed me to this day."
         ],
         "choices":[
             {
-                "text": "Thanks, I will consider buying one",
+                "text": "Thanks, I will consider buying one.",
                 "nextID":  27
             }
         ]
@@ -439,7 +444,7 @@ const dialogue = [
         ],
         "choices":[
             {
-                "text": "Thanks",
+                "text": "Thanks.",
                 "nextID":99
             }
         ]
@@ -451,7 +456,7 @@ const dialogue = [
         ],
         "choices":[
             {
-                "text": "Thank you. This will help me a lot",
+                "text": "Thank you. This will help me a lot.",
                 "nextID": 15,
                 "itemID": 6,
                 "oneTime": true
@@ -461,16 +466,16 @@ const dialogue = [
     {
         "id": 29,
         "text":[
-            "It was nothing",
-            "Just one of my customers trying to get too good of a deal"
+            "It was nothing.",
+            "Just one of my customers trying to get too good of a deal."
         ],
         "choices":[
             {
-                "text": "Sounded like it was getting quite heated",
+                "text": "Sounded like it was getting quite heated.",
                 "nextID": 30
             },
             {
-                "text": "Are arguements like that common here",
+                "text": "Are arguements like that common here?",
                 "nextID": 31
             }
         ]
@@ -478,11 +483,11 @@ const dialogue = [
     {   
         "id": 30,
         "text":[
-            "When it comes to money people can get agitated"
+            "When it comes to money people can get agitated."
         ],
         "choices":[
             {
-                "text": "I guess you're right",
+                "text": "I guess you're right.",
                 "nextID": 15
             }
         ]
@@ -491,8 +496,8 @@ const dialogue = [
     {
         "id": 31,
         "text":[
-            "In this town, quite common",
-            "Seems like someone always has an issue with something"
+            "In this town, quite common.",
+            "Seems like someone always has an issue with something."
         ],
         "choices":[
             {
@@ -510,11 +515,11 @@ const dialogue = [
         ],
         "choices": [
             {
-                "text":"Converse with the gun store owner",
+                "text":"Converse with the gun store owner.",
                 "nextID": 2
             },
             {   
-                "text":"Look for clues",
+                "text":"Look for clues.",
                 "nextID": 100
             },
         ]  
@@ -526,15 +531,15 @@ const dialogue = [
         ],
         "choices": [
             {
-                "text": "Inspect broken display case",
+                "text": "Inspect broken display case.",
                 "nextID": 101
             },
             {
-                "text": "Inspect Arms Dealer",
+                "text": "Inspect Arms Dealer.",
                 "nextID": 102
             },
             {
-                "text": "Inspect wall hung guns",
+                "text": "Inspect wall hung guns.",
                 "nextID": 103
             }
         ]
@@ -546,7 +551,7 @@ const dialogue = [
         ],
         "choices":[
             {
-                "text": "Return",
+                "text": "Return.",
                 "nextID": 99,
                 "itemID": 10,
                 "oneTime": true
@@ -562,7 +567,7 @@ const dialogue = [
         ],
         "choices":[
             {
-                "text": "Return",
+                "text": "Return.",
                 "nextID": 99
             }
         ]
@@ -574,7 +579,7 @@ const dialogue = [
         ],
         "choices":[
             {
-                "text": "Return",
+                "text": "Return.",
                 "nextID": 99
             }
         ]
