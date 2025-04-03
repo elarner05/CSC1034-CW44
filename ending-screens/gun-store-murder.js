@@ -7,11 +7,10 @@ function showWrongChoice() {
 }
 
 const dialogueText = [
-    "The Arms Dealer Shoots you",
+    "The Arms Dealer shoots you",
     "As you bleed out, you think",
-    "Was that a good decision",
+    "Was that a good decision?",
     showWrongChoice
-
 ];
 
 import { DialogueUpdater } from "../js/story-line.js";

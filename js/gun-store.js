@@ -289,7 +289,7 @@ const dialogue = [
     {
         "id": 18,
         "text":[
-            () => {}
+            () => {SaveData.endGame(false, "").then(result=>{if (SaveData.noErrors(result)) {window.location.href = "ending-screens/gun-store-murder.html";}});}
         ],
         "choices":[]
     },
@@ -463,7 +463,7 @@ const dialogue = [
         "choices":[
             {
                 "text": "I guess you're right",
-                "nextID": "15"
+                "nextID": 15
             }
         ]
 

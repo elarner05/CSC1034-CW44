@@ -81,12 +81,6 @@ const itemData =[
     
     },
     {
-        id: 7,
-        name: "Torn Poster",
-        description: "A old torn poster found blown behind a gravestone. It states: \"WANTED: Bandit McCrea\". It must be over 20 years old",
-        image: "assets/torn-poster.png",
-    },
-    {
         id: 5,
         name: "Yellow Boy Specifications",
         description: "Fires a .44 caliber round, 24 inches long, with lever action and a tubular magazine",
@@ -99,10 +93,10 @@ const itemData =[
         image: ""
     },
     {
-        id: 10,
-        name: "Glass Shard",
-        description: "Found at the arms dealer's, likely from an arguement about money",
-        image: ""
+        id: 7,
+        name: "Torn Poster",
+        description: "A old torn poster found blown behind a gravestone. It states: \"WANTED: Bandit McCrea\". It must be over 20 years old",
+        image: "assets/torn-poster.png",
     },
     {
         id : 8,
@@ -115,7 +109,13 @@ const itemData =[
         name: "Deputy's Notes",
         description: "A note taken from the deputy's desk. Rants of hatred directed towards the Sherif.",
         image: "assets/deputy-notes.png"
-    }
+    },
+    {
+        id: 10,
+        name: "Glass Shard",
+        description: "Found at the arms dealer's, likely from an arguement about money",
+        image: ""
+    },
 ]
 // Notes elements
 let notesContainer = document.getElementById('notesContainer');
