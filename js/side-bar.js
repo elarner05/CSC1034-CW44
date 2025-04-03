@@ -84,6 +84,24 @@ const itemData =[
         name: "Torn Poster",
         description: "A old torn poster found blown behind a gravestone. It states: \"WANTED: Bandit McCrea\". It must be over 20 years old",
         image: "assets/torn-poster.png",
+    },
+    {
+        id: 5,
+        name: "Yellow Boy Specifications",
+        description: "Fires a .44 caliber round, 24 inches long, with lever action and a tubular magazine",
+        image: ""
+    },
+    {
+        id: 6,
+        name: "Colt Single Action Revolver Specifications",
+        description: "Fires a colt .45, 11 inches long, unparalleled durability, with hammer loading",
+        image: ""
+    },
+    {
+        id: 10,
+        name: "Glass Shard",
+        description: "Found at the arms dealer's, likely from an arguement about money",
+        image: ""
     }
 ]
 // Notes elements

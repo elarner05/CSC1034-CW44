@@ -240,9 +240,15 @@ const dialogue = [
     {
         "id": 15,
         "text":[
-            "Goodbye."
+            "Goodbye.",
+            "*End Of Conversation*"
         ],
-        "choices":[]
+        "choices":[
+            {
+            "text":"*Restart Dialogue*",
+            "nextID": 99
+            }
+        ]
     },
     {
         "id": 16,
@@ -267,12 +273,17 @@ const dialogue = [
         "text":[
             "Good decision."
         ],
-        "choices":[]
+        "choices":[
+            {
+                "text": "Return",
+                "nextID": 99
+            }
+        ]
     },
     {
         "id": 18,
         "text":[
-            "*Arms Dealer shoots you*"
+            () => {}
         ],
         "choices":[]
     },
@@ -307,7 +318,8 @@ const dialogue = [
             {
                 "text": "Yes please, that would be useful",
                 "nextID": 21,
-                "itemID": 5
+                "itemID": 6,
+                "oneTime": true
             },
             {
                 "text": "No, I have all I need",
@@ -345,7 +357,8 @@ const dialogue = [
             {
                 "text": "Yes, that would help.",
                 "nextID": 24 ,
-                "itemID": 6
+                "itemID": 5,
+                "oneTime": true
             }
         ]
     },
@@ -366,7 +379,7 @@ const dialogue = [
         "id": 25,
         "text":[
             "Hmmm, if I had to choose a single gun...",
-            "It would have to be the colt 45",
+            "It would have to be the colt single action revolver",
             "That gun is the perfect combination of form and function",
             "An example of immaculate engineering."
         ],
@@ -398,7 +411,12 @@ const dialogue = [
         "text":[
             "I can guarantee you would not regret it."
         ],
-        "choices":[]
+        "choices":[
+            {
+                "text": "Thanks",
+                "nextID":99
+            }
+        ]
     },
     {
         "id": 28,
@@ -409,14 +427,130 @@ const dialogue = [
             {
                 "text": "Thank you. This will help me a lot",
                 "nextID": 15,
-                "itemID": 9 
+                "itemID": 6,
+                "oneTime": true
             }
         ]
     },
     {
         "id": 29,
         "text":[
-            ""
+            "It was nothing",
+            "Just one of my customers trying to get too good of a deal"
+        ],
+        "choices":[
+            {
+                "text": "Sounded like it was getting quite heated",
+                "nextID": 30
+            },
+            {
+                "text": "Are arguements like that common here",
+                "nextID": 31
+            }
+        ]
+    },
+    {   
+        "id": 30,
+        "text":[
+            "When it comes to money people can get agitated"
+        ],
+        "choices":[
+            {
+                "text": "I guess you're right",
+                "nextID": "15"
+            }
+        ]
+
+    },
+    {
+        "id": 31,
+        "text":[
+            "In this town, quite common",
+            "Seems like someone always has an issue with something"
+        ],
+        "choices":[
+            {
+                "text": "Interesting...",
+                "nextID": 15
+            }
+        ]
+    },
+    {
+        "id": 99,
+        "text": [
+            "You walk into the gun store.",
+            "The arms dealer is arguing with a customer.",
+            "As they notice you, they quickly become friendly together, and the customer leaves."
+        ],
+        "choices": [
+            {
+                "text":"Converse with the gun store owner",
+                "nextID": 2
+            },
+            {   
+                "text":"Look for clues",
+                "nextID": 100
+            },
+        ]  
+    },
+    {
+        "id": 100,
+        "text":[
+            "*You look around and see many points of interest*"
+        ],
+        "choices": [
+            {
+                "text": "Inspect broken display case",
+                "nextID": 101
+            },
+            {
+                "text": "Inspect Arms Dealer",
+                "nextID": 102
+            },
+            {
+                "text": "Inspect wall hung guns",
+                "nextID": 103
+            }
+        ]
+    },
+    {
+        "id": 101,
+        "text":[
+            "*You find a piece of broken glass*",
+        ],
+        "choices":[
+            {
+                "text": "Return",
+                "nextID": 99,
+                "itemID": 10,
+                "oneTime": true
+            }
+        ]
+
+    },
+    {
+        "id": 102,
+        "text":[
+            "*He is an old man wearing rough clothing*",
+            "*And is armed with a colt single action army*"
+        ],
+        "choices":[
+            {
+                "text": "Return",
+                "nextID": 99
+            }
+        ]
+    },
+    {
+        "id": 101,
+        "text":[
+            "*Everything is normal with the guns*",
+        ],
+        "choices":[
+            {
+                "text": "Return",
+                "nextID": 99
+            }
         ]
     }
 ]
