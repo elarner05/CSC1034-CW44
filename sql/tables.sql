@@ -74,7 +74,7 @@ INSERT INTO itemData (itemID, itemName, itemDescription, itemPath) VALUES
 (7, 'Torn Poster', 'An old torn poster found blown behind a gravestone. It states: "WANTED: Bandit McCrea". It must be over 20 years old', 'assets/torn-poster.png'),
 (8, 'Customer Logbook', 'A logbook that contains records of all the customers that visited the saloon.', 'assets/ledger.png'),
 (9, 'Deputy''s Notes', 'A note taken from the deputy''s desk. Rants of hatred directed towards the Sheriff.', 'assets/deputy-notes.png'),
-(10. 'Glass Shard', 'Found at the arms dealer''s, likely from an arguement about money', 'assets/glass-shard.png');
+(10, 'Glass Shard', 'Found at the arms dealer''s, likely from an arguement about money', 'assets/glass-shard.png');
 
 -- INSERT INTO userData (usernameField, passwordField, playerName, currentSessionID, noOfSessions, totalTime, noOfWins) 
 -- VALUES 
@@ -141,14 +141,14 @@ VALUES
 INSERT INTO sessionData (userID, timeStart, timePause, runningBoolean, winBoolean, accusedName)
 VALUES 
     (1, 1743604274634, 1743604454634, 0, 1, 'Bernice Becker'),
-    (1, 1743604314992, 1743604477992, 0, 0, ''),
+    (2, 1743604314992, 1743604477992, 0, 1, 'Bernice Becker'),
     (1, 1743604160781, 1743604502781, 0, 0, 'Arms Dealer'),
-    (2, 1743604274634, 1743604454634, 0, 0, ''),
+    (3, 1743604274634, 1743604454634, 0, 1, 'Bernice Becker'),
     (2, 1743604314992, 1743604476992, 0, 0, 'Rev. Willie McCrea'),
-    (3, 1743604339185, 1743604681185, 0, 0, ''),
+    (4, 1743604339185, 1743604681185, 0, 1, 'Bernice Becker'),
     (3, 1743604160781, 1743604502781, 0, 0, 'Deputy Cain Chambers'),
     (4, 1743604314992, 1743604477992, 0, 0, 'The Drifter'),
-    (5, 1743604339185, 1743604681185, 0, 0, ''),
+    (5, 1743604339185, 1743604681185, 0, 1, 'Bernice Becker'),
     (5, 1743604160781, 1743604502781, 0, 0, 'Denice Doherty'); -- Session with all items found
 
 -- Step 3: Insert session notes
