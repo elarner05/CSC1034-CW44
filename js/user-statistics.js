@@ -50,26 +50,33 @@ async function fillUserData(userData) {
                         fastestTime = parseInt(session.timePause) - parseInt(session.timeStart);
                   }
             });
-            fastestWinTime.innerHTML = millisToMinsSecs(fastestTime);
+            fastestWinTime.innerHTML = fastestTime < 1000*60*20 ? millisToMinsSecs(fastestTime) : "N/A";
       }
 
       timesWon.innerHTML = userData.noOfWins;
       timesLost.innerHTML = parseInt(userData.noOfSessions) - parseInt(userData.noOfWins);
-      winRate.innerHTML = parseInt("" + (parseInt(userData.noOfWins)/parseInt(userData.noOfSessions)*100)) + "%";
+      let rate = parseInt((parseInt(userData.noOfWins)/parseInt(userData.noOfSessions)*100));
+      
+      winRate.innerHTML = isNaN(rate) ? "N/A" : rate+"%";
+      
+      
 
 
       let getItemsQuery = `SELECT si.itemID, i.itemName, i.itemDescription, i.itemPath 
                         FROM sessionItems si
                         JOIN sessionData sd ON si.sessionID = sd.sessionID
                         JOIN itemData i ON si.itemID = i.itemID
-                        WHERE sd.userID = 1;`;
+                        WHERE sd.userID = ${userID};`;
       result = await SaveData.sendSQL(getItemsQuery);
 
       if (SaveData.noErrors(result)) {
             totalItems.innerHTML = result.data.length;
             console.log(userData.noOfSessions);
+
+            let aveItems = (result.data.length/parseInt(userData.noOfSessions)).toFixed(2);
+            console.log(aveItems);
       
-            averageItems.innerHTML = (result.data.length/parseInt(userData.noOfSessions)).toFixed(2);
+            averageItems.innerHTML = isNaN(aveItems) ? "N/A" : aveItems;
       }
 }
 

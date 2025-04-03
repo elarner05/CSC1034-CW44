@@ -1,0 +1,159 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+#mainContainer {
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+    height: 100vh;
+}
+
+#explainationContainer, #achievementContainer {
+    flex-grow: 1;
+}
+
+#explainationContainer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+}
+
+#explainationContainer #title, #explainationContainer div {
+    flex-grow: 1;
+    flex-direction: column;
+    display: flex;
+    justify-content: center; /* Centers horizontally */
+    align-items: center; /* Centers vertically */
+    color: white;
+}
+
+#explainationContainer div {
+    border: 1px solid #666;
+    border-radius: 5px;
+    width: 100%;
+    margin: 1px;
+    padding: 50px;
+    text-align: justify;
+}
+
+#explainationContainer div h3 {
+    padding: 2px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: #666;
+    border-radius: 5px;
+}
+
+#achievementDescription {
+    margin: 2px;
+}
+
+#achievementContainer {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+.achievement {
+    position: relative;
+    width: 300px;
+    height: 80px;
+    
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 80px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+#itemCollector {
+    background: linear-gradient(135deg, #FFD700, #FFB400);
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+#grudgeHolder {
+    background: linear-gradient(135deg, #00ff04, #00bd03);
+    box-shadow: 0 0 10px rgba(60, 255, 0, 0.5);
+}
+
+#speedRunner {
+    background: linear-gradient(135deg, #ff0000, #bd0000);
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+}
+
+#noLifeDetected {
+    background: linear-gradient(135deg, #000000, #440000);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+#scribe {
+    background: linear-gradient(135deg, #d9bda5, #e5cbbac0);
+    box-shadow: 0 0 10px rgb(133, 97, 79);
+}
+
+#finalMoment {
+    background: linear-gradient(135deg, #0088ff, #0088ffca);
+    box-shadow: 0 0 10px rgb(79, 117, 133);
+}
+
+.locked {
+    filter: brightness(50%);
+}
+
+.unlocked {
+
+}
+
+.unlocked::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: rotate(30deg);
+    animation: shine 2s infinite linear;
+}
+
+@keyframes shine {
+    0% { left: -200%; top: -200%; }
+    100% { left: 150%; top: 150%; }
+}
+
+
+#backButton {
+    
+    max-width: 300px;
+    flex-grow: 0;
+    margin: 10px 5px;
+    padding: 10px 20px;
+    background: #555;
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 10px;
+    bottom: 2px;
+}
+

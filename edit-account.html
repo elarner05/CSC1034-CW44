@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale = 1.0">
-    <title> Edit Account </title>
+    <title>Edit Account</title>
     <link rel="stylesheet" href="css/general-styles.css">
     <link rel="stylesheet" href="css/edit-account.css">
 </head>
@@ -14,18 +14,18 @@
     <div class = "edit-account-container">
         <h1>Edit Account</h1>
         <form id="editAccountForm" class = "menu">
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username" required maxlength="20"> 
             <label for = "playerName">Player Name:</label>
-            <input type="text" id="playerName" name="playerName" required maxlength="20">
+            <input type="text" id="playerName" name="playerName" maxlength="20">
+
             <label for="password">New Password:</label>
             <input type="password" id="password" name="password" maxlength="20">
 
-            <button type="submit">Save Changes</button>
+            <button type="submit">Confirm Changes</button>
             <button id="deleteAccount">Delete Account</button>
-            <button id="backToMenu">Back to Menu</button>
+            <p id="errorMessage" class="error hidden">Failed to update account. Please try again.</p>
         </form>
-        <p id="errorMessage" class="error hidden">Failed to update account. Please try again.</p>
+        
+        <button id="backButton">Back to Menu</button>
 
     </div>
     <script src="js/edit-account.js" defer></script>

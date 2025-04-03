@@ -68,6 +68,7 @@ if (localStorage.getItem("SignedIn") === "true") {
     
     document.getElementById("newGameButton").disabled = false;
     document.getElementById("statsButton").disabled = false;
+    document.getElementById("achievementsButton").disabled = false;
     document.getElementById("editProfileButton").disabled = false;
 
     document.querySelectorAll(".tooltip").forEach(tooltip => {
@@ -103,13 +104,25 @@ document.getElementById("newGameButton").addEventListener("click", async functio
     if (result) {
         window.location.href = "prologue.html";
     } else {
+        const errorDisplay = document.getElementById("errorMessage");
         
+        errorDisplay.style.opacity = 1;
+
+
+        setTimeout(()=>{
+            errorDisplay.style.opacity = 0;
+        }, 2000);
     }
 });
 
 document.getElementById("statsButton").addEventListener("click", function() {
     window.location.href = "user-statistics.html";
 });
+
+document.getElementById("achievementsButton").addEventListener("click", function() {
+    window.location.href = "achievements.html";
+});
+
 
 
 document.getElementById("leaderboardButton").addEventListener("click", function() {
@@ -158,7 +171,7 @@ document.getElementById("dyslexicFontButton").addEventListener("click", function
 });
 
 document.getElementById("editProfileButton").addEventListener("click", function() {
-
+    window.location.href = "edit-account.html"
 });
 
 function applyFontMultiplier(multiplier) {

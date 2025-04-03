@@ -792,7 +792,7 @@ const preacherDialogue = [
 }, {
     "id":101,
     "text": [
-        "You find a scrunched up poster, blown there sometime ago",
+        "You find a scrunched-up poster, blown there some time ago",
         "You pick up the poster to read it later."
     ],
     "choices": [

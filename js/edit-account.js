@@ -1,52 +1,64 @@
-document.addEventListener("DOMContentLoaded", async function () {
-    const usernameField = document.getElementById("username");
-    const playerNameField = document.getElementById("playerName");
-    const passwordField = document.getElementById("password");
-    const errorMessage = document.getElementById("errorMessage");
 
-    let currentUser = await SaveData.getUser();
-    if(!currentUser){
-        window.location.href = "sign-in.html";
-        return;
+import * as SaveData from "./saveData.js";
+
+if(!SaveData.checkUserID()){
+    window.location.href = "index.html";
+}
+
+const userID = SaveData.getLocalUserID();
+
+const playerNameField = document.getElementById("playerName");
+const passwordField = document.getElementById("password");
+const errorMessage = document.getElementById("errorMessage");
+
+document.getElementById("editAccountForm").addEventListener("submit", async function(event) {
+    event.preventDefault();
+    
+    const newPlayerName = playerNameField.value.replaceAll("'", "''");
+    const newPassword = passwordField.value.replaceAll("'", "''");
+
+    if (newPlayerName !== "") {
+        let updateQuery = `UPDATE userData SET playerName = '${newPlayerName}' WHERE userID = ${userID};`;
+        let result = await SaveData.sendSQL(updateQuery);
+        if (!SaveData.noErrors(result)) {
+            errorMessage.textContent = "Failed to update player name.";
+            errorMessage.classList.remove("hidden");
+        } else {
+            errorMessage.textContent = "Successfully updated player name";
+            errorMessage.classList.remove("hidden");
+        }
+
     }
-
-    usernameField.value = currentUser.username;
-    playerNameField.value = currentUser.playerName;
-
-    document.getElementById("editAccountForm").addEventListener("submit", async function(event) {
-        event.preventDefault();
-        
-        const newUsername = usernameField.value;
-        const newPlayerName = playerNameField.value;
-        const newPassword = passwordField.value;
-
-        let updateQuery = `UPDATE userData SET playerName='${newPlayerName}' ${newPassword ? `, passwordField='${newPassword}'` : ''} WHERE usernameField='${currentUser.username}'`;
-        let updateResult = await SaveData.sendSQL(updateQuery);
-
-        if(!updateResult || updateResult.error){
-            errorMessage.textContent = "Failed to update account.";
+    if (newPassword !== "") {
+        let updateQuery = `UPDATE userData SET passwordField = '${newPassword}' WHERE userID = ${userID};`;
+        let result = await SaveData.sendSQL(updateQuery);
+        if (!SaveData.noErrors(result)) {
+            errorMessage.textContent = "Failed to update password.";
             errorMessage.classList.remove("hidden");
-            return;
+        } else {
+            localStorage.clear();
+            window.location.href = "index.html"
         }
-        window.location.href = "index.html";
-        
-    });
-
-    document.getElementById("deletAccount").addEventListener("click", async function() {
-        if(!confirm("Are you sure you want to delete your account? This cannot be undone."))return;
-
-        let deleteQuery = `DELETE FROM userData WHERE usernameField='${currentUser.username}'`;
-        let deleteResult = await SaveData.sendSQL(deleteQuery);
-
-        if(!deleteResult || deleteResult.error){
-            errorMessage.textContent = "Failed to delete account.";
-            errorMessage.classList.remove("hidden");
-            return;
-        }
-        window.location.href = "sign-in.html";
-    });
-
-    document.getElementById("backToMenu").addEventListener("click", function(){
-        window.location.href = "index.html";
-    });
+    }
+    
 });
+
+document.getElementById("deleteAccount").addEventListener("click", async function() {
+    if(!confirm("Are you sure you want to delete your account? This cannot be undone.")) return;
+
+    let deleteQuery = `DELETE FROM userData WHERE userID = ${userID};`;
+    let deleteResult = await SaveData.sendSQL(deleteQuery);
+
+    if(!SaveData.noErrors(deleteResult)){
+        errorMessage.textContent = "Failed to delete account.";
+        errorMessage.classList.remove("hidden");
+        return;
+    } else {
+        localStorage.clear();
+        window.location.href = "index.html"
+    }
+});
+
+document.getElementById("backButton").addEventListener("click", () => {
+    window.location.href = "index.html";
+  })

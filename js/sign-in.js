@@ -11,7 +11,7 @@ document.getElementById('signinForm').addEventListener('submit', async function(
     
     
 
-    let sqlQuery = `SELECT * FROM userData WHERE usernameField = '${username}' AND passwordField = '${password}';`;
+    let sqlQuery = `SELECT * FROM userData WHERE usernameField = '${username}' AND BINARY passwordField = '${password}';`;
 
     let result = await SaveData.sendSQL(sqlQuery);
 
