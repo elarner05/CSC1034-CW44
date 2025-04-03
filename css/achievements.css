@@ -37,6 +37,9 @@ body {
     border: 1px solid #666;
     border-radius: 5px;
     width: 100%;
+    margin: 1px;
+    padding: 50px;
+    text-align: justify;
 }
 
 #explainationContainer div h3 {
@@ -45,6 +48,10 @@ body {
     padding-right: 10px;
     background-color: #666;
     border-radius: 5px;
+}
+
+#achievementDescription {
+    margin: 2px;
 }
 
 #achievementContainer {
@@ -104,6 +111,12 @@ body {
     background: linear-gradient(135deg, #d9bda5, #e5cbbac0);
     box-shadow: 0 0 10px rgb(133, 97, 79);
 }
+
+#finalMoment {
+    background: linear-gradient(135deg, #0088ff, #0088ffca);
+    box-shadow: 0 0 10px rgb(79, 117, 133);
+}
+
 .locked {
     filter: brightness(50%);
 }

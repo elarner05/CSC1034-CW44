@@ -111,12 +111,36 @@ SaveData.sendSQL(scribeQuery).then(result=>{
     }
 });
 
+let finalMomentQuery = `\
+SELECT EXISTS (
+    SELECT 1 
+    FROM sessionData 
+    WHERE userID = ${userID} 
+      AND (timePause - timeStart) > 1125000 
+      AND winBoolean = 1
+) AS sessionExists;`
+
+SaveData.sendSQL(finalMomentQuery).then(result=>{
+    if (SaveData.noErrors(result)) {
+        console.log("final moments", result);
+        if (result.data[0].sessionExists === "1") {
+            console.log("here");
+            document.getElementById("finalMoment").classList.add("unlocked");
+            document.getElementById("finalMoment").classList.remove("locked");
+        } else {
+            document.getElementById("finalMoment").classList.add("locked");
+            document.getElementById("finalMoment").classList.remove("unlocked");
+        }
+    }
+});
+
 let achievementData = {
     "Item Collector": "Collect all the currently collectable items",
     "Speed Runner": "Correctly accuse the murderer before 6:30AM",
     "No Life Detected":"Spend more than one hour total on the game",
     "Grudge Holder": "Accuse the same person incorrectly ten times",
-    "Scribe": "Write over 200 characters in the notebook"
+    "Scribe": "Write over 200 characters in the notebook",
+    "Final Moment Heroics": "Correctly accuse the murderer just before you run out of time (after 9:00PM)"
 }
 
 const description = document.getElementById("achievementDescription");
