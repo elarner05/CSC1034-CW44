@@ -7,9 +7,9 @@
 
 CREATE TABLE userData (
     userID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    usernameField VARCHAR(20) NOT NULL UNIQUE,
-    passwordField VARCHAR(20) NOT NULL,
-    playerName VARCHAR(20) NOT NULL,
+    usernameField VARCHAR(40) NOT NULL UNIQUE,
+    passwordField VARCHAR(40) NOT NULL,
+    playerName VARCHAR(40) NOT NULL,
     currentSessionID INT DEFAULT 0,
     noOfSessions INT DEFAULT 0,
     totalTime INT DEFAULT 0,
