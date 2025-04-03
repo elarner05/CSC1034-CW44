@@ -30,6 +30,22 @@ const dialogue = [
       ]
     },
     {
+      "id":101,
+      "text": [
+        "Cain Chambers is standing behind his desk"
+      ],
+      "choices": [
+        {
+          "text": "Talk to Cain Chambers?",
+          "nextID": 2
+        },
+        {
+          "text": "Look for clues?",
+          "nextID": 21
+        },
+      ]
+    },
+    {
       "id": 2,
       "text":[
         "You walk up towards the deputy to ask him some questions.",
@@ -122,7 +138,6 @@ const dialogue = [
         {
           "text": "Were there any clues around?",
           "nextID":14,
-          "itemID":""
         }
       ]
     },
@@ -133,7 +148,12 @@ const dialogue = [
         "Everyone seemed rather calm about it all.",
         "I don't think they cared that the Sherif died...."
       ],
-      "choices":[]
+      "choices":[
+        {
+          "text": "",
+          "nextID": 101
+        }
+      ]
     },
     {
       "id":8,
@@ -197,7 +217,12 @@ const dialogue = [
         "He was always allowing outlaws into the town and drinkin with them",
         "I had to deal with the mess that they left behind..."
       ],
-      "choices":[]
+      "choices":[
+        {
+          "text": "",
+          "nextID": 101
+        }
+      ]
     },
     {
       "id":13,
@@ -234,7 +259,12 @@ const dialogue = [
         "I'm not good enough to be a Sherif",
         "I don't even understand what's going on most of the time..."
       ],
-      "choices":[]
+      "choices":[
+        {
+          "text": "",
+          "nextID": 101
+        }
+      ]
     },
     {
       "id":16,
@@ -243,7 +273,12 @@ const dialogue = [
         "But...",
         "The Reverand is really creepy, he was digging a grave a few days before the Sherif died..."
       ],
-      "choices":[]
+      "choices":[
+        {
+          "text": "",
+          "nextID": 101
+        }
+      ]
     },
     {
       "id":17,
@@ -258,14 +293,24 @@ const dialogue = [
         "H-He took me in when my parents died...",
         "The least I can do is help even if he yells at me"
       ],
-      "choices":[]
+      "choices":[
+        {
+          "text": "",
+          "nextID": 101
+        }
+      ]
     },
     {
       "id":19,
       "text":[
         "It appeared that whatever gun was used, it was held right up against the Sherif's spine"
       ],
-      "choices":[]
+      "choices":[
+        {
+          "text": "",
+          "nextID": 101
+        }
+      ]
     },
     {
       "id": 20,
@@ -273,7 +318,12 @@ const dialogue = [
         "There seemed to be mud stains on his face...",
         "There also seemed to be stress marks near his mouth, like he was gagged..."
       ],
-      "choices":[]
+      "choices":[
+        {
+          "text": "",
+          "nextID": 101
+        }
+      ]
     },
 
     //Clues
@@ -310,7 +360,12 @@ const dialogue = [
         "He notices you look at him and flashes you an awkward smile.",
         "He promptly looks away"
       ],
-      "choices":[]
+      "choices":[
+        {
+          "text": "",
+          "nextID": 101
+        }
+      ]
     },
     {
       "id":23,
@@ -336,7 +391,12 @@ const dialogue = [
         "it is a Winchester Model 1866, a 'Yellow-Boy'.",
         "Looks barely used."     
       ],
-      choices: []
+      "choices":[
+        {
+          "text": "",
+          "nextID": 101
+        }
+      ]
     },
     {
       "id":25,
@@ -359,6 +419,12 @@ const dialogue = [
       "text":[
         "When you take a closer look into the jail, you notice that there are dried blood stains on the floor.",
         "On even further review, you notice that there are also mud stains on the jail cell floor..."
+      ],
+      "choices":[
+        {
+          "text": "",
+          "nextID": 101
+        }
       ]
     },
     {
@@ -388,6 +454,12 @@ const dialogue = [
         "However, they start to spiral into ramblings of hatred directed towards the Sherif.",
         "Detailing how the Sherif abuses his power over him.",
         "You decide to add the notes to your bag while the deputy isn't looking"
+      ],
+      "choices":[
+        {
+          "text": "",
+          "nextID": 101
+        }
       ]
     }
   ]
