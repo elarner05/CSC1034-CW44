@@ -82,7 +82,7 @@ export function gameTimeOut() {
         document.body.style.transition = "opacity 2s";
         document.body.style.opacity = "0";
         setTimeout(() => {
-            window.location.href = "../ending-screens/time-out.html";
+            SaveData.endGame(false, "").then(()=>{window.location.href = "../ending-screens/time-out.html";});
         }, 2000); // Wait to fade
     }, 3000); // Wait 3 seconds then fade
 }
