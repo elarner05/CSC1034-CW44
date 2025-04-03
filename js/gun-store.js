@@ -117,7 +117,12 @@ const dialogue = [
         "text":[
             "Well, you know where I'll be if you have more questions."
         ],
-        "choices": []
+        "choices": [
+            {
+                "text": "*Restart Dialogue*",
+                "nextID": 99
+            }
+        ]
     },
     {
         "id": 7,
@@ -127,7 +132,12 @@ const dialogue = [
             "Thats all I've wrote in my logbook",
             "Now if you don't mind I need to get back to work, can't spend all day talking."
         ],
-        "choices": []
+        "choices": [
+            {
+                "text": "*Restart Dialogue*",
+                "nextID": 99
+            }
+        ]
     },
     {
         "id": 8,
@@ -139,7 +149,12 @@ const dialogue = [
             "It was only a matter of time before he got himself killed.",
             "Now if you don't mind I need to get back to work, can't spend all day talking."
         ],
-        "choices": []
+        "choices": [
+            {
+                "text": "*Restart Dialogue*",
+                "nextID": 99
+            }
+        ]
     },
     {
         "id": 9,
@@ -173,7 +188,12 @@ const dialogue = [
             "Anyways.",
             "I have to get back to work. Dollars don't make themselves."
         ],
-        "choices":[]
+        "choices":[
+            {
+                "text": "*Restart Dialogue*",
+                "nextID": 99
+            }
+        ]
     },
     {
         "id": 11,
@@ -281,7 +301,7 @@ const dialogue = [
         ],
         "choices":[
             {
-                "text": "Return",
+                "text": "*Restart Dialogue*",
                 "nextID": 99
             }
         ]
