@@ -158,7 +158,7 @@ document.getElementById("dyslexicFontButton").addEventListener("click", function
 });
 
 document.getElementById("editProfileButton").addEventListener("click", function() {
-
+    window.location.href = "edit-account.html"
 });
 
 function applyFontMultiplier(multiplier) {
