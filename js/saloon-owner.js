@@ -61,7 +61,7 @@ const dialogue = [
         "text": [
             "You approach an old friendly looking man and he offers you the seat next to him.",
             "You introduce yourself and the old man grumbles,",
-            "\"You're a good lad, but honestly its for the better that that man's gone\""
+            "\"You're a good lad, but honestly its for the better that that man's gone.\""
         ],
         "choices": [
             {
@@ -132,7 +132,7 @@ const dialogue = [
     {
         "id": 7,
         "text": [  "The old man sighs, \"I say this for good reason,\"",
-                  "\"He did'nt leave poor Denise alone either. That sheriff ran her dry of supply and never paid her back.\"",],
+                  "\"He didn't leave poor Denise alone either. That sheriff ran her dry of supply and never paid her back.\"",],
         "choices": [
             {
                 "text": "Could there be a proof for that?",
@@ -228,7 +228,7 @@ const dialogue = [
     {
         "id" : 17,
         "text" : [
-            "\Yes, the ledger that Denise keeps behind the counter should have all the records of the sheriff's visits here.\"",
+            "\"Yes, the ledger that Denise keeps behind the counter should have all the records of the sheriff's visits here.\"",
             "The man points towards the counter.",
         ],
         "choices" : [
