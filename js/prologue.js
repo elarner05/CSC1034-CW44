@@ -30,6 +30,7 @@ SaveData.getUserData().then(result=>{
     const textElement = document.getElementById("storyText");
     const nextButton = document.getElementById("nextButton");
 
+    //20 is the default, 1 is just for testing purposes
     const dialogue = new DialogueUpdater(prologueText, textElement, nextButton, 1);
 
     dialogue.start();

@@ -32,7 +32,7 @@ import { DialogueUpdater } from "../js/story-line.js";
 const textElement = document.getElementById("storyText");
 const nextButton = document.getElementById("nextButton");
 
-const dialogue = new DialogueUpdater(dialogueText, textElement, nextButton);
+const dialogue = new DialogueUpdater(dialogueText, textElement, nextButton,1);
 
 dialogue.start();
 
