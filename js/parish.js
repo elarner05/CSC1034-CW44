@@ -829,7 +829,7 @@ const textElement = document.getElementById("storyText");
 const nextButton = document.getElementById("nextButton");
 const containerElement = document.getElementById("choicesContainer");
 
-const conversation = new ConversationHandler(preacherDialogue, textElement, nextButton, containerElement, 21);
+const conversation = new ConversationHandler(preacherDialogue, textElement, nextButton, containerElement, 1);
 
 conversation.start();
 
