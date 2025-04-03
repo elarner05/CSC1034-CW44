@@ -5,13 +5,13 @@ import * as SaveData from "./saveData.js";
 document.getElementById('signinForm').addEventListener('submit', async function(event) {
     event.preventDefault();
 
-    const username = document.getElementById('username').value;
-    const password = document.getElementById('password').value;
+    const username = document.getElementById('username').value.replaceAll("'", "''");
+    const password = document.getElementById('password').value.replaceAll("'", "''");
     const errorMessage = document.getElementById("errorMessage");
     
     
 
-    let sqlQuery = `SELECT * FROM userData WHERE usernameField = '${username}' AND BINARY passwordField = '${password}';`;
+    let sqlQuery = `SELECT * FROM userData WHERE BINARY usernameField = '${username}' AND BINARY passwordField = '${password}';`;
 
     let result = await SaveData.sendSQL(sqlQuery);
 
