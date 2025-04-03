@@ -103,7 +103,7 @@ const dialogue = [
     {
         "id": 5,
         "text": ["Denise shakes her head and chuckles,",
-            "\"In a town this small word spreads FontFaceSet. Now do you have any actual questions?\""
+            "\"In a town this small word spreads fast. Now do you have any actual questions?\""
         ],
         "choices": [
             {
