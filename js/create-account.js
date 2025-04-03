@@ -3,9 +3,9 @@ import * as SaveData from "./saveData.js";
 // Temporary sign in, to bypass not having a server
 document.getElementById('createAccountForm').addEventListener('submit', async function(event) {
     event.preventDefault();
-    const username = document.getElementById("username").value;
-    const playerName = document.getElementById("playerName").value;
-    const password = document.getElementById("password").value;
+    const username = document.getElementById("username").value.replaceAll("'", "''");
+    const playerName = document.getElementById("playerName").value.replaceAll("'", "''");
+    const password = document.getElementById("password").value.replaceAll("'", "''");
     const errorMessage = document.getElementById("errorMessage");
 
     if (username.length > 20 || password.length > 20) {
