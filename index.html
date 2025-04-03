@@ -19,7 +19,12 @@
     <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
-
+    <div class="suspect" style="top: 100px; left: 150px;">
+        <img src="assets/drifter-portrait.png" alt="Suspect 1">
+    </div>
+    <div class="suspect" style="top: 250px; right: 300px;">
+        <img src="assets/rancher-portrait.png" alt="Suspect 2">
+    </div>
     <!-- Main menu section -->
     <div class="main-container">
         <h1 class="title">Murder Mystery</h1>
@@ -28,6 +33,7 @@
                 <button id="continueButton" disabled>Continue</button>
                 <button id="newGameButton" disabled>New Game</button>
                 <button id="statsButton" disabled>Stats</button>
+                <button id="achievementsButton" disabled>Achievements</button>
                 
                 <span class="tooltip">You must sign in first!</span>
             </div>
@@ -49,6 +55,10 @@
         </div>
     </div>
 
+    <div id="errorMessage" class = "error">
+        <p>Error creating session.</p>
+    </div>
+
     <!-- Options Menu section-->
     <div class="options-menu menu hidden">
         <div class="options-box">
@@ -66,14 +76,15 @@
 
             <button class="button-off" id="dyslexicFontButton">Dyslexic Font: Off</button>
             <div class="button-wrapper">
-                <button id="editProfileButton" disabled>Edit Profile</button>
+                <button id="editProfileButton">Edit Profile</button>
+                </a>
                 <span class="tooltip">You must sign in first!</span>
             </div>
             <button id="closeOptionsButton">Close</button>
         </div>
     </div>
 
-    <script src="js/index.js"></script>
-    <script src="js/check-accessibility.js"></script>
+    <script type="module" src="js/index.js"></script>
+    <!-- <script src="js/check-accessibility.js"></script> -->
 </body>
 </html>

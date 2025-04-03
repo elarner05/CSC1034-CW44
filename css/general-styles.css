@@ -24,7 +24,7 @@ body {
     -moz-appearance: none;
     appearance: none;
     display: block;
-    width: 150px;
+    min-width: 150px;
     margin: 10px auto;
     padding: 10px;
     background: #777;

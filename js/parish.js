@@ -4,6 +4,12 @@ import * as Timer from "./timer.js";
 import * as SaveData from "./saveData.js";
 import ConversationHandler from "./story-line.js";
 
+if (!SaveData.checkSessionID()) {
+    window.location.href = "index.html";
+}
+
+SaveData.setupAutoSaveTime();
+
 const preacherDialogue = [
   {
       "id": 1,
@@ -786,7 +792,7 @@ const preacherDialogue = [
 }, {
     "id":101,
     "text": [
-        "You find a scrunched up poster, blown there sometime ago",
+        "You find a scrunched-up poster, blown there some time ago",
         "You pick up the poster to read it later."
     ],
     "choices": [

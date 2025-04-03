@@ -303,13 +303,14 @@
     height: 60vh;
     width: 80px;
     border-radius: 16px 0px 0px 16px;
-    background-color: rgb(70,70,70, 0.7);
+    background-color: rgba(43, 43, 43, 0.7);
+    border: 3px solid  rgba(141, 141, 141, 0.7);
 }
 
 #sideBar button {
     display: block;
     appearance: none;
-    background-color: #B77E5B;
+    background-color: #6396cf;
     aspect-ratio: 1;
     background-size: 100% 100%;
     background-position: center;
@@ -333,6 +334,10 @@
 #notes {
     background-image:  url("../assets/notes-icon.png");
     
+}
+
+#saveQuit {
+    background-image: url("../assets/save-icon.png");
 }
 
 #gameClock {

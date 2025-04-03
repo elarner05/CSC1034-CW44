@@ -1,13 +1,11 @@
+
+import { endGame } from "./saveData.js";
+
 // Constants
 const GAME_START_HOUR = 6;  // 6 AM start
 const GAME_END_HOUR = 22;   // 10 PM end
 const GAME_DURATION_MINUTES = 20;  // Real-world duration
 
-// Load or initialize start time
-export function setStartTime( ) {
-    localStorage.removeItem("gameOver"); // Resets the game over flag
-    localStorage.setItem("gameStartTime", Date.now()); // Store real start time
-}
 
 // Inject the clock into the html
 export function injectClock() {
@@ -62,6 +60,9 @@ export function gameTimeOut() {
     // Checks to make sure it can't retrigger over and over
     if (localStorage.getItem("gameOver")) return;
     localStorage.setItem("gameOver","true");
+
+    endGame(false); // End the game in the database
+    
     // Creates a text box to let the user know what happened
     const dialogueBox = document.createElement("div");
     dialogueBox.textContent = "The sun has set...";
@@ -101,18 +102,4 @@ export function updateClockDisplay() {
             clock.style.color = "#f5e3c3";
         }
     } catch {}
-}
-
-
-export function pauseGame() {
-    localStorage.setItem("pausedTime", Date.now()); // Store the pause timestamp
-}
-
-export function resumeGame() {
-    if (localStorage.getItem("pausedTime")) {
-        let pausedDuration = Date.now() - parseInt(localStorage.getItem("pausedTime"));
-        let newStartTime = parseInt(localStorage.getItem("gameStartTime")) + pausedDuration;
-        localStorage.setItem("gameStartTime", newStartTime); // Adjust start time
-        localStorage.removeItem("pausedTime"); // Remove pause record
-    }
 }

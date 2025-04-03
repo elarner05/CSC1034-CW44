@@ -12,6 +12,7 @@ dyslexicFont => true, false
 fontSizeSetting => 0,1,2,3,4
 gameStartTime => long number
 pausedTime => long number
+CurrentTableRow => JSON of rows current status
 
 
 sessionStorage

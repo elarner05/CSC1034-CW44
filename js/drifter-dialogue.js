@@ -3,6 +3,11 @@ import * as SideBar from "./side-bar.js";
 import * as SaveData from "./saveData.js";
 import ConversationHandler from "./story-line.js"; 
 
+if (!SaveData.checkSessionID()) {
+    window.location.href = "index.html";
+}
+
+SaveData.setupAutoSaveTime();
 
 const dialogue = [
     {
@@ -22,9 +27,49 @@ const dialogue = [
       ]
     },
     {
+      "id": 101,
+      "text": [
+        "The man stares at you."
+      ],
+      "choices": [
+        {
+          "text": "I have some more questions.",
+          "nextID": 102
+        },
+        {
+          "text": "Look for clues",
+          "nextID": 3
+        }
+      ]
+    },
+    {
       "id": 2,
       "text": [
         "The man looks towards you. He nods his head slightly. He stares towards you, the shadow from his hat obscuring his face."
+      ],
+      "choices": [
+        {
+          "text": "Where were you on the night of the murder?",
+          "nextID": 4
+        },
+        {
+          "text": "See or hear anything strange?",
+          "nextID": 8
+        },
+        {
+          "text": "Did you know the sheriff?",
+          "nextID": 11
+        },
+        {
+          "text": "Why'd you stick around?",
+          "nextID": 14
+        }
+      ]
+    },
+    {
+      "id": 102,
+      "text": [
+        "\"Mhm...\""
       ],
       "choices": [
         {
@@ -93,7 +138,8 @@ const dialogue = [
       ],
       "choices": [
         {
-          "nextID": 1
+          "text": "",
+          "nextID": 101
         }
       ]
     },
@@ -121,7 +167,8 @@ const dialogue = [
       ],
       "choices": [
         {
-            "nextID": 1
+            "text": "",
+            "nextID": 101
         }
       ]
     },
@@ -163,7 +210,8 @@ const dialogue = [
       ],
       "choices": [
         {
-            "nextID": 1
+            "text": "",
+            "nextID": 101
         }
       ]
     },
@@ -186,7 +234,7 @@ const dialogue = [
     {
       "id": 12,
       "text": [
-        "\"He laughs to himself.\"",
+        "He laughs to himself.",
         "\"Mhm.\"",
         "\"Hear his name round these parts a lot.\"",
         "\"Even far beyond these parts.\"",
@@ -208,7 +256,8 @@ const dialogue = [
       ],
       "choices": [
         {
-            "nextID": 1
+            "text": "",
+            "nextID": 101
         }
       ]
     },
@@ -217,7 +266,7 @@ const dialogue = [
       "text": [
         "\"Had business here.\"",
         "\"Someone I had to talk to.\"",
-        "\"He waits for a second\".",
+        "He waits for a second.",
         "\"I best be leavin' soon.\""
       ],
       "choices": [
@@ -233,10 +282,11 @@ const dialogue = [
         "\"Private matter.\"",
         "\"All taken care of.\"",
         "\"Don't you worry 'bout a thing.\"",
-        "\"He turns away from you and takes a draw of his cigar.\""
+        "He turns away from you and takes a draw of his cigar."
       ],
       "choices":[
         {
+            "text": "",
             "nextID": 1
         }
       ]
@@ -251,8 +301,10 @@ const dialogue = [
       ],
       "choices": [
         {
-          "nextID": 1,
-          "itemID": 4
+          "text": "Go back.",
+          "nextID": 101,
+          "itemID": 4,
+          "oneTime": true
         }
       ]
     },
@@ -268,7 +320,8 @@ const dialogue = [
       ],
       "choices": [
         {
-          "nextID": 1
+          "text": "",
+          "nextID": 101
         }
       ]
     },
@@ -282,7 +335,8 @@ const dialogue = [
       ],
       "choices": [
         {
-          "nextID": 1
+          "text": "",
+          "nextID": 101
         }
       ]
     },
@@ -298,7 +352,8 @@ const dialogue = [
       ],
       "choices": [
         {
-          "nextID": 1
+          "text": "",
+          "nextID": 101
         }
       ]
     }

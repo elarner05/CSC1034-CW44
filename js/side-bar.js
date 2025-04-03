@@ -6,6 +6,7 @@ export function injectSidebar() {
     <div id="sideBar">
         <button class="side-bar" id="inventory"></button>
         <button class="side-bar" id="notes"></button>
+        <button class="side-bar" id="saveQuit"></button>
     </div>
 
 
@@ -38,14 +39,14 @@ export function injectSidebar() {
         <div class="notes-box">
             <h2>Investigation Notes</h2>
             <div class="notes-tabs" id="notesTabs">
-                <button class="notes-tab active-tab" data-suspect="suspect1">Deputy</button>
-                <button class="notes-tab" data-suspect="suspect2">Arms Dealer</button>
-                <button class="notes-tab" data-suspect="suspect3">Preacher</button>
-                <button class="notes-tab" data-suspect="suspect4">Drifter</button>
-                <button class="notes-tab" data-suspect="suspect5">Rancher</button>
-                <button class="notes-tab" data-suspect="suspect6">Saloon Owner</button>
+                <button class="notes-tab active-tab" data-suspect="Deputy">Deputy</button>
+                <button class="notes-tab" data-suspect="Arms Dealer">Arms Dealer</button>
+                <button class="notes-tab" data-suspect="Preacher">Preacher</button>
+                <button class="notes-tab" data-suspect="Drifter">Drifter</button>
+                <button class="notes-tab" data-suspect="Rancher">Rancher</button>
+                <button class="notes-tab" data-suspect="Saloon Owner">Saloon Owner</button>
             </div>
-            <textarea id="notesArea" maxlength="10000" placeholder="Write your clues, suspicions, and theories here..."></textarea>
+            <textarea id="notesArea" maxlength="1000" placeholder="Write your clues, suspicions, and theories here..."></textarea>
 
             <button id="closeNotesButton">Save & Close</button>
         </div>
@@ -102,6 +103,18 @@ const itemData =[
         name: "Glass Shard",
         description: "Found at the arms dealer's, likely from an arguement about money",
         image: ""
+    },
+    {
+        id : 8,
+        name: "Customer Logbook",
+        description: "A logbook that contains records of all the customers that visited the saloon.",
+        image: "assets/ledger.png",
+    }, 
+    {
+        id: 9,
+        name: "Deputy's Notes",
+        description: "A note taken from the deputy's desk. Rants of hatred directed towards the Sherif.",
+        image: "assets/deputy-notes.png"
     }
 ]
 // Notes elements
@@ -118,7 +131,7 @@ let closeDescriptionButton = document.getElementById("closeDescriptionButton");
 let itemDescriptionContainer = document.getElementById("itemDescriptionContainer");
 
 
-let inventoryData = SaveData.getInventory();
+let inventoryData = SaveData.getLocalInventory();
 let inventorySlots = [];
 let currentNotesSuspect = 'Deputy';
 
@@ -151,18 +164,22 @@ export function setupSideBar() {
         loadNotes(currentNotesSuspect);
     });
 
+    document.getElementById("saveQuit").addEventListener('click', () => {
+        SaveData.setPauseTime().then(window.location.href = "index.html")
+    });
+
     // Load initial notes on page load
 
 
     closeNotesButton.addEventListener('click', () => {
-        saveNotes(currentNotesSuspect, notesArea.value); // Save notes
+        SaveData.saveNotes(currentNotesSuspect, notesArea.value); // Save notes
         notesContainer.classList.add('hidden');
     });
 
     notesTabs.forEach(tab => {
         tab.addEventListener('click', () => {
             // Save current notes before switching
-            saveNotes(currentNotesSuspect, notesArea.value);
+            SaveData.saveNotes(currentNotesSuspect, notesArea.value);
 
             // Switch active tab
             notesTabs.forEach(t => t.classList.remove('active-tab'));
@@ -203,7 +220,7 @@ export function setupSideBar() {
     // Test data, overwritten by saved inventory
     
 
-    inventoryData = SaveData.getInventory();
+    inventoryData = SaveData.getLocalInventory();
 
     // Use event delegation to handle all dragstart events
     document.addEventListener("dragstart", (e) => {
@@ -215,7 +232,7 @@ export function setupSideBar() {
 
     // Update and reveal description when an item is clicked
     document.addEventListener("click", (e) => {
-        inventoryData = SaveData.getInventory();
+        inventoryData = SaveData.getLocalInventory();
         const clickedItem = e.target.closest('.inventory-item');
         if (clickedItem) {
             
@@ -270,30 +287,15 @@ export function loadNotes(suspectKey) {
     }
 }
 
-export function saveNotes(currentNotesSuspect, notes) {
-    sessionStorage.setItem(`notes_${currentNotesSuspect}`, notes);
-
-}
 
 
 
-// adds a new item to the inventory and saves it to be persistant
 
-
-
-// removes an item; for testing purposes only
-export function _removeItemFromInventory(inventoryItemID) {
-    inventoryData = inventoryData.filter(inventoryItem => {return inventoryItem.id !== inventoryItemID});
-    let counter = 1;
-    inventoryData.forEach(inventoryItem => {inventoryItem.id = "item" + counter;counter++;});
-    SaveData.saveInventory(inventoryData);
-    loadInventory();
-}
 
 // loads the data from 'inventoryData' into the inventory
 export function loadInventory() {
     loadSidebarElements();
-    let inventoryData = SaveData.getInventory();
+    let inventoryData = SaveData.getLocalInventory();
     if (inventoryData) {
         inventoryData.forEach(invItem => {
             const itemInfo = itemData.find(item => item.id === invItem.itemID);
@@ -321,14 +323,13 @@ export function loadInventory() {
     }
 }
 
-
-
 export function updateItemSlot(itemId, newSlotId) {
     const item = inventoryData.find(i => i.id === itemId);
     if (item) {
         item.slot = newSlotId;
         SaveData.saveInventory(); // Save updated state
         loadInventory();
+        SaveData.moveItem(item.itemID, newSlotId);
     }
 }
 
@@ -370,13 +371,6 @@ export function createNotification(itemID) {
         }, 10000);
     }
 }
-
-
-
-
-
-
-
 
 // loads the saved notes and inventory when the page is loaded
 window.addEventListener('DOMContentLoaded', () => {

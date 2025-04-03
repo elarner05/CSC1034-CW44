@@ -1,3 +1,8 @@
+import * as SaveData from "./saveData.js";
+
+if (!localStorage.getItem("fontSizeSetting")) {
+    localStorage.setItem("fontSizeSetting", "2");
+}
 
 document.querySelectorAll("*").forEach(element => {
     // Store original font size as a custom data attribute
@@ -7,11 +12,11 @@ document.querySelectorAll("*").forEach(element => {
 
 
 // Volume variables
-var soundSlider = document.getElementById("soundRange");
-var volume = 0.5
+let soundSlider = document.getElementById("soundRange");
+let volume = 0.5
 
-var fontSizeSlider = document.getElementById("fontSizeRange");
-var fontSizeMultiplier = 1;
+let fontSizeSlider = document.getElementById("fontSizeRange");
+let fontSizeMultiplier = 1;
 
 
 try {
@@ -20,13 +25,14 @@ try {
     console.warn("Previous sound setting not found");
 }
 
-try {
-    fontSizeSlider.value = Number(localStorage.getItem("fontSizeSetting"));
-    fontSizeMultiplier = 1+(0.25*(fontSizeSlider.value-2));
-    applyFontMultiplier(fontSizeMultiplier);
-} catch (e) {
-    console.warn("Previous font size setting not found");
-}
+document.addEventListener("DOMContentLoaded", () => {
+    
+        fontSizeSlider.value = parseInt(localStorage.getItem("fontSizeSetting"));
+        fontSizeMultiplier = 1+(0.25*(fontSizeSlider.value-2));
+        applyFontMultiplier(fontSizeMultiplier);
+    
+});
+
 
 // Update the current slider value (each time you drag the slider handle)
 soundSlider.oninput = function() {
@@ -35,7 +41,7 @@ soundSlider.oninput = function() {
 }
 
 fontSizeSlider.oninput = function() {
-    fontSizeMultiplier = 1+(0.25*(this.value-2));
+    let fontSizeMultiplier = 1+(0.25*(this.value-2));
     applyFontMultiplier(fontSizeMultiplier);
     localStorage.setItem("fontSizeSetting", this.value);
 }
@@ -43,7 +49,7 @@ fontSizeSlider.oninput = function() {
 // Try to load the username for the profile section
 let currentUser = null;
 try {
-    currentUser = { name: localStorage.getItem("UserName") };
+    currentUser = {name: SaveData.getLocalUsername()};
 } catch(e) {}
 
 // Check if user is signed in
@@ -56,9 +62,13 @@ if (localStorage.getItem("SignedIn") === "true") {
     document.getElementById("userName").textContent = currentUser.name;
 
     // Reenable buttons
-    document.getElementById("continueButton").disabled = false;
+    if (SaveData.checkSessionID()) {
+        document.getElementById("continueButton").disabled = false;
+    }
+    
     document.getElementById("newGameButton").disabled = false;
     document.getElementById("statsButton").disabled = false;
+    document.getElementById("achievementsButton").disabled = false;
     document.getElementById("editProfileButton").disabled = false;
 
     document.querySelectorAll(".tooltip").forEach(tooltip => {
@@ -86,19 +96,37 @@ if (localStorage.getItem("SignedIn") === "true") {
 // Eventlisteners    
 
 document.getElementById("continueButton").addEventListener("click", function() {
-
+    SaveData.loadSessionData().then(success=>{if (success) {window.location.href = "main-town.html";}});
 });
 
-document.getElementById("newGameButton").addEventListener("click", function() {
-    window.location.href = "prologue.html";
+document.getElementById("newGameButton").addEventListener("click", async function() {
+    let result = await SaveData.createNewSession();
+    if (result) {
+        window.location.href = "prologue.html";
+    } else {
+        const errorDisplay = document.getElementById("errorMessage");
+        
+        errorDisplay.style.opacity = 1;
+
+
+        setTimeout(()=>{
+            errorDisplay.style.opacity = 0;
+        }, 2000);
+    }
 });
 
 document.getElementById("statsButton").addEventListener("click", function() {
+    window.location.href = "user-statistics.html";
+});
 
+document.getElementById("achievementsButton").addEventListener("click", function() {
+    window.location.href = "achievements.html";
 });
 
 
+
 document.getElementById("leaderboardButton").addEventListener("click", function() {
+    window.location.href = "leaderboard.html";
 });
 
 
@@ -107,7 +135,11 @@ document.getElementById("signInButton").addEventListener("click", function() {
 });
 
 document.getElementById("logoutButton").addEventListener("click", function() {
-    localStorage.setItem("SignedIn", "false");
+    localStorage.removeItem("Username");
+    localStorage.removeItem("UserID");
+    localStorage.removeItem("SignedIn");
+    localStorage.removeItem("Password");
+    localStorage.removeItem("CurrentSessionID");
     window.location.reload();
 });
 
@@ -139,7 +171,7 @@ document.getElementById("dyslexicFontButton").addEventListener("click", function
 });
 
 document.getElementById("editProfileButton").addEventListener("click", function() {
-
+    window.location.href = "edit-account.html"
 });
 
 function applyFontMultiplier(multiplier) {

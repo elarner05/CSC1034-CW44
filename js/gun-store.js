@@ -3,6 +3,12 @@ import * as SideBar from "./side-bar.js";
 import * as SaveData from "./saveData.js";
 import ConversationHandler from "./story-line.js";
 
+if (!SaveData.checkSessionID()) {
+    window.location.href = "index.html";
+}
+
+
+SaveData.setupAutoSaveTime();
 
 const dialogue = [
     {
@@ -47,12 +53,12 @@ const dialogue = [
     {
         "id": 3,
         "text":[
-            "I dont see how that involves me.",
-            "I'm just a armers dealer trying to make a living."
+            "I don't see how that involves me.",
+            "I'm just an arms dealer trying to make a living."
         ],
         "choices": [
             {
-                "text": "I just have some questions, thats all, would you mind answering them",
+                "text": "I just have some questions, that's all, would you mind answering them",
                 "nextID": 4,
             },
             {
@@ -64,7 +70,7 @@ const dialogue = [
     {
         "id": 4,
         "text":[
-            "Of course, what upstanding citizan wouldn't help an investication.",
+            "Of course, what upstanding citizen wouldn't help an investigation.",
             "What were you wondering about."
         ],
         "choices": [
@@ -85,7 +91,7 @@ const dialogue = [
     {  
         "id": 5,
         "text":[
-            "I dont recall any suspicious behaviour, but it has be really tense around the sherif recently",
+            "I don't recall any suspicious behaviour, but it has been really tense around the sherif recently",
             "He used to be one of my best customers, but recently he hasn't been in the store.",
             "Must've been his new friends from out of town...",
             "Anyways.",
@@ -93,7 +99,7 @@ const dialogue = [
         ],
         "choices": [
             {
-                "text": "No thats all. Thanks.",
+                "text": "No that's all. Thanks.",
                 "nextID": 6,
             },
             {
@@ -117,9 +123,9 @@ const dialogue = [
         "id": 7,
         "text":[
             "That is a popular gun, I do sell quite a chunk of them.",
-            "I think I sold one to the sherif a while a go, and the rancher",
-            "Thats all i've wrote in my log book",
-            "Now if you dont mind I need to get back to work, can't spend all day talking."
+            "I think I sold one to the sherif a while ago, and the rancher",
+            "Thats all I've wrote in my logbook",
+            "Now if you don't mind I need to get back to work, can't spend all day talking."
         ],
         "choices": []
     },
@@ -128,10 +134,10 @@ const dialogue = [
         "text":[
             "I would be shocked if there was anyone without problems with the sherif.",
             "Apart from me of course!!",
-            "There were some rummors that he was working with some bad people out in the country.",
+            "There were some rumours that he was working with some bad people out in the country.",
             "Brought lots of worry for the folk here.",
             "It was only a matter of time before he got himself killed.",
-            "Now if you dont mind I need to get back to work, can't spend all day talking."
+            "Now if you don't mind I need to get back to work, can't spend all day talking."
         ],
         "choices": []
     },
@@ -139,13 +145,13 @@ const dialogue = [
         "id": 9,
         "text":[
             "That is a popular gun, I do sell quite a chunk of them.",
-            "I think I sold one to the sherif a while a go, and the rancher",
-            "Thats all i've wrote in my log book",
-            "Is there anything alse you have, to ask?"
+            "I think I sold one to the sherif a while ago, and the rancher",
+            "Thats all I've wrote in my logbook",
+            "Is there anything else you have, to ask?"
         ],
         "choices":[
             {
-                "text": "Nope, dont think so.",
+                "text": "Nope, don't think so.",
                 "nextID": 6
             },
             {
@@ -161,7 +167,7 @@ const dialogue = [
     {
         "id": 10,
         "text":[
-            "I dont recall any suspicious behaviour, but it has be really tense around the sherif recently",
+            "I don't recall any suspicious behaviour, but it has be really tense around the sherif recently",
             "He used to be one of my best customers, but recently he hasn't been in the store.",
             "Must've been his new friends from out of town...",
             "Anyways.",
@@ -174,14 +180,14 @@ const dialogue = [
         "text":[
             "I would be shocked if there was anyone without problems with the sherif.",
             "Apart from me of course!!",
-            "There were some rummors that he was working with some bad people out in the country.",
+            "There were some rumours that he was working with some bad people out in the country.",
             "Brought lots of worry for the folk here.",
             "It was only a matter of time before he got himself killed...",
             "Any other questions?"
         ],
         "choices":[
             {
-                "text": "No, I dont think so",
+                "text": "No, I don't think so",
                 "nextID": 6,
             },
             {
@@ -199,11 +205,11 @@ const dialogue = [
         "text":[
             "You should be careful with what you say to strangers",
             "Its a very risky game",
-            "*Arms Dealer's hand slowly makes its way near his revolver*"
+            "*Arms Dealer's hand slowly makes it's way near his revolver*"
         ],
         "choices":[
             {
-                "text": "I dont mean to offend, was just seeing how you respond",
+                "text": "I don't mean to offend, was just seeing how you respond",
                 "nextID": 13
             },
             {
@@ -215,7 +221,7 @@ const dialogue = [
     {
         "id": 13,
         "text":[
-            "I see, I recommend you dont try that strategy anymore",
+            "I see, I recommend you don't try that strategy anymore",
             "You might just end up like the sherif."
         ],
         "choices":[
@@ -253,7 +259,7 @@ const dialogue = [
     {
         "id": 16,
         "text":[
-            "I think its about time you leave.",
+            "I think it's about time you leave.",
             "We both know how this will end elsewise...",
             "It's your choice"
         ],
@@ -263,7 +269,7 @@ const dialogue = [
                 "nextID": 17
             },
             {
-                "text":"I think I dont want to leave",
+                "text":"I think I don't want to leave",
                 "nextID": 18
             }
         ]
@@ -311,7 +317,7 @@ const dialogue = [
         "id": 20,
         "text":[
             "Yeah, we sell those, very nice gun",
-            "Infact we are almost out of them",
+            "In fact, we are almost out of them",
             "would you like the model information"
         ],
         "choices":[
@@ -350,7 +356,7 @@ const dialogue = [
         "id": 23,
         "text":[
             "Yeah I think there is a few of those in stock",
-            "One the best looking guns in my experience",
+            "One the best-looking guns in my experience",
             "would you like the model information for this gun?"
         ],
         "choices":[

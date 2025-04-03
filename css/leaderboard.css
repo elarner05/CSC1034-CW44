@@ -1,0 +1,72 @@
+.information {
+    width: 50vw;
+    max-height: 60vh; /* Limits height to avoid overflow */
+    overflow-y: auto; /* Enables vertical scrolling */
+    background: #444444;
+    padding: 0px;
+    border-radius: 10px;
+}
+
+/* Allow table to shrink based on content */
+.information table {
+    width: 100%;
+    max-width: 100%;
+    border-collapse: collapse;
+    table-layout: auto; /* Allows columns to shrink */
+}
+
+/* Sticky header */
+thead {
+    position: sticky;
+    top: 0;
+    background: #555;
+    z-index: 2;
+}
+
+/* Ensure header cells do not overlap */
+.information th {
+    border: 1px solid black;
+    background: #555;
+    padding: 10px;
+    white-space: nowrap; /* Prevents excessive wrapping */
+}
+
+/* Allow table cells to shrink naturally */
+.information th,
+.information td {
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    min-width: auto; /* Allows columns to shrink */
+    word-wrap: break-word; /* Breaks long words if necessary */
+    white-space: normal; /* Allows text to wrap within cells */
+}
+
+/* Remove block display from tbody */
+.information tbody {
+    display: table-row-group;
+}
+
+/* Fix row display issue */
+.information tr {
+    display: table-row;
+}
+
+
+
+#backButton {
+    
+    max-width: 300px;
+    flex-grow: 0;
+    margin: 10px 5px;
+    padding: 10px 20px;
+    background: #555;
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 10px;
+    bottom: 2px;
+}
+

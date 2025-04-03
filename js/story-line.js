@@ -133,9 +133,7 @@ export class ChoiceHandler {
                         if (choice.oneTime === true && SaveData.itemInInventory(choice.itemID)) {
 
                         } else {
-                            SaveData.addItemToInventory(choice.itemID, "nextAvailable");
-                            SideBar.loadInventory();
-                            
+                            SaveData.addItemToInventory(choice.itemID, "nextAvailable").then(()=>{SideBar.loadInventory();});                            
                         }
                         
                     }
