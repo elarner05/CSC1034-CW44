@@ -39,7 +39,7 @@ export async function sendSQL(sqlQuery) {
 }
 
 export function noErrors(finishedResult) {
-    if (finishedResult === null) {
+    if (finishedResult == null) {
         console.log("Null result from server: ", finishedResult);
         return false;
     } else if (finishedResult.error) {
