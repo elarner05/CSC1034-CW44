@@ -31,7 +31,7 @@ SaveData.getUserData().then(result=>{
     const nextButton = document.getElementById("nextButton");
 
     //20 is the default, 1 is just for testing purposes
-    const dialogue = new DialogueUpdater(prologueText, textElement, nextButton, 1);
+    const dialogue = new DialogueUpdater(prologueText, textElement, nextButton, 20);
 
     dialogue.start();
 
