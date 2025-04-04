@@ -573,7 +573,7 @@ const dialogue = [
         ]
     },
     {
-        "id": 101,
+        "id": 103,
         "text":[
             "*Everything is normal with the guns*",
         ],
